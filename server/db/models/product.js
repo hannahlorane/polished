@@ -7,8 +7,9 @@ var Product = db.define('Product', {
     type: Sequelize.STRING,
     allowNull: false
   },
-  rbgValue: {
+  rgbValue: {
     type: Sequelize.ARRAY(Sequelize.TEXT),
+    defaultValue: [255, 255, 255],
     allowNull: false
   },
   description: {

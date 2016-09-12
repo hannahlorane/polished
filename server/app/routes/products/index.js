@@ -13,12 +13,9 @@ router.get('/', function(req, res, next) {
 })
 
 router.post('/', function(req, res, next) {
-  Product.findOrCreate(req.body)
-  .spread(function(product, created) {
-    res.send(product.get({
-      plain: true
-    }))
-    console.log(created);
+  Product.create(req.body)
+  .then(function(product) {
+    res.send(product);
   })
   .catch(next);
 })
@@ -32,7 +29,7 @@ router.get('/:id', function(req, res, next) {
 })
 
 router.put('/:id', function(req, res, next) {
-  Product.update(req.body)
+  Product.update(req.body, {where: {id: req.params.id}})
   .then(function(product) {
     res.send(product);
   })
