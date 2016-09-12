@@ -1,4 +1,4 @@
-var db = require('./_db');
+var db = require('../_db');
 var Sequelize = require('sequelize');
 
 module.exports = db.define('review', {
