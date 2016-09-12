@@ -7,6 +7,6 @@ module.exports = db.define('order', {
     type: Sequelize.DECIMAL
   },
   status: {
-    type: Sequelize.STRING
+    type: Sequelize.BOOLEAN
   }
 });
