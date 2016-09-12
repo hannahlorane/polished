@@ -24,6 +24,7 @@ var Product = db.define('Product', {
   },
   photo: {
     type: Sequelize.STRING,
+    defaultValue: 'http://cocosdayspa.com/wp-content/gallery/essie/essie-nail-polish-10.jpg'
   }
 }, {
   instanceMethods: null
