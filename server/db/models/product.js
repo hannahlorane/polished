@@ -16,7 +16,10 @@ var Product = db.define('Product', {
   },
   price: {
     type: Sequelize.DOUBLE,
-    allowNull: false
+    allowNull: false,
+    validate: {
+      min: 0
+    }
   },
   photo: {
     type: Sequelize.STRING,
