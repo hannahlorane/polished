@@ -7,8 +7,9 @@ var Product = db.define('Product', {
     type: Sequelize.STRING,
     allowNull: false
   },
-  rbgValue: {
-    type: Sequelize.INTEGER,
+  rgbValue: {
+    type: Sequelize.ARRAY(Sequelize.TEXT),
+    defaultValue: [255, 255, 255],
     allowNull: false
   },
   description: {
@@ -23,6 +24,7 @@ var Product = db.define('Product', {
   },
   photo: {
     type: Sequelize.STRING,
+    defaultValue: 'http://cocosdayspa.com/wp-content/gallery/essie/essie-nail-polish-10.jpg'
   }
 }, {
   instanceMethods: null
