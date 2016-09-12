@@ -1,7 +1,8 @@
 'use strict';
 var router = require('express').Router(); // eslint-disable-line new-cap
-var db = require('../../db');
-var Product = db.model('product');
+// var db = require('../../../db');
+// var Product = db.model('product');
+var Product = require('../../../db/models/product');
 
 router.get('/', function(req, res, next) {
   Product.findAll()
