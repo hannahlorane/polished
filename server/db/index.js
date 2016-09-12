@@ -14,7 +14,7 @@ var Product = require('./models/product');
 // if we had more models, we could associate them in this file
 // e.g. User.hasMany(Reports)
 
-var OrderProducts = Sequelize.define('OrderProducts', {
+var OrderProducts = db.define('OrderProducts', {
   quantity: {
     type: Sequelize.INTEGER,
     defaultValue: 0
