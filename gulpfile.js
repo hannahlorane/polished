@@ -128,6 +128,10 @@ gulp.task('buildJSProduction', function () {
         .pipe(gulp.dest('./public'));
 });
 
+gulp.task('seed', function() {
+    require('./seed');
+})
+
 gulp.task('buildProduction', ['buildCSSProduction', 'buildJSProduction']);
 
 // Composed tasks
