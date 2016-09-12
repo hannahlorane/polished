@@ -24,4 +24,4 @@ var OrderProducts = db.define('OrderProducts', {
 User.hasMany(Order);
 User.hasMany(Review);
 Product.hasMany(Review);
-Order.hasMany(Product, {through: OrderProducts});
+Order.belongsToMany(Product, {through: OrderProducts});
