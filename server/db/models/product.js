@@ -8,7 +8,7 @@ var Product = db.define('Product', {
     allowNull: false
   },
   rbgValue: {
-    type: Sequelize.INTEGER,
+    type: Sequelize.ARRAY(Sequelize.TEXT),
     allowNull: false
   },
   description: {
