@@ -2,6 +2,8 @@
 var router = require('express').Router(); // eslint-disable-line new-cap
 module.exports = router;
 var _ = require('lodash');
+var db = require('../../../db');
+var User = db.model('user');
 
 var ensureAuthenticated = function (req, res, next) {
     if (req.isAuthenticated()) {
@@ -10,6 +12,62 @@ var ensureAuthenticated = function (req, res, next) {
         res.status(401).end();
     }
 };
+
+router.get('/', function(req, res, next) {
+    User.findAll()
+    .then(function(users) {
+        res.send(users);
+    })
+    .catch(next);
+})
+
+router.post('/', function(req, res, next) {
+    User.create(req.body)
+    .then(function(user) {
+        if (!user) {
+            res.send('A user with that email already exists');
+        } else {
+            res.send(user);
+        }
+    })
+    .catch(next);
+})
+
+router.get('/:id', function(req, res, next) {
+    User.findById(req.params.id)
+    .then(function(user) {
+        if (!user) {
+            res.send('That user does not exist');
+        } else {
+            res.send(user);
+        }
+    })
+    .catch(next);
+})
+
+// TO DO: Check if user is the same user or an admin
+router.put('/:id', function(req, res, next) {
+    User.findById(req.params.id)
+    .then(function(user) {
+        return user.update(req.body);
+    })
+    .then(function(newUser) {
+        res.send(newUser);
+    })
+    .catch(next);
+})
+
+// TO DO: Check if user is the same user or an admin
+router.delete('/:id', function(req, res, next) {
+    User.findById(req.params.id)
+    .then(function(user) {
+        return user.destroy();
+    })
+    .then(function(response) {
+        res.send(response);
+    })
+    .catch(next);
+})
 
 router.get('/secret-stash', ensureAuthenticated, function (req, res) {
 
