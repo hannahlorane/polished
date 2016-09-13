@@ -131,14 +131,14 @@ describe('ROUTES', function () {
     })
 
     it('PUT one', function (done) {
-      guestAgent.put('/api/reviews/' + review1.id)
+      guestAgent.put('/api/products/' + product1.id + '/reviews/' + review1.id)
       .send({
         text: 'Crescent fresh'
       })
       .expect(200)
       .end(function (err, res) {
         if (err) return done(err);
-        expect(+res.body.text).to.equal('Crescent fresh')
+        expect(res.body.text).to.equal('Crescent fresh')
         Review.findById(review1.id)
         .then(function (review) {
           expect(review).to.not.be.null;
@@ -150,14 +150,14 @@ describe('ROUTES', function () {
     })
 
     it('PUT one that doesnt exist', function (done) {
-      guestAgent.put('/api/reviews/23420340')
+      guestAgent.put('/api/products/' + product1.id + '/reviews/1000')
       .send({total: 1000})
       .expect(404)
       .end(done);
     })
 
     it('DELETE one', function (done) {
-      guestAgent.delete('/api/reviews/' + review1.id)
+      guestAgent.delete('/api/products/' + product1.id + '/reviews/' + review1.id)
       .expect(204)
       .end(function (err, res) {
         if (err) return done(err);

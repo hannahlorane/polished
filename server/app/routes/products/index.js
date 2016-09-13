@@ -75,7 +75,11 @@ router.get('/:id/reviews/:reviewId', function(req, res, next) {
 router.put('/:id/reviews/:reviewId', function(req, res, next) {
   Review.findById(req.params.reviewId)
   .then(function(review) {
-    return review.update(req.body)
+    if (!review) {
+      res.sendStatus(404)
+    } else {
+      return review.update(req.body)
+    }
   })
   .then(function(updatedReview) {
     res.send(updatedReview);
