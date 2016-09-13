@@ -2,7 +2,7 @@
 var Sequelize = require('sequelize');
 var db = require('../_db');
 
-module.exports = db.define('order', {
+var Order = db.define('order', {
   total: {
     type: Sequelize.DECIMAL,
     allowNull: false
@@ -12,4 +12,13 @@ module.exports = db.define('order', {
     defaultValue: 'incomplete',
     allowNull: false
   }
+}, {
+  hooks: {
+    beforeCreate: function(order) {
+      order.total = Math.round(order.total * 100) / 100;
+      return order.total;
+    }
+  }
 });
+
+module.exports = Order;
