@@ -20,7 +20,7 @@ describe('/api/orders', function () {
     Order = require('../../../server/db/models/order.js');
   });
 
-  describe('GET ALL', function () {
+  describe('/api/orders', function () {
 
     var guestAgent;
     var order1;
@@ -95,16 +95,14 @@ describe('/api/orders', function () {
       })
     })
 
-    .it('GET one that doesnt exist', function (done) {
-      guestAgent
-      .get('/api/orders/5234234')
+    it('GET one that doesnt exist', function (done) {
+      guestAgent.get('/api/orders/5234234')
       .expect(404)
       .end(done);
     })
 
     it('PUT one', function (done) {
-      agent
-      .put('/api/orders' + order1.id)
+      guestAgent.put('/api/orders' + order1.id)
       .send({
         total: 40
       })
@@ -115,7 +113,7 @@ describe('/api/orders', function () {
         Order.findById(order1.id)
         .then(function (order) {
           expect(order).to.not.be.null;
-          expect(res.body.total).to.eql.(order1.total);
+          expect(res.body.total).to.equal(order1.total);
           done();
         })
         .catch(done);
@@ -123,8 +121,7 @@ describe('/api/orders', function () {
     })
 
     it('PUT one that doesnt exist', function (done) {
-      agent
-      .put('/api/orders/23420340')
+      guestAgent.put('/api/orders/23420340')
       .send({total: 1000})
       .expect(404)
       .end(done);
