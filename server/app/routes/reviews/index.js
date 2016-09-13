@@ -22,7 +22,7 @@ router.get('/:id', function(req, res, next) {
 router.post('/', function(req, res, next) {
   Review.create(req.body)
   .then(function(review) {
-    res.send(review);
+    res.status(201).send(review);
   })
   .catch(next);
 });

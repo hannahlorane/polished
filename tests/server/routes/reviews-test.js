@@ -74,7 +74,7 @@ describe('ROUTES', function () {
       .expect(201)
       .end(function (err, res) {
         if (err) return done(err);
-        expect(+res.body.total).to.equal(25);
+        expect(res.body.text).to.equal('lovely');
         expect(res.body.id).to.exist;
         Review.findById(res.body.id)
         .then(function (review) {
