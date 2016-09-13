@@ -7,6 +7,9 @@ router.get('/', function (req, res) {
   Order.findAll()
     .then(function (orders) {
       res.json(orders);
+    })
+    .catch(function (err) {
+      res.sendStatus(500);
     });
 });
 
@@ -15,16 +18,24 @@ router.get('/', function (req, res) {
 router.get('/history/:userId', function (req, res) {
   Order.findAll({where: {'userId': req.params.userId}})
     .then(function (orders) {
-      res.json(orders);
+      if (orders) res.json(orders);
+      else res.sendStatus(404);
     })
+    .catch(function (err) {
+      res.sendStatus(500);
+    });
 });
 
 //GETS a single order by ID
 router.get('/:id', function (req, res) {
   Order.findById(req.params.id)
     .then(function (order) {
-      res.json(order);
+      if (order) res.json(order);
+      else res.sendStatus(404);
     })
+    .catch(function (err) {
+      res.sendStatus(500);
+    });
 });
 
 //PUT updates a given order with the req data
@@ -36,6 +47,9 @@ router.put('/:id', function (req, res) {
       .then(function (result) {
         res.json(result);
       })
+      .catch(function (err) {
+        res.sendStatus(500);
+      });
 });
 
 //POSTs a new order to the db without a user
@@ -43,6 +57,9 @@ router.post('/', function (req, res) {
   Order.create(req.body)
     .then(function (result) {
       res.send(result);
+    })
+    .catch(function (err) {
+      res.sendStatus(500);
     });
 });
 
@@ -54,6 +71,9 @@ router.post('/history/:userId', function (req, res) {
   order.save()
     .then(function (result) {
       res.send(result);
+    })
+    .catch(function (err) {
+      res.sendStatus(500);
     });
 });
 
@@ -66,6 +86,9 @@ router.delete('/:id', function (req, res) {
     .then(function (result) {
       res.send(result);
     })
+    .catch(function (err) {
+      res.sendStatus(500);
+    });
 });
 
 module.exports = router;
