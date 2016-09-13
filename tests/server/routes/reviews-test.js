@@ -46,14 +46,14 @@ describe('ROUTES', function () {
     var reviewInfo1 = {
       text: 'Beautiful!',
       stars: 5,
-      ProductId: 1,
+      productId: 1,
       userId: 1
     };
 
     var reviewInfo2 = {
       text: 'Not what I expected',
       stars: 2,
-      ProductId: 1,
+      productId: 1,
       userId: 1
     };
 

@@ -53,7 +53,8 @@ describe('/api/orders', function () {
     });
 
     it('GET all', function (done) {
-      guestAgent.get('/api/orders')
+      guestAgent
+      .get('/api/orders')
         .expect(200)
         .end(function (err, res) {
           if (err) return done(err);
@@ -85,7 +86,8 @@ describe('/api/orders', function () {
     });
 
     it('GET one', function (done) {
-      guestAgent.get('/api/orders/' + order1.id)
+      guestAgent
+      .get('/api/orders/' + order1.id)
       .expect(200)
       .end(function (err, res) {
         if (err) return done(err);
@@ -102,23 +104,23 @@ describe('/api/orders', function () {
     })
 
     it('PUT one', function (done) {
-      guestAgent.put('/api/orders' + order1.id)
+      guestAgent
+      .put('/api/orders/' + order1.id)
       .send({
-        total: 40
+        status: 'incomplete'
       })
       .expect(200)
       .end(function (err, res) {
         if (err) return done(err);
-        expect(+res.body.total).to.equal(40)
         Order.findById(order1.id)
         .then(function (order) {
           expect(order).to.not.be.null;
-          expect(res.body.total).to.equal(order1.total);
+          expect(order.status).to.equal('incomplete');
           done();
         })
         .catch(done);
-      })
-    })
+      });
+    });
 
     it('PUT one that doesnt exist', function (done) {
       guestAgent.put('/api/orders/23420340')

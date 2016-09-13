@@ -22,7 +22,6 @@ describe('Product model', function () {
           rgbValue: [183, 121, 110],
           collection: "Tester",
           price: 100,
-
         })
         .then(function(product) {
           expect(product.name).to.exist;
