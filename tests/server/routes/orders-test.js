@@ -95,5 +95,40 @@ describe('/api/orders', function () {
       })
     })
 
+    .it('GET one that doesnt exist', function (done) {
+      guestAgent
+      .get('/api/orders/5234234')
+      .expect(404)
+      .end(done);
+    })
+
+    it('PUT one', function (done) {
+      agent
+      .put('/api/orders' + order1.id)
+      .send({
+        total: 40
+      })
+      .expect(200)
+      .end(function (err, res) {
+        if (err) return done(err);
+        expect(+res.body.total).to.equal(40)
+        Order.findById(order1.id)
+        .then(function (order) {
+          expect(order).to.not.be.null;
+          expect(res.body.total).to.eql.(order1.total);
+          done();
+        })
+        .catch(done);
+      })
+    })
+
+    it('PUT one that doesnt exist', function (done) {
+      agent
+      .put('/api/orders/23420340')
+      .send({total: 1000})
+      .expect(404)
+      .end(done);
+    })
+
   });
 })
