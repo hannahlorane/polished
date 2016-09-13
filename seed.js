@@ -86,37 +86,37 @@ var seedReviews = function () {
             text: 'Beautiful!',
             stars: 5,
             userId: 1,
-            productId: 4
+            ProductId: 4
         },
         {
             text: 'Not what I expected',
             stars: 2,
             userId: 1,
-            productId: 2
+            ProductId: 2
         },
         {
             text: 'I feel like a mermaid',
             stars: 4,
             userId: 2,
-            productId: 3
+            ProductId: 3
         },
         {
             text: 'My fav',
             stars: 5,
             userId: 2,
-            productId: 2
+            ProductId: 2
         },
         {
             text: 'Just Okay',
             stars: 3,
             userId: 1,
-            productId: 1
+            ProductId: 1
         },
         {
             text: 'Pretty',
             stars: 5,
             userId: 1,
-            productId: 4
+            ProductId: 4
         }
     ];
 

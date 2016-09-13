@@ -5,7 +5,7 @@ module.exports = db.define('review', {
   text: {
     type: Sequelize.TEXT,
     validate: {
-      len: [200, 10000]
+      len: [4, 300]
     }
   },
   stars: {
