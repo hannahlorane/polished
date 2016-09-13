@@ -15,6 +15,10 @@ var Product = db.define('Product', {
   description: {
     type: Sequelize.TEXT,
   },
+  inventory: {
+    type: Sequelize.INTEGER,
+    defaultValue: 10
+  },
   price: {
     type: Sequelize.DOUBLE,
     allowNull: false,
