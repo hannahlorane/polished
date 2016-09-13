@@ -84,5 +84,16 @@ describe('/api/orders', function () {
       });
     });
 
+    it('GET one', function (done) {
+      guestAgent.get('/api/orders/' + order1.id)
+      .expect(200)
+      .end(function (err, res) {
+        if (err) return done(err);
+        expect(res.body.total).to.equal(order1.total);
+        expect(res.body.status).to.equal(order1.status);
+        done();
+      })
+    })
+
   });
 })
