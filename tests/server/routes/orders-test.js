@@ -1,0 +1,67 @@
+// Instantiate all models
+var expect = require('chai').expect;
+
+var Sequelize = require('sequelize');
+
+var db = require('../../../server/db');
+
+var supertest = require('supertest');
+
+describe('/api/orders', function () {
+
+  var app, Order;
+
+  beforeEach('Sync DB', function () {
+    return db.sync({ force: true });
+  });
+
+  beforeEach('Create app', function () {
+    app = require('../../../server/app')(db);
+    Order = require('../../../server/db/models/order.js');
+  });
+
+  describe('GET ALL', function () {
+
+    var guestAgent;
+    var order1;
+    var order2;
+
+    var orderInfo1 = {
+      total: '20',
+      status: 'Shipped'
+    };
+
+    var orderInfo2 = {
+      total: '10'
+    };
+
+    beforeEach('Create order', function (done) {
+      return Order.create(orderInfo1)
+      .then(function (order) {
+        order1 = order;
+        return Order.create(orderInfo2)
+      })
+      .then(function (order) {
+        order2 = order;
+        done();
+      })
+      .catch(done);
+    });
+
+    beforeEach('Create guest agent', function () {
+      guestAgent = supertest.agent(app);
+    });
+
+    it('GET all', function (done) {
+      guestAgent.get('/api/orders')
+        .expect(200)
+        .end(function (err, res) {
+          if (err) return done(err);
+          expect(res.body).to.be.instanceof(Array);
+          expect(res.body).to.have.length(2);
+          done();
+        });
+    });
+
+  });
+})
