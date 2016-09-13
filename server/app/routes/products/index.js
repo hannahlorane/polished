@@ -54,4 +54,42 @@ router.get('/:id/reviews/', function(req, res, next) {
   .catch(next);
 });
 
+router.post('/:id/reviews', function(req, res, next) {
+  req.body.userId = req.params.id;
+
+  Review.create(req.body)
+  .then(function(review) {
+    res.send(review);
+  })
+  .catch(next);
+})
+
+router.get('/:id/reviews/:reviewId', function(req, res, next) {
+  Review.findById(req.params.reviewId)
+  .then(function(review) {
+    res.send(review);
+  })
+  .catch(next);
+})
+
+router.put('/:id/reviews/:reviewId', function(req, res, next) {
+  Review.findById(req.params.reviewId)
+  .then(function(review) {
+    return review.update(req.body)
+  })
+  .then(function(updatedReview) {
+    res.send(updatedReview);
+  })
+  .catch(next);
+})
+
+router.delete('/:id/reviews/:reviewId', function(req, res, next) {
+  Review.destroy({where: {id: req.params.reviewId}})
+  .then(function(result) {
+    res.send(result);
+  })
+  .catch(next);
+})
+
+
 module.exports = router;
