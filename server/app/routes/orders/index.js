@@ -8,7 +8,7 @@ router.get('/', function (req, res) {
     .then(function (orders) {
       res.json(orders);
     })
-    .catch(function (err) {
+    .catch(function () {
       res.sendStatus(500);
     });
 });
@@ -16,12 +16,12 @@ router.get('/', function (req, res) {
 //GETS a single user's order history
 //UNTESTED
 router.get('/history/:userId', function (req, res) {
-  Order.findAll({where: {'userId': req.params.userId}})
+  Order.findAll({where: {userId: req.params.userId}})
     .then(function (orders) {
       if (orders) res.json(orders);
       else res.sendStatus(404);
     })
-    .catch(function (err) {
+    .catch(function () {
       res.sendStatus(500);
     });
 });
@@ -33,7 +33,7 @@ router.get('/:id', function (req, res) {
       if (order) res.json(order);
       else res.sendStatus(404);
     })
-    .catch(function (err) {
+    .catch(function () {
       res.sendStatus(500);
     });
 });
@@ -47,7 +47,7 @@ router.put('/:id', function (req, res) {
       .then(function (result) {
         res.json(result);
       })
-      .catch(function (err) {
+      .catch(function () {
         res.sendStatus(500);
       });
 });
@@ -58,7 +58,7 @@ router.post('/', function (req, res) {
     .then(function (result) {
       res.send(result);
     })
-    .catch(function (err) {
+    .catch(function () {
       res.sendStatus(500);
     });
 });
@@ -67,12 +67,12 @@ router.post('/', function (req, res) {
 //UNTESTED
 router.post('/history/:userId', function (req, res) {
   var order = Order.build(req.body);
-  order.set({'userId': req.params.userId});
+  order.set({userId: req.params.userId});
   order.save()
     .then(function (result) {
       res.send(result);
     })
-    .catch(function (err) {
+    .catch(function () {
       res.sendStatus(500);
     });
 });
@@ -86,7 +86,7 @@ router.delete('/:id', function (req, res) {
     .then(function (result) {
       res.send(result);
     })
-    .catch(function (err) {
+    .catch(function () {
       res.sendStatus(500);
     });
 });
