@@ -28,11 +28,10 @@ router.get('/:id', function (req, res) {
 });
 
 //PUT updates a given order with the req data
-//TODO -- not working
 router.put('/:id', function (req, res) {
   Order.findById(req.params.id)
     .then(function (ord) {
-      ord.setDataValue(req.body)
+      ord.update(req.body)
     })
       .then(function (result) {
         res.json(result);
@@ -59,11 +58,14 @@ router.post('/history/:userId', function (req, res) {
 });
 
 //DELETEs one order by ID
-//TODO
-router.delete('/:id');
-
-//DELETEs all of a given user's orders
-//TODO
-router.delete('/history/:userId')
+router.delete('/:id', function (req, res) {
+  Order.findById(req.params.id)
+    .then(function (order) {
+      return order.destroy()
+    })
+    .then(function (result) {
+      res.send(result);
+    })
+});
 
 module.exports = router;
