@@ -127,7 +127,7 @@ var seedReviews = function () {
     return Promise.all(creatingReviews);
 }
 
-db.sync({ force: true })
+db.sync()
     .then(function () {
         return seedUsers();
     })
