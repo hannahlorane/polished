@@ -42,13 +42,13 @@ router.get('/:id', function (req, res) {
 router.put('/:id', function (req, res) {
   Order.findById(req.params.id)
     .then(function (ord) {
-      ord.update(req.body)
+      return ord.update(req.body)
     })
       .then(function (result) {
-        res.json(result);
+        res.send(result);
       })
       .catch(function () {
-        res.sendStatus(500);
+        res.sendStatus(404);
       });
 });
 
@@ -59,7 +59,7 @@ router.post('/', function (req, res) {
       res.status(201).send(result);
     })
     .catch(function () {
-      res.sendStatus(500);
+      res.sendStatus(404);
     });
 });
 

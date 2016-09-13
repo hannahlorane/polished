@@ -46,7 +46,7 @@ router.delete('/:id', function(req, res, next) {
 })
 
 router.get('/:id/reviews', function(req, res, next) {
-  Review.findAll({where: {ProductId: req.params.id}})
+  Review.findAll({where: {productId: req.params.id}})
   .then(function(reviews){
     if (reviews.length > 0) res.send(reviews);
     else res.sendStatus(404);
