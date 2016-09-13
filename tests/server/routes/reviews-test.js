@@ -9,7 +9,7 @@ var supertest = require('supertest');
 
 describe('ROUTES', function () {
 
-  var app, Review;
+  var app, Review, Product;
 
   beforeEach('Sync DB', function () {
     return db.sync({ force: true });
@@ -17,27 +17,42 @@ describe('ROUTES', function () {
 
   beforeEach('Create app', function () {
     app = require('../../../server/app')(db);
+    Product = require('../../../server/db/models/product.js');
     Review = require('../../../server/db/models/review.js');
   });
 
   describe('/api/reviews', function () {
 
     var guestAgent;
+    var product1;
     var review1;
     var review2;
 
+    var productInfo = {
+      name: 'Blue',
+      rgbValue: [0, 0, 255],
+      description: 'Very Blue',
+      collection: 'Ocean',
+      price: 10
+    };
+
     var reviewInfo1 = {
       text: 'Beautiful!',
-      stars: 5
+      stars: 5,
+      ProductId: 1
     };
 
     var reviewInfo2 = {
       text: 'Not what I expected',
-      stars: 2
+      stars: 2,
     };
 
     beforeEach('Create review', function (done) {
-      return Review.create(reviewInfo1)
+      return Product.create(productInfo)
+      .then(function (product) {
+        product1 = product;
+        return Review.create(reviewInfo1)
+      })
       .then(function (review) {
         review1 = review;
         return Review.create(reviewInfo2)
@@ -86,13 +101,13 @@ describe('ROUTES', function () {
       });
     });
 
-    it('GET one', function (done) {
-      guestAgent.get('/api/reviews/' + review1.id)
+    it('GET one products reviews', function (done) {
+      guestAgent.get('/api/reviews/' + product1.id)
       .expect(200)
       .end(function (err, res) {
         if (err) return done(err);
-        expect(res.body.text).to.equal(review1.text);
-        expect(res.body.stars).to.equal(review1.stars);
+        expect(res.body).to.be.instanceof(Array);
+        expect(res.body).to.have.length(1);
         done();
       })
     })
