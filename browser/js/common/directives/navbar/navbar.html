@@ -1,17 +1,31 @@
-<nav class="navbar navbar-static-top">
-    <div class="container">
-        <div class="navbar-header">
-            <fullstack-logo></fullstack-logo>
-        </div>
-        <ul class="nav navbar-nav">
-            <li ng-repeat="item in items" ng-show="!item.auth || isLoggedIn()">
-                <a ui-sref-active="active" ui-sref="{{ item.state }}">{{ item.label }}</a>
-            </li>
-        </ul>
-        <button ng-show="!user" ui-sref="login" class="btn login-button">Login</button>
-        <div ng-show="user" class="welcome">
-            <span>Welcome, {{ user.email }}!</span>
-            <a ng-click="logout()">Logout</a>
-        </div>
+<div class="navbar-fixed">
+<nav>
+  <ul id="dropdown1" class="dropdown-content">
+    <li><a href="#!">Login</a></li>
+    <li class="divider"></li>
+    <li><a href="#!">Logout</a></li>
+  </ul>
+  <nav>
+    <div class="nav-wrapper">
+      <a href="#!" class="brand-logo">Polished</a>
+      <a href="#" data-activates="mobile-demo" class="button-collapse hide-on-med-and-up"><i class="material-icons">menu</i></a>
+      <ul class="right hide-on-small-and-down">
+        <li><a href="search.html"><i class="material-icons">search</i></a></li>
+        <li><a href="cart.html"><i class="material-icons">shopping_cart</i></a></li>
+        <li><a href="contact.html"><i class="material-icons">email</i></a></li>
+        <!-- Dropdown Trigger -->
+        <li><a class="dropdown-button" href="#!" data-activates="dropdown1"><i class="material-icons right">account_circle</i></a></li>
+      </ul>
+
+      <ul class="side-nav" id="mobile-demo">
+        <li><a href="search.html">Search</a></li>
+        <li><a href="cart.html">Shopping Cart</a></li>
+        <li><a href="contact.html">Email</a></li>
+        <li class="divider"></li>
+        <li><a href="#!">Login</a></li>
+        <li><a href="#!">Logout</a></li>
+      </ul>
     </div>
+  </nav>
 </nav>
+</div>
