@@ -20,6 +20,8 @@ name in the environment files.
 var chalk = require('chalk');
 var db = require('./server/db');
 var User = db.model('user');
+var Product = require('./server/db/models/product');
+var Review = require('./server/db/models/review');
 var Promise = require('sequelize').Promise;
 
 var seedUsers = function () {
@@ -43,9 +45,97 @@ var seedUsers = function () {
 
 };
 
+var seedProducts = function () {
+    var products = [
+        {
+            name: 'sunset orange',
+            rgbValue: [253, 94, 83],
+            description: 'orange',
+            price: 5
+        },
+        {
+            name: 'dandelion',
+            rgbValue: [253, 219, 109],
+            description: 'yellow',
+            price: 4
+        },
+        {
+            name: 'caribbean green',
+            rgbValue: [28, 211, 162],
+            description: 'green',
+            price: 5
+        },
+        {
+            name: 'wisteria',
+            rgbValue: [205, 164, 222],
+            description: 'purple',
+            price: 6
+        }
+    ];
+
+    var creatingProducts = products.map(function (productObj) {
+        return Product.create(productObj);
+    })
+
+    return Promise.all(creatingProducts);
+}
+
+var seedReviews = function () {
+    var reviews = [
+        {
+            text: 'Beautiful!',
+            stars: 5,
+            userId: 1,
+            ProductId: 4
+        },
+        {
+            text: 'Not what I expected',
+            stars: 2,
+            userId: 1,
+            ProductId: 2
+        },
+        {
+            text: 'I feel like a mermaid',
+            stars: 4,
+            userId: 2,
+            ProductId: 3
+        },
+        {
+            text: 'My fav',
+            stars: 5,
+            userId: 2,
+            ProductId: 2
+        },
+        {
+            text: 'Just Okay',
+            stars: 3,
+            userId: 1,
+            ProductId: 1
+        },
+        {
+            text: 'Pretty',
+            stars: 5,
+            userId: 1,
+            ProductId: 4
+        }
+    ];
+
+    var creatingReviews = reviews.map(function (reviewObj) {
+        return Review.create(reviewObj);
+    })
+
+    return Promise.all(creatingReviews);
+}
+
 db.sync({ force: true })
     .then(function () {
         return seedUsers();
+    })
+    .then(function () {
+        return seedProducts();
+    })
+    .then(function () {
+        return seedReviews();
     })
     .then(function () {
         console.log(chalk.green('Seed successful!'));
