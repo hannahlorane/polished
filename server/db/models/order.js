@@ -4,10 +4,12 @@ var db = require('../_db');
 
 module.exports = db.define('order', {
   total: {
-    type: Sequelize.DECIMAL
+    type: Sequelize.DECIMAL,
+    allowNull: false
   },
   status: {
     type: Sequelize.STRING,
-    defaultValue: 'incomplete'
+    defaultValue: 'incomplete',
+    allowNull: false
   }
 });

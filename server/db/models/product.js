@@ -19,6 +19,11 @@ var Product = db.define('Product', {
     type: Sequelize.INTEGER,
     defaultValue: 10
   },
+  collection: {
+    type: Sequelize.STRING,
+    allowNull: false,
+    defaultValue: 'Miscellaneous'
+  },
   price: {
     type: Sequelize.DOUBLE,
     allowNull: false,
