@@ -11,7 +11,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/:id', function(req, res, next) {
-  Review.findAll({where: {ProductId: req.params.id}})
+  Review.findAll({where: {productId: req.params.id}})
   .then(function(reviews){
     if (reviews) res.send(reviews);
     else res.sendStatus(404);
