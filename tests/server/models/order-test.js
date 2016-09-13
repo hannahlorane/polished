@@ -34,16 +34,19 @@ describe('Order model', function () {
         expect(order.status).to.equal("incomplete");
       })
     })
+  });
+
+  describe('rounding method', function () {
 
     it ('will round order total to the tens place', function() {
-      return Order.create({
-        total: 300.382,
-        status: "incomplete"
+        return Order.create({
+          total: 300.382,
+          status: "incomplete"
+        })
+        .then(function(order) {
+          expect(order.total).to.equal('300.38');
+        })
       })
-      .then(function(order) {
-        expect(order.total).to.equal('300.38');
-      })
-    })
+    });
 
-  });
 });
