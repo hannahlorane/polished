@@ -45,7 +45,7 @@ router.delete('/:id', function(req, res, next) {
   .catch(next);
 })
 
-router.get('/:id/reviews/', function(req, res, next) {
+router.get('/:id/reviews', function(req, res, next) {
   Review.findAll({where: {ProductId: req.params.id}})
   .then(function(reviews){
     if (reviews.length > 0) res.send(reviews);
@@ -59,7 +59,7 @@ router.post('/:id/reviews', function(req, res, next) {
 
   Review.create(req.body)
   .then(function(review) {
-    res.send(review);
+    res.status(201).send(review);
   })
   .catch(next);
 })

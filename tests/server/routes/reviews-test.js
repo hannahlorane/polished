@@ -9,7 +9,7 @@ var supertest = require('supertest');
 
 describe('ROUTES', function () {
 
-  var app, Review, Product;
+  var app, Review, Product, User;
 
   beforeEach('Sync DB', function () {
     return db.sync({ force: true });
@@ -17,6 +17,7 @@ describe('ROUTES', function () {
 
   beforeEach('Create app', function () {
     app = require('../../../server/app')(db);
+    User = db.model('user');
     Product = require('../../../server/db/models/product.js');
     Review = require('../../../server/db/models/review.js');
   });
@@ -27,6 +28,12 @@ describe('ROUTES', function () {
     var product1;
     var review1;
     var review2;
+    var user1;
+
+    var userInfo = {
+      email: 'testing@fsa.com',
+      password: 'password'
+    };
 
     var productInfo = {
       name: 'Blue',
@@ -39,16 +46,23 @@ describe('ROUTES', function () {
     var reviewInfo1 = {
       text: 'Beautiful!',
       stars: 5,
-      ProductId: 1
+      ProductId: 1,
+      userId: 1
     };
 
     var reviewInfo2 = {
       text: 'Not what I expected',
       stars: 2,
+      ProductId: 1,
+      userId: 1
     };
 
     beforeEach('Create review', function (done) {
-      return Product.create(productInfo)
+      return User.create(userInfo)
+      .then(function(user) {
+        user1 = user;
+        return Product.create(productInfo)
+      })
       .then(function (product) {
         product1 = product;
         return Review.create(reviewInfo1)
@@ -68,8 +82,8 @@ describe('ROUTES', function () {
       guestAgent = supertest.agent(app);
     });
 
-    it('GET all', function (done) {
-      guestAgent.get('/api/reviews')
+    it('GET all reviews for a product', function (done) {
+      guestAgent.get('/api/products/' + product1.id + '/reviews')
         .expect(200)
         .end(function (err, res) {
           if (err) return done(err);
@@ -80,8 +94,7 @@ describe('ROUTES', function () {
     });
 
     it('POST one', function (done) {
-      guestAgent
-      .post('/api/reviews')
+      guestAgent.post('/api/products/' + product1.id + '/reviews')
       .send({
         text: 'lovely',
         stars: 4
@@ -102,17 +115,16 @@ describe('ROUTES', function () {
     });
 
     it('GET one products reviews', function (done) {
-      guestAgent.get('/api/reviews/' + product1.id)
+      guestAgent.get('/api/products/' + product1.id + '/reviews/' + review1.id)
       .expect(200)
       .end(function (err, res) {
         if (err) return done(err);
-        expect(res.body).to.be.instanceof(Array);
-        expect(res.body).to.have.length(1);
+        expect()
         done();
       })
     })
 
-    it('GET one that doesnt exist', function (done) {
+    it('GET one review', function (done) {
       guestAgent.get('/api/reviews/5234234')
       .expect(404)
       .end(done);
