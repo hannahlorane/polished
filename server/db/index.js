@@ -9,6 +9,7 @@ var User = require('./models/user');
 var Review  = require('./models/review');
 // eslint-disable-next-line no-unused-vars
 var Order = require('./models/order');
+// eslint-disable-next-line no-unused-vars
 var Product = require('./models/product');
 
 // if we had more models, we could associate them in this file
