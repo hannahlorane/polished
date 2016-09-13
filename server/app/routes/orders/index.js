@@ -56,7 +56,7 @@ router.put('/:id', function (req, res) {
 router.post('/', function (req, res) {
   Order.create(req.body)
     .then(function (result) {
-      res.send(result);
+      res.status(201).send(result);
     })
     .catch(function () {
       res.sendStatus(500);

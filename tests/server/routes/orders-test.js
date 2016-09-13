@@ -63,5 +63,26 @@ describe('/api/orders', function () {
         });
     });
 
+    it('POST one', function (done) {
+      guestAgent
+      .post('/api/orders')
+      .send({
+        total: 25
+      })
+      .expect(201)
+      .end(function (err, res) {
+        if (err) return done(err);
+        expect(+res.body.total).to.equal(25);
+        expect(res.body.id).to.exist;
+        Order.findById(res.body.id)
+        .then(function (order) {
+          expect(order).to.not.be.null;
+          expect(res.body.total).to.eql(order.total);
+          done();
+        })
+        .catch(done);
+      });
+    });
+
   });
 })
