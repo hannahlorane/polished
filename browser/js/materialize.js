@@ -1,3 +1,6 @@
 $(document).ready(function() {
-  $(".button-collapse").sideNav();
+  $(".button-collapse").sideNav({
+    closeOnClick: true
+  });
+  $(".dropdown-button").dropdown();
 })
