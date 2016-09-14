@@ -50,8 +50,13 @@
             </tr>
           </tbody>
         </table>
-        <a class="waves-effect waves-light btn">Checkout</a>
+        <a class="waves-effect waves-light btn" ng-click="toggleCheckout()">Checkout</a>
       </div>
+    </div>
+  </div>
+  <div class="row" ng-show="checkout">
+    <div class="col s12">
+      <checkout></checkout>
     </div>
   </div>
 </div>

@@ -1,6 +1,7 @@
 app.controller('CartController', function ($scope, theCart, CartFactory, $state) {
   $scope.cart = theCart;
   $scope.completed = false;
+  $scope.checkout = false;
 
   $scope.getTotal = function () {
     $scope.cart.total = 0;
@@ -49,8 +50,7 @@ app.controller('CartController', function ($scope, theCart, CartFactory, $state)
 
   }
 
-  // TO DO
-  $scope.checkout = function(id) {
-
+  $scope.toggleCheckout = function() {
+    $scope.checkout = !$scope.checkout;
   }
 });
