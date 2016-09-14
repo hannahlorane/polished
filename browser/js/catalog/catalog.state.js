@@ -4,9 +4,12 @@ app.config(function ($stateProvider) {
     templateUrl: 'js/catalog/catalog.html',
     controller: 'catalogController',
     resolve: {
-      // product: function(productFactory, $stateParams) {
-      //   return productFactory.getProductById($stateParams.id);
-      // }
+       products: function(productFactory) {
+        return productFactory.getAll()
+          .then(function (all) {
+            return all;
+          });
+      }
     }
   })
 });

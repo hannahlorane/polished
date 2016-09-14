@@ -4,4 +4,28 @@
       <h2>browse our wares:</h2>
     </div>
   </div>
+  <div class="row">
+    <div class="col s12">
+      <table>
+        <thead>
+          <tr>
+            <th data-field="name">Item Name</th>
+            <th data-field="price">Price</th>
+            <th data-field="description">Description</th>
+            <th data-field="collection">Collection</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="item in products | collectionFilter:colName">
+            <td>{{item.name}}</td>
+            <td>{{item.price}}</td>
+            <td>{{item.description}}</td>
+            <td>{{item.collection}}</td>
+            <td>Add To Cart Button</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
