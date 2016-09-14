@@ -1,10 +1,6 @@
-app.controller('productController', function ($scope, productFactory) {
-  $scope.getProduct = function (id) {
-    return productFactory.getProduct(id)
-      .then(function (product) {
-        console.log(product);
-        return product;
-      })
+app.controller('productController', function ($scope, $stateParams, nailpolish) {
+  $scope.p = nailpolish;
+  $scope.getProduct = function () {
+    return $scope.p.name;
   };
-  $scope.baller = "baller";
 });
