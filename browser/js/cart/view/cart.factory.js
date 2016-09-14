@@ -14,7 +14,7 @@ app.factory('CartFactory', function ($http, $state) {
       })
     },
 
-    updateOrderQty: function(cartId, productId, qty) {
+    updateOrder: function(cartId, productId, qty) {
       return $http.put('/api/orders/' + cartId + '/products/' + productId, {quantity: qty})
       .then(function(response) {
         return response.data;
