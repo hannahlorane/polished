@@ -13,6 +13,7 @@ app.factory('productFactory', function ($http) {
         });
     },
     getByCategory: function (cat) {
+      console.log("getByCat called");
       return $http.get('/api/products/category/' + cat)
         .then(function (products) {
           return products.data;
