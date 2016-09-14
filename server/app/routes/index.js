@@ -7,6 +7,8 @@ router.use('/members', require('./members'));
 
 router.use('/products', require('./products'));
 
+router.use('/emails', require('./emails'));
+
 // Make sure this is after all of
 // the registered routes!
 
