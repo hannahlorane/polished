@@ -14,7 +14,11 @@
   <div class="row">
     <div class="col s3">
       <p>Similar Items:</p>
-      <p ng-repeat="item in similar">{{item.name}}</p>
+      <p ng-repeat="item in similar">
+        <a ui-sref="singleProduct({id: item.id})">
+          {{item.name}}
+        </a>
+      </p>
     </div>
     <div class="col s9">
       <div class="row">
