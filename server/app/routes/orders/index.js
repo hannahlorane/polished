@@ -1,6 +1,7 @@
 //assuming: /whatever/orders as the path
 var router = require('express').Router();
 var Order = require('../../../db/models/order.js');
+var Product = require('../../../db/models/product.js');
 
 //GETS all orders
 router.get('/', function (req, res) {
@@ -28,13 +29,24 @@ router.get('/history/:userId', function (req, res) {
 
 //GETS a single order by ID
 router.get('/:id', function (req, res) {
-  Order.findById(req.params.id)
-    .then(function (order) {
-      if (order) res.json(order);
-      else res.sendStatus(404);
+  // Order.findById(req.params.id)
+    Order.findOne({
+      where: {
+        id: req.params.id
+      },
+      include: [{model: Product, required: true}]
     })
-    .catch(function () {
+    .then(function (order) {
+      if (order) {
+        res.json(order);
+      } else {
+        res.sendStatus(404);
+      }
+    })
+    .catch(function (err) {
+      console.log(err);
       res.sendStatus(500);
+      // res.sendStatus(500);
     });
 });
 
