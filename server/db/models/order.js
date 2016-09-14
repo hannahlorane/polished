@@ -5,7 +5,7 @@ var db = require('../_db');
 var Order = db.define('order', {
   total: {
     type: Sequelize.DECIMAL,
-    defaultValue: 0
+    allowNull: false
   },
   status: {
     type: Sequelize.STRING,
@@ -15,6 +15,13 @@ var Order = db.define('order', {
   sessionId: {
     type: Sequelize.STRING,
     allowNull: true
+  }
+}, {
+  hooks: {
+    beforeCreate: function(order) {
+      order.total = Math.round(order.total * 100) / 100;
+      return order.total;
+    }
   }
 });
 
