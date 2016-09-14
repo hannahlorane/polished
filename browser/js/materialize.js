@@ -3,4 +3,5 @@ $(document).ready(function() {
     closeOnClick: true
   });
   $(".dropdown-button").dropdown();
+  $('select').material_select();
 })
