@@ -24,6 +24,9 @@ app.factory('productFactory', function ($http) {
         .then(function (reviews) {
           return reviews.data;
         });
+    },
+    getAllCollections: function () {
+      return ["Yellows and Creams"];
     }
   };
   return prod;
