@@ -6,6 +6,13 @@ app.config(function ($stateProvider) {
   });
 });
 
+app.config(function ($stateProvider) {
+  $stateProvider.state('contactConfirmation', {
+    url: '/contact/confirmation',
+    templateUrl: '/js/contact/confirmation.html',
+  });
+});
+
 app.controller('ContactController', function($scope, $state, EmailFactory) {
 
   $scope.sendEmail = function() {
@@ -13,6 +20,9 @@ app.controller('ContactController', function($scope, $state, EmailFactory) {
       name: $scope.email.name,
       email: $scope.email.emailAddress,
       text: $scope.email.text
+    })
+    .then(function() {
+      $state.go('contactConfirmation')
     })
   }
 });

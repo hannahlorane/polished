@@ -1,12 +1,13 @@
 var nodemailer = require('nodemailer');
 var router = require('express').Router();
+var secret = require('../../../../secret.json');
 
 router.post('/contact', function(req, res, next) {
   var transporter = nodemailer.createTransport({
     service: "Gmail",
     auth: {
-      user: "ghapolished",
-      pass: "polished"
+      user: secret.user,
+      pass: secret.password
     }
 });
 
@@ -25,6 +26,7 @@ router.post('/contact', function(req, res, next) {
   });
 
   transporter.close();
+  res.sendStatus(200);
 })
 
 module.exports = router;
