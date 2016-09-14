@@ -3,5 +3,13 @@
     <div class="col s12 m12 l12">
       <h1>{{product.name}}<h1>
     </div>
+    <table>
+      <tbody>
+        <tr ng-repeat="review in product.reviews">
+          <td>{{review.stars}}</td>
+          <td>{{review.text}}</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </div>
