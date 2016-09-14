@@ -54,25 +54,57 @@ var seedProducts = function () {
             name: 'sunset orange',
             rgbValue: [253, 94, 83],
             description: 'orange',
-            price: 5
+            price: 5,
+            collection: 'Oranges and Reds'
         },
         {
             name: 'dandelion',
             rgbValue: [253, 219, 109],
             description: 'yellow',
-            price: 4
+            price: 4,
+            collection: 'Yellows and Creams'
         },
         {
             name: 'caribbean green',
             rgbValue: [28, 211, 162],
             description: 'green',
-            price: 5
+            price: 5,
+            collection: 'Seasonal Seaside Shine'
         },
         {
             name: 'wisteria',
             rgbValue: [205, 164, 222],
             description: 'purple',
-            price: 6
+            price: 6,
+            collection: 'Purples and Pinks'
+        },
+        {
+            name: 'seagull grey',
+            rgbValue: [28, 211, 162],
+            description: 'greyish!',
+            price: 5,
+            collection: 'Seasonal Seaside Shine'
+        },
+        {
+            name: 'palm-frond',
+            rgbValue: [28, 211, 162],
+            description: 'green',
+            price: 5,
+            collection: 'Seasonal Seaside Shine'
+        },
+        {
+            name: 'sand',
+            rgbValue: [28, 211, 162],
+            description: 'sort of like being covered in gritty grossness',
+            price: 5,
+            collection: 'Seasonal Seaside Shine'
+        },
+        {
+            name: 'sky blue',
+            rgbValue: [281, 211, 300],
+            description: 'high quality product',
+            price: 5,
+            collection: 'Seasonal Seaside Shine'
         }
     ];
 
@@ -85,6 +117,12 @@ var seedProducts = function () {
 
 var seedReviews = function () {
     var reviews = [
+        {
+            text: 'Beautiful!',
+            stars: 5,
+            userId: 1,
+            productId: 7
+        },
         {
             text: 'Beautiful!',
             stars: 5,
