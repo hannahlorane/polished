@@ -1,0 +1,59 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+<div class="container">
+  <div class="row">
+    <div class="col s10">
+      <h1>{{product.name}}<h1>
+    </div>
+    <div class="col s2">
+      <form>
+        <input type="button" value="Add to Cart" ng-click="addToCart()">
+      </form>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col s3">
+      <p>Similar Items:</p>
+      <p>test</p>
+      <p>test</p>
+      <p>test</p>
+      <p>test</p>
+      <p>test</p>
+      <p>test</p>
+      <p>test</p>
+      <p>test</p>
+      <p>test</p>
+      <p>test</p>
+      <p>test</p>
+      <p>test</p>
+    </div>
+    <div class="col s9">
+      <div class="row">
+        <div class="col s9">
+          <img class="productImage" src="{{product.photo}}">
+        </div>
+        <div class="col s3 m3 l3">
+          <p>Price: ${{product.price}}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s12">
+          <p>Product Description: {{product.description}}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s12 m12 l12">
+        <table>
+          <tbody>
+            <tr ng-repeat="review in product.reviews">
+              <td>
+                <i class="material-icons">star</i>
+              </td>
+              <td>{{review.text}}</td>
+            </tr>
+          </tbody>
+        </table>
+       </div>
+    </div>
+  </div>
+</div>
