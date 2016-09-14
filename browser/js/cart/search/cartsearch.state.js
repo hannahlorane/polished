@@ -4,5 +4,4 @@ app.config(function ($stateProvider) {
     url: '/cart',
     templateUrl: 'js/cart/search/findcart.html'
   });
-
 });
