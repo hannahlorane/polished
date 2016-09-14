@@ -7,6 +7,13 @@ app.factory('CartFactory', function ($http, $state) {
       })
     },
 
+    getOrderByUserId: function(userId) {
+      return $http.get('/api/order/byUser/' + userId)
+      .then(function(response) {
+        return response.data;
+      })
+    },
+
     deleteOrderProduct: function(cartId, productId) {
       return $http.delete('/api/orders/' + cartId + '/products/' + productId)
       .then(function(response) {
