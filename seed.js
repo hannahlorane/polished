@@ -133,11 +133,9 @@ var seedReviews = function () {
 var seedOrders = function () {
     var orders = [
         {
-            total: 20,
             userId: 1
         },
         {
-            total: 10,
             userId: 2
         }
     ]
