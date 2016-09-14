@@ -2,20 +2,21 @@ app.config(function ($stateProvider) {
   $stateProvider.state('catalog', {
     url: '/catalog',
     templateUrl: 'js/catalog/catalog.html',
+    // template: "<p>this is a test</p>",
     controller: 'catalogController',
-    resolve: {
+     resolve: {
       products: function(productFactory) {
         return productFactory.getAll()
           .then(function (all) {
             return all;
           });
       },
-      allCollections: function () {
+      allCollections: function (productFactory) {
         return productFactory.getAllCollections()
-          .then(function (colls) {
-            return colls;
-          });
+          // .then(function (colls) {
+          //   return colls;
+          // });
       }
-    }
+     }
   })
 });
