@@ -17,10 +17,10 @@
           </thead>
           <tbody>
             <tr ng-repeat="product in cart.products">
-              <td><a href="#" ng-click="removeItem(product.id)"><i class="material-icons">close</i></a></td>
+              <td><a href="#" ng-click="removeItem(cart.id, product.id)"><i class="material-icons">close</i></a></td>
               <td>{{product.id}}</td>
               <td>{{product.name}}</td>
-              <td><a href="#" ng-click="incrementQty(product.id)"><i class="material-icons">add</i></a> {{product.OrderProducts.quantity}} <a href="#" ng-click="decrementQty(product.id)"><i class="material-icons">remove</i></a></td>
+              <td><a href="#" ng-click="incrementQty(cart.id, product.id)"><i class="material-icons">add</i></a> {{product.OrderProducts.quantity}} <a href="#" ng-click="decrementQty(cart.id, product.id)"><i class="material-icons">remove</i></a></td>
               <td>{{product.price}}</td>
             </tr>
           </tbody>

@@ -5,6 +5,20 @@ app.factory('CartFactory', function ($http, $state) {
       .then(function(response) {
         return response.data;
       })
+    },
+
+    deleteOrderProduct: function(cartId, productId) {
+      return $http.delete('/api/orders/' + cartId + '/products/' + productId)
+      .then(function(response) {
+        return response.data;
+      })
+    },
+
+    updateOrderQty: function(cartId, productId, qty) {
+      return $http.put('/api/orders/' + cartId + '/products/' + productId, {quantity: qty})
+      .then(function(response) {
+        return response.data;
+      })
     }
   }
 
