@@ -8,6 +8,7 @@
   <table>
     <thead>
       <tr>
+        <td></td>
         <td>Inventory</td>
         <td>Name</td>
         <td>Collection</td>
@@ -17,24 +18,44 @@
       </tr>
     </thead>
     <tbody>
+      <tr>
+        <td>
+          <i class="material-icons">add</i>
+        </td>
+        <td>
+        </td>
+        <td>
+        </td>
+        <td>
+        </td>
+        <td>
+        </td>
+        <td>
+        </td>
+        <td>
+        </td>
+      </tr>
       <tr ng-repeat="product in products">
         <td>
-          <input value="{{product.inventory}}" placeholder="Inventory" id="inventory" type="text" class="validate">
+          <i class="material-icons">mode_edit</i>
         </td>
         <td>
-          <input value="{{product.name}}" placeholder="Name" id="name" type="text" class="validate">
+          {{product.inventory}}
         </td>
         <td>
-          <input value="{{product.collection}}" placeholder="Name" id="name" type="text" class="validate">
+          {{product.name}}
         </td>
         <td>
-          <input value="{{product.rgbValue}}" placeholder="rgbValue" id="rgbValue" type="text" class="validate">
+          {{product.collection}}
         </td>
         <td>
-          <input value="{{product.price}}" placeholder="Price" id="price" type="text" class="validate">
+          {{product.rgbValue}}
         </td>
         <td>
-          <input value="{{product.photo}}" placeholder="PhotoUrl" id="photoUrl" type="text" class="validate">
+          {{product.price}}
+        </td>
+        <td>
+          {{product.photo}}
         </td>
       </tr>
     </tbody>
