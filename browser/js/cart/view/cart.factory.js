@@ -21,12 +21,19 @@ app.factory('CartFactory', function ($http, $state) {
       })
     },
 
-    updateOrderQty: function(cartId, productId, qty) {
+    updateOrder: function(cartId, productId, qty) {
       return $http.put('/api/orders/' + cartId + '/products/' + productId, {quantity: qty})
       .then(function(response) {
         return response.data;
       })
     },
+
+    makePurchase: function(cartId, total) {
+      return $http.put('/api/orders/' + cartId, {total: total, status: 'paid'})
+      .then(function(response) {
+        return response.data;
+      })
+    }
   }
 
   return cart;
