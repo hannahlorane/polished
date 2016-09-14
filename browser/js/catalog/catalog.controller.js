@@ -1,5 +1,6 @@
-app.controller('catalogController', function ($scope, products) {
+app.controller('catalogController', function ($scope, allCollections, products) {
   $scope.products = products;
+  $scope.allCollection = allCollections;
   $scope.collections = [];
 })
 

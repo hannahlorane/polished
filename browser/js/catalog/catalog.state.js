@@ -4,10 +4,16 @@ app.config(function ($stateProvider) {
     templateUrl: 'js/catalog/catalog.html',
     controller: 'catalogController',
     resolve: {
-       products: function(productFactory) {
+      products: function(productFactory) {
         return productFactory.getAll()
           .then(function (all) {
             return all;
+          });
+      },
+      allCollections: function () {
+        return productFactory.getAllCollections()
+          .then(function (colls) {
+            return colls;
           });
       }
     }
