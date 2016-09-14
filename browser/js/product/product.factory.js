@@ -1,11 +1,11 @@
 app.factory('productFactory', function ($http) {
   var singleProduct = {
-    getProduct: function (id) {
+    getProductById: function (id) {
       return $http.get('/api/products/'+id)
         .then(function (product) {
-          return product;
+          return product.data;
         });
     }
   }
-  module.exports = singleProduct;
+  return singleProduct;
 });
