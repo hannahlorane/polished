@@ -6,10 +6,15 @@ app.config(function ($stateProvider) {
   });
 });
 
-app.controller('ContactController', function($scope, $state) {
+app.controller('ContactController', function($scope, $state, EmailFactory) {
 
-  console.log($scope.email);
-
+  $scope.sendEmail = function() {
+    return EmailFactory.contact({
+      name: $scope.email.name,
+      email: $scope.email.emailAddress,
+      text: $scope.email.text
+    })
+  }
 });
 
 
