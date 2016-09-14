@@ -16,13 +16,7 @@ var Order = db.define('order', {
     type: Sequelize.STRING,
     allowNull: true
   }
-}, {
-  hooks: {
-    beforeCreate: function(order) {
-      order.total = Math.round(order.total * 100) / 100;
-      return order.total;
-    }
-  }
+}
 });
 
 module.exports = Order;
