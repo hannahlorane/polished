@@ -16,6 +16,14 @@ router.get('/', function (req, res) {
     });
 });
 
+router.get('/byUser/:userId', function(req, res) {
+  console.log('hitting this route')
+  Order.findAll({where: {userId: req.params.userId, status: "incomplete"}})
+  .then(function(order) {
+    res.send(order);
+  })
+})
+
 //GETS a single user's order history
 //UNTESTED
 router.get('/history/:userId', function (req, res) {
