@@ -11,6 +11,10 @@ var Order = db.define('order', {
     type: Sequelize.STRING,
     defaultValue: 'incomplete',
     allowNull: false
+  },
+  sessionId: {
+    type: Sequelize.STRING,
+    allowNull: true
   }
 }, {
   hooks: {
