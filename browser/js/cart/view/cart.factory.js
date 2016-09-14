@@ -1,4 +1,4 @@
-app.factory('CartFactory', function ($http) {
+app.factory('CartFactory', function ($http, $state) {
   var cart = {
     getOrderById: function(cartId) {
       return $http.get('/api/orders/' + cartId)

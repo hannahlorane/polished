@@ -1,5 +1,7 @@
 //assuming: /whatever/orders as the path
 var router = require('express').Router();
+var db = require('../../../db');
+var OrderProducts = db.model('OrderProducts');
 var Order = require('../../../db/models/order.js');
 var Product = require('../../../db/models/product.js');
 
@@ -102,5 +104,17 @@ router.delete('/:id', function (req, res) {
       res.sendStatus(500);
     });
 });
+
+router.get('/:id/products', function (req, res, next) {
+  OrderProducts.findAll({
+    where: {
+      orderId: req.params.id
+    }
+  })
+  .then(function (product) {
+    res.send(product);
+  })
+  .catch(next);
+})
 
 module.exports = router;
