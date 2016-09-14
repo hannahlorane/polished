@@ -13,7 +13,6 @@ app.factory('productFactory', function ($http) {
         });
     },
     getByCategory: function (cat) {
-      console.log("getByCat called");
       return $http.get('/api/products/category/' + cat)
         .then(function (products) {
           return products.data;
@@ -25,9 +24,18 @@ app.factory('productFactory', function ($http) {
           return reviews.data;
         });
     },
-    //TODO
     getAllCollections: function () {
-      return ["Yellows and Creams"];
+      return $http.get('/api/products')
+        .then(function (prods) {
+          var products = prods.data
+          var cats = [];
+          for (var p = 0; p < products.length; p++) {
+            if (cats.indexOf(products[p].collection) === -1) {
+              cats.push(products[p].collection);
+            }
+          }
+          return cats;
+        })
     }
   };
   return prod;
