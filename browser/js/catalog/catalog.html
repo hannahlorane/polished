@@ -18,7 +18,9 @@
         </thead>
         <tbody>
           <tr ng-repeat="item in products | collectionFilter:colName">
-            <td>{{item.name}}</td>
+            <td><a ui-sref="singleProduct({id: item.id})">
+              {{item.name}}
+            </a></td>
             <td>{{item.price}}</td>
             <td>{{item.description}}</td>
             <td>{{item.collection}}</td>
