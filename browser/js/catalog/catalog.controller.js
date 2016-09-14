@@ -1,14 +1,14 @@
 app.controller('catalogController', function ($scope, products) {
   $scope.products = products;
-  $scope.colName = null;
+  $scope.collections = [];
 })
 
 app.filter('collectionFilter', function () {
-  return function (items, col) {
-    if (col) {
+  return function (items, cols) {
+    if (cols.length > 0) {
       var filtered = [];
       for (var i = 0; i < items.length; i++) {
-        if (items[i].collection === col) {
+        if (cols.indexOf(items[i].collection) > -1) {
           filtered.push(items[i]);
         }
       }

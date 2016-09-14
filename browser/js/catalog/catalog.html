@@ -5,7 +5,10 @@
     </div>
   </div>
   <div class="row">
-    <div class="col s12">
+    <div class="col s2">
+      <p>Do your filtering here!</p>
+    </div>
+    <div class="col s10">
       <table>
         <thead>
           <tr>
@@ -17,10 +20,12 @@
           </tr>
         </thead>
         <tbody>
-          <tr ng-repeat="item in products | collectionFilter:colName">
-            <td><a ui-sref="singleProduct({id: item.id})">
-              {{item.name}}
-            </a></td>
+          <tr ng-repeat="item in products | collectionFilter:collections">
+            <td>
+              <a ui-sref="singleProduct({id: item.id})">
+                {{item.name}}
+              </a>
+            </td>
             <td>{{item.price}}</td>
             <td>{{item.description}}</td>
             <td>{{item.collection}}</td>
