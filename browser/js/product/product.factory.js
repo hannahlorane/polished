@@ -17,6 +17,12 @@ app.factory('productFactory', function ($http) {
         .then(function (products) {
           return products.data;
         });
+    },
+    getReviews: function (id) {
+      return $http.get('/api/products/:id/reviews')
+        .then(function (reviews) {
+          return reviews.data;
+        });
     }
   };
   return prod;
