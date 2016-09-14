@@ -1,10 +1,10 @@
 <div class="container">
-  <h2>Order #{{cart.id}}</h2>
-
+  <h2 ng-show="completed">Order #{{cart.id}}</h2>
+  <h2>My Cart</h2>
   <div class="row">
     <div class="col s12 m7">
       <div class="card-panel white">
-        <h5>Shopping Cart</h5>
+        <h5>Items In Shopping Cart: {{cart.products.length}}</h5>
         <table>
           <thead>
             <tr>

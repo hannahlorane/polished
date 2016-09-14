@@ -1,5 +1,10 @@
 app.controller('CartController', function ($scope, theCart, CartFactory) {
   $scope.cart = theCart;
+  $scope.completed = false;
+
+  if ($scope.cart.status !== 'incomplete') {
+    $scope.completed = true;
+  }
   // TO DO
   $scope.removeItem = function(id, productId) {
     $scope.cart.products = $scope.cart.products.filter(function(product) {
