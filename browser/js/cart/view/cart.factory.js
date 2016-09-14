@@ -19,6 +19,13 @@ app.factory('CartFactory', function ($http, $state) {
       .then(function(response) {
         return response.data;
       })
+    },
+
+    makePurchase: function(cartId, total) {
+      return $http.put('/api/orders/' + cartId, {total: total, status: 'paid'})
+      .then(function(response) {
+        return response.data;
+      })
     }
   }
 

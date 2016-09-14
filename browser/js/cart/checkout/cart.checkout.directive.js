@@ -1,13 +1,19 @@
-app.directive('checkout', function ($rootScope, $state) {
+app.directive('checkout', function ($rootScope, $state, CartFactory) {
 
   return {
     restrict: 'E',
     scope: {
-      total: '=',
-      cartId: '='
+      cart: '='
     },
-    controller: 'CheckoutController',
     templateUrl: 'js/cart/checkout/checkout.html',
+    link: function(scope) {
+      scope.buy = function() {
+        return CartFactory.makePurchase(scope.cart.id, scope.cart.total)
+        .then(function() {
+          $state.go('confirmation');
+        });
+      }
+    }
   };
 
 });
