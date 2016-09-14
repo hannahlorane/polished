@@ -1,8 +1,6 @@
 app.controller('productController', function (CartFactory, productFactory, $scope, product, $stateParams) {
   $scope.product = product;
-  $scope.similar;
   console.log(product);
-  console.log("COLL", product.collection);
 
   productFactory.getReviews(product.id)
     .then(function (reviews) {
