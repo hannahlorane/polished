@@ -28,8 +28,24 @@ app.factory('CartFactory', function ($http, $state) {
       })
     },
 
-    makePurchase: function(cartId, total) {
-      return $http.put('/api/orders/' + cartId, {total: total, status: 'paid'})
+    makePurchase: function(cartId, total, customer) {
+      var firstName = customer.firstName;
+      var lastName = customer.lastName;
+      var address = customer.address;
+      var zip = customer.zip;
+      var state = customer.state;
+      var email = customer.email;
+
+      return $http.put('/api/orders/' + cartId, {
+        total: total,
+        status: 'paid',
+        firstName: firstName,
+        lastName: lastName,
+        address: address,
+        zip: zip,
+        state: state,
+        email: email
+      })
       .then(function(response) {
         return response.data;
       })

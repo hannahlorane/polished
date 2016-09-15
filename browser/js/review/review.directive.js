@@ -7,7 +7,6 @@ app.directive('review', function ($rootScope) {
     },
     templateUrl: 'js/review/review.html',
     link: function(scope) {
-      console.log('product:', scope.product);
     }
   };
 
