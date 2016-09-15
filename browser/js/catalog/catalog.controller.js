@@ -1,7 +1,18 @@
 app.controller('catalogController', function ($scope, products, allCollections) {
   $scope.products = products;
+  console.log(allCollections);
   $scope.allCollections = allCollections;
   $scope.collections = [];
+
+  $scope.filter = function (str) {
+    console.log(str);
+    var index = $scope.collections.indexOf(str);
+    if (index < 0) {
+      $scope.collections.push(str);
+    }
+    else $scope.collections.splice(index, 1);
+    console.log($scope.collections);
+  }
 })
 
 app.filter('collectionFilter', function () {
