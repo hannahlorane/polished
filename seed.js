@@ -58,11 +58,60 @@ var seedProducts = function () {
           collection: 'Vamp it up'
         },
         {
+          name: 'deep pink',
+          rgbValue: [255, 20, 147],
+          description: 'should be filtered pink',
+          price: 10,
+          collection: 'Purples and Pinks'
+        },
+        {
+          name: 'crimson',
+          rgbValue: [220, 20, 60],
+          description: 'should be filtered red',
+          price: 10,
+          collection: 'Oranges and Reds'
+        },
+        {
+          name: 'orchid',
+          rgbValue: [186, 85, 211],
+          description: 'Should be filtered purple',
+          price: 10,
+          collection: 'Purples and Pinks'
+        },
+        {
+          name: 'royal blue',
+          rgbValue: [65, 105, 225],
+          description: 'should be filtered blue',
+          price: 10,
+          collection: 'Blues and Greens'
+        },
+        {
           name: 'cherry blossom',
           rgbValue: [255, 235, 235],
           description: 'useful for testing color filtering',
           price: 25,
           collection: 'Vamp it up'
+        },
+        {
+          name: 'banaba',
+          rgbValue: [207, 227, 87],
+          description: 'should filter yellow',
+          price: 10,
+          collection: 'Yellows and Creams'
+        },
+        {
+          name: 'emerald',
+          rgbValue: [0, 208, 87],
+          description: 'should filter Green',
+          price: 10,
+          collection: 'Blues and Greens'
+        },
+        {
+          name: 'coral',
+          rgbValue: [225, 127, 80],
+          description: 'should filter orange',
+          price: 100,
+          collection: 'Oranges and Reds'
         },
         {
           name: 'white',

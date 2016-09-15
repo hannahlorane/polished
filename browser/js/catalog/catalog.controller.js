@@ -9,7 +9,7 @@ app.controller('catalogController', function ($scope, products, allCollections) 
     Red: [[200, 0, 0], [255, 199, 199]],
     Yellow: [[-1, -1, -1], [-1, -1, -1]],
     Orange: [[-1, -1, -1], [-1, -1, -1]],
-    Green: [[-1, -1, -1], [-1, -1, -1]],
+    Green: [[0, 200, 0], [199, 250, 199]],
     Blue: [[0, 0, 200], [199, 199, 255]],
     Purple: [[-1, -1, -1], [-1, -1, -1]],
     Pink: [[-1, -1, -1], [-1, -1, -1]],
