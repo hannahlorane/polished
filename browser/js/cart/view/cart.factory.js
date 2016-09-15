@@ -44,7 +44,8 @@ app.factory('CartFactory', function ($http, $state) {
         address: address,
         zip: zip,
         state: state,
-        email: email
+        email: email,
+        dateSubmitted: new Date()
       })
       .then(function(response) {
         return response.data;

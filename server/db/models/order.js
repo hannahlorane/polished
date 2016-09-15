@@ -32,6 +32,9 @@ var Order = db.define('order', {
   },
   email: {
     type: Sequelize.STRING
+  },
+  dateSubmitted: {
+    type: Sequelize.DATE
   }
 });
 
