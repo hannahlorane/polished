@@ -1,34 +1,41 @@
 app.controller('catalogController', function ($scope, products, allCollections) {
   $scope.products = products;
   $scope.allCollections = allCollections;
-  $scope.collections = [];
+  $scope.filteredCollections = [];
+  $scope.filteredColors = [];
   $scope.allColors = {
-    Red: [],
+    Red: [[200, 0, 0], [255, 199, 199]],
     Orange: [],
     Yellow: [],
     Green: [],
-    Blue: [],
+    Blue: [[0, 0, 200], [199, 199, 255]],
     Purple: [],
     Pink: [],
-    Light: [],
-    Dark: []
+    Light: [[200, 200, 200], [255, 255, 255]],
+    Dark: [[0, 0, 0], [50, 50, 50]]
   };
-  $scope.filteredColors = [];
 
-  $scope.toggleColorFilter = function (col) {
-    $scope.filteredColors.push($scope.allColors[col]);
-    console.log($scope.filteredColors);
-  }
+  // $scope.toggleColorFilter = function (col) {
+  //   $scope.filteredColors.push($scope.allColors[col]);
+  //   console.log($scope.filteredColors);
+  // }
 
-  $scope.toggleCollectionFilter = function (str) {
-    var index = $scope.collections.indexOf(str);
+  $scope.toggleFilter = function (str, filterArray) {
+    console.log(str, filterArray);
+    var index = filterArray.indexOf(str);
     if (index < 0) {
-      $scope.collections.push(str);
+      filterArray.push(str);
     }
-    else $scope.collections.splice(index, 1);
-    console.log($scope.collections);
+    else filterArray.splice(index, 1);
+    console.log(filterArray);
   }
 })
+
+app.filter('colorFilter', function () {
+  return function (items, cols) {
+    return items;
+  }
+});
 
 app.filter('collectionFilter', function () {
   return function (items, cols) {

@@ -9,14 +9,14 @@
       <div class="row">
         <p>Filter by Collection: </p>
         <form action="#" ng-repeat="collection in allCollections">
-          <input type="checkbox" ng-click=toggleCollectionFilter(collection) id={{collection}}>
+          <input type="checkbox" ng-click="toggleFilter(collection, filteredCollections)" id={{collection}}>
           <label for={{collection}}>{{collection}}</label>
         </form>
       </div>
       <div class="row">
         <p>Filter by Color: </p>
         <form action="#" ng-repeat="(color, val) in allColors">
-          <input type="checkbox" ng-click=toggleColorFilter(color) id={{color}}>
+          <input type="checkbox" ng-click="toggleFilter(color, filteredColors)" id={{color}}>
           <label for={{color}}>{{color}}</label>
         </form>
       </div>
@@ -33,7 +33,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr ng-repeat="item in products | collectionFilter:collections">
+          <tr ng-repeat="item in products | colorFilter: filteredColors | collectionFilter:filteredCollections">
             <td>
               <a ui-sref="singleProduct({id: item.id})">
                 {{item.name}}
