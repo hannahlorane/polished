@@ -21,24 +21,35 @@ app.controller('catalogController', function ($scope, products, allCollections) 
   // }
 
   $scope.toggleFilter = function (str, filterArray) {
-    console.log(str, filterArray);
     var index = filterArray.indexOf(str);
     if (index < 0) {
       filterArray.push(str);
     }
     else filterArray.splice(index, 1);
-    console.log(filterArray);
   }
 })
 
 app.filter('colorFilter', function () {
-  return function (items, cols) {
+  return function (items, cols, allColors) {
     if (cols.length > 0) {
       var filtered = [];
       for (var i = 0; i < items.length; i++) {
         var color = items[i].rgbValue;
-        console.log(color);
+        for (var filt = 0; filt < cols.length; filt++) {
+          var itemPassesFilt = true;
+          for (var r = 0; r < 3; r++) {
+            if (color[r] < allColors[cols[filt]][0][r] || color[r] > allColors[cols[filt]][1][r]) {
+              itemPassesFilt = false;
+            }
+          }
+          if (itemPassesFilt) {
+            filtered.push(items[i]);
+            break;
+          }
+        }
       }
+      if (filtered) return filtered;
+      else return items;
     }
     else return items;
   }

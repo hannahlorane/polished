@@ -33,7 +33,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr ng-repeat="item in products | colorFilter: filteredColors | collectionFilter:filteredCollections">
+          <tr ng-repeat="item in products | colorFilter:filteredColors:allColors | collectionFilter:filteredCollections">
             <td>
               <a ui-sref="singleProduct({id: item.id})">
                 {{item.name}}
