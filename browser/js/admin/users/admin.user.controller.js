@@ -18,8 +18,5 @@ app.controller('AdminUserController', function ($scope, $state, users, AdminFact
     })
 
     return AdminFactory.deleteUser(id)
-    .then(function() {
-      console.log('deleted');
-    })
   }
 });
