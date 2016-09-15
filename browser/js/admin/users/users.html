@@ -14,7 +14,7 @@
     <tbody>
       <tr ng-repeat="user in users">
         <td>
-          <!-- <a ui-sref="admineditproducts({id: product.id})"><i class="material-icons">mode_edit</i></a> -->
+          <i class="material-icons" ng-click="deleteUser(user.id)">close</i>
         </td>
         <td>
           {{user.id}}

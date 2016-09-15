@@ -10,6 +10,16 @@ app.controller('AdminUserController', function ($scope, $state, users, AdminFact
     .then(function() {
       user.isAdmin = !user.isAdmin;
     })
+  }
 
+  $scope.deleteUser = function(id) {
+    $scope.users = $scope.users.filter(function(user) {
+      return user.id !== id;
+    })
+
+    return AdminFactory.deleteUser(id)
+    .then(function() {
+      console.log('deleted');
+    })
   }
 });

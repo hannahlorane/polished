@@ -33,5 +33,12 @@ app.factory('AdminFactory', function ($http, $state) {
     })
   }
 
+  methods.deleteUser = function(id) {
+    return $http.delete('/api/members/' + id)
+    .then(function(response) {
+      return response.data;
+    })
+  }
+
   return methods;
 })
