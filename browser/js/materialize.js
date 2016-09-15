@@ -1,9 +1,12 @@
+
+/* eslint-disable */
 $(document).ready(function() {
-  $(".button-collapse").sideNav({
+  $('.button-collapse').sideNav({
     closeOnClick: true
   });
-  $(".dropdown-button").dropdown();
+  $('.dropdown-button').dropdown();
   $('select').material_select();
-  $('.parallax').parallax();
-  $('.slider').slider({full_width: true, height: 350});
+  $('.slider').slider({full_width: true});
+  $('.collapsible').collapsible();
 })
+/* eslint-enable */

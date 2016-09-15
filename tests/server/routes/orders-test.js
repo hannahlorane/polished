@@ -27,15 +27,14 @@ describe('/api/orders', function () {
     var order2;
 
     var orderInfo1 = {
-      total: '20',
-      status: 'Shipped'
+      total: '20'
     };
 
     var orderInfo2 = {
       total: '10'
     };
 
-    beforeEach('Create order', function (done) {
+    beforeEach('Create order', function () {
       return Order.create(orderInfo1)
       .then(function (order) {
         order1 = order;
@@ -43,9 +42,7 @@ describe('/api/orders', function () {
       })
       .then(function (order) {
         order2 = order;
-        done();
       })
-      .catch(done);
     });
 
     beforeEach('Create guest agent', function () {
@@ -63,6 +60,17 @@ describe('/api/orders', function () {
           done();
         });
     });
+
+    it('GET one', function (done) {
+      guestAgent
+      .get('/api/orders/1')
+      .expect(200)
+      .end(function (err, res) {
+        if (err) return done(err);
+        expect(res.body.total).to.eql(order1.total);
+        done();
+      })
+    })
 
     it('POST one', function (done) {
       guestAgent
@@ -85,17 +93,6 @@ describe('/api/orders', function () {
       });
     });
 
-    it('GET one', function (done) {
-      guestAgent
-      .get('/api/orders/' + order1.id)
-      .expect(200)
-      .end(function (err, res) {
-        if (err) return done(err);
-        expect(res.body.total).to.equal(order1.total);
-        expect(res.body.status).to.equal(order1.status);
-        done();
-      })
-    })
 
     it('GET one that doesnt exist', function (done) {
       guestAgent.get('/api/orders/5234234')

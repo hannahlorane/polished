@@ -18,14 +18,14 @@ describe('Order model', function () {
     it ('has an order total', function() {
       return Order.create({
         "total": 300,
-        "status": "complete"
+        "status": "incomplete"
       })
       .then(function(order) {
         expect(order.total).to.exist;
       })
     })
 
-    it ('has a status of incomplete or complete', function() {
+    it ('has a status of incomplete', function() {
       return Order.create({
         total: 300,
         status: "incomplete"
