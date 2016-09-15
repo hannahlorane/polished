@@ -10,7 +10,6 @@
           <thead>
             <tr>
               <th></th>
-              <th data-field="id">Item #</th>
               <th data-field="name">Item Name</th>
               <th data-field="quantity">Quantity</th>
               <th data-field="price">Price</th>
@@ -19,8 +18,7 @@
           <tbody>
             <tr ng-repeat="product in cart.products">
               <td><a href="#" ng-hide="completed" ng-click="removeItem(cart.id, product.id)"><i class="material-icons">close</i></a></td>
-              <td>{{product.id}}</td>
-              <td>{{product.name}}</td>
+              <td><a ng-href="/products/{{product.id}}">{{product.name}}</a></td>
               <td><a href="#" ng-hide="completed" ng-click="incrementQty(cart.id, product.id)"><i class="material-icons">add</i></a> {{product.OrderProducts.quantity}} <a href="#" ng-hide="completed" ng-click="decrementQty(cart.id, product.id)"><i class="material-icons">remove</i></a></td>
               <td>{{product.price}}</td>
             </tr>
