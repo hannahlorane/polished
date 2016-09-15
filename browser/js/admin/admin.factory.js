@@ -19,5 +19,19 @@ app.factory('AdminFactory', function ($http, $state) {
     })
   }
 
+  methods.getAllOrders = function() {
+    return $http.get('/api/orders')
+    .then(function(response) {
+      return response.data;
+    })
+  }
+
+  methods.editOrder = function(id, body) {
+    return $http.put('/api/orders/' + id, body)
+    .then(function(response) {
+      return response.data;
+    })
+  }
+
   return methods;
 })
