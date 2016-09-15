@@ -38,7 +38,7 @@ app.factory('CartFactory', function ($http, $state) {
 
       return $http.put('/api/orders/' + cartId, {
         total: total,
-        status: 'paid',
+        status: 'Preparing Shipment',
         firstName: firstName,
         lastName: lastName,
         address: address,
