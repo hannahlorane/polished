@@ -1,6 +1,12 @@
 <adminnav></adminnav>
 <div class="container">
   <h4>Editing Orders</h4>
+  Filter By:
+  <a href="#" ng-click="orderFilter = {status: 'incomplete'}">Incomplete</a> |
+  <a href="#" ng-click="orderFilter = {status: 'processing'}">Processing</a> |
+  <a href="#" ng-click="orderFilter = {status: 'cancelled'}">Cancelled</a> |
+  <a href="#" ng-click="orderFilter = {status: 'completed'}">Completed</a> |
+  <a href="#" ng-click="orderFilter = null">None</a>
   <table>
     <thead>
       <tr>
@@ -12,7 +18,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr ng-repeat="order in orders">
+      <tr ng-repeat="order in orders | filter: orderFilter">
         <td>
           <a ui-sref="admineditorders({id: order.id})"><i class="material-icons">mode_edit</i></a>
         </td>
