@@ -19,5 +19,12 @@ app.factory('AdminFactory', function ($http, $state) {
     })
   }
 
+  methods.getAllUsers = function() {
+    return $http.get('/api/members')
+    .then(function(response) {
+      return response.data;
+    })
+  }
+
   return methods;
 })
