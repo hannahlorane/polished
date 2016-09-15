@@ -3,7 +3,7 @@ app.controller('ProductEditController', function ($scope, $state, AdminFactory, 
 
   $scope.editProduct = function(id, body) {
     return AdminFactory.editProduct(id, body)
-    .then(function(response) {
+    .then(function() {
       $state.go('adminproducts');
     })
   }

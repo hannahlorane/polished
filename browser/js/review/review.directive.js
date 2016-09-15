@@ -1,4 +1,4 @@
-app.directive('review', function ($rootScope) {
+app.directive('review', function () {
 
   return {
     restrict: 'E',

@@ -1,4 +1,4 @@
-app.directive('productform', function ($rootScope, $state, AdminFactory) {
+app.directive('productform', function () {
 
   return {
     restrict: 'E',

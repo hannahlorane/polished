@@ -1,3 +1,5 @@
+
+/* eslint-disable */
 $(document).ready(function() {
   $('.button-collapse').sideNav({
     closeOnClick: true
@@ -7,3 +9,4 @@ $(document).ready(function() {
   $('.slider').slider({full_width: true});
   $('.collapsible').collapsible();
 })
+/* eslint-enable */

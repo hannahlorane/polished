@@ -33,6 +33,16 @@ router.get('/secret-stash', ensureAuthenticated, function (req, res) {
 
 });
 
+router.param('id', function (req, res, next, id) {
+    User.findById(id)
+    .then(function (user) {
+        if (!user) res.status(404).send();
+        req.userById = user;
+        next();
+    })
+    .catch(next);
+});
+
 router.get('/', function(req, res, next) {
     User.findAll()
     .then(function(users) {
@@ -41,8 +51,8 @@ router.get('/', function(req, res, next) {
     .catch(next);
 })
 
-router.post('/', function(req, res, next) {
-    User.create(req.body)
+router.post('/signup', function(req, res, next) {
+    User.findOrCreate(req.body)
     .then(function(user) {
         if (!user) {
             res.send('A user with that email already exists');
@@ -54,23 +64,12 @@ router.post('/', function(req, res, next) {
 })
 
 router.get('/:id', function(req, res, next) {
-    User.findById(req.params.id)
-    .then(function(user) {
-        if (!user) {
-            res.send('That user does not exist');
-        } else {
-            res.send(user);
-        }
-    })
-    .catch(next);
+    res.send(req.userById);
 })
 
 // TO DO: Check if user is the same user or an admin
 router.put('/:id', function(req, res, next) {
-    User.findById(req.params.id)
-    .then(function(user) {
-        return user.update(req.body);
-    })
+    req.userById.update(req.body)
     .then(function(newUser) {
         res.send(newUser);
     })
@@ -79,10 +78,7 @@ router.put('/:id', function(req, res, next) {
 
 // TO DO: Check if user is the same user or an admin
 router.delete('/:id', function(req, res, next) {
-    User.findById(req.params.id)
-    .then(function(user) {
-        return user.destroy();
-    })
+    req.userById.destroy()
     .then(function(response) {
         res.send(response);
     })

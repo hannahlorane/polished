@@ -3,7 +3,7 @@ app.controller('OrderEditController', function ($scope, $state, AdminFactory, or
 
   $scope.editOrder = function(id, body) {
     return AdminFactory.editOrder(id, body)
-    .then(function(response) {
+    .then(function() {
       $state.go('adminorders');
     })
   }

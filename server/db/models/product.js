@@ -8,7 +8,7 @@ var Product = db.define('product', {
     allowNull: false
   },
   rgbValue: {
-    type: Sequelize.ARRAY(Sequelize.TEXT),
+    type: Sequelize.ARRAY(Sequelize.INTEGER), // eslint-disable-line new-cap
     defaultValue: [255, 255, 255],
     allowNull: false
   },
@@ -25,7 +25,7 @@ var Product = db.define('product', {
     defaultValue: 'Miscellaneous'
   },
   price: {
-    type: Sequelize.DOUBLE,
+    type: Sequelize.DECIMAL(10, 2), // eslint-disable-line new-cap
     allowNull: false,
     validate: {
       min: 0
