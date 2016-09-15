@@ -4,7 +4,7 @@ var db = require('../_db');
 
 var Order = db.define('order', {
   total: {
-    type: Sequelize.DECIMAL,
+    type: Sequelize.DECIMAL(10, 2),
     defaultValue: 0
   },
   status: {

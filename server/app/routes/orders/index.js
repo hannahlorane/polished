@@ -35,13 +35,7 @@ router.get('/history/:userId', function (req, res, next) {
 
 //GETS a single order by ID
 router.get('/:id', function (req, res, next) {
-  // Order.findById(req.params.id)
-    Order.findOne({
-      where: {
-        id: req.params.id
-      },
-      include: [{model: Product, required: true}]
-    })
+  Order.findById(req.params.id)
     .then(function (order) {
       if (order) {
         res.json(order);
@@ -56,6 +50,7 @@ router.get('/:id', function (req, res, next) {
 router.put('/:id', function (req, res, next) {
   Order.findById(req.params.id)
     .then(function (ord) {
+      if (!ord) res.sendStatus(404);
       return ord.update(req.body)
     })
       .then(function (result) {
