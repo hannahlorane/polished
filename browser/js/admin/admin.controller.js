@@ -1,9 +1,9 @@
-app.controller('AdminController', function ($scope, products) {
-  $scope.current = 'Products';
+app.controller('AdminController', function ($scope, products, $state) {
   $scope.products = products;
 
   $scope.editProducts = function() {
     $scope.current = 'Products';
+    $state.go('adminProducts');
   }
 
   $scope.editUsers = function() {

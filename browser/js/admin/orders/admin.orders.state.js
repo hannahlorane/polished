@@ -1,8 +1,8 @@
 app.config(function ($stateProvider) {
 
-  $stateProvider.state('admin', {
-    url: '/admin',
-    templateUrl: 'js/admin/admin.html',
+  $stateProvider.state('adminorders', {
+    url: '/admin/orders',
+    templateUrl: 'js/admin/orders/orders.html',
     controller: 'AdminController',
     resolve: {
       products: function(productFactory) {

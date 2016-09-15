@@ -1,0 +1,43 @@
+<adminnav></adminnav>
+<div class="container">
+  <h4>Editing Products</h4>
+  <a class="waves-effect waves-light btn" ng-href="/admin/products/add"><i class="material-icons left">add</i>Add a Product</a>
+  <table>
+    <thead>
+      <tr>
+        <td></td>
+        <td>Inventory</td>
+        <td>Name</td>
+        <td>Collection</td>
+        <td>RGB</td>
+        <td>Price($)</td>
+        <td>PhotoUrl</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="product in products">
+        <td>
+          <a><i class="material-icons">mode_edit</i></a>
+        </td>
+        <td>
+          {{product.inventory}}
+        </td>
+        <td>
+          {{product.name}}
+        </td>
+        <td>
+          {{product.collection}}
+        </td>
+        <td>
+          {{product.rgbValue}}
+        </td>
+        <td>
+          {{product.price}}
+        </td>
+        <td>
+          {{product.photo}}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
