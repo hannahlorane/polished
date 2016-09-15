@@ -1,6 +1,7 @@
 app.controller('productController', function (CartFactory, productFactory, $scope, product) {
   $scope.product = product;
   console.log(product);
+  $scope.testModel = './test.json';
 
   productFactory.getReviews(product.id)
     .then(function (reviews) {
