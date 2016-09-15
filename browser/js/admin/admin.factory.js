@@ -19,8 +19,29 @@ app.factory('AdminFactory', function ($http, $state) {
     })
   }
 
+  methods.getAllUsers = function() {
+    return $http.get('/api/members')
+    .then(function(response) {
+      return response.data;
+    })
+  }
+
   methods.getAllOrders = function() {
     return $http.get('/api/orders')
+    .then(function(response) {
+      return response.data;
+    })
+  }
+
+  methods.toggleAdmin = function(id, body) {
+    return $http.put('/api/members/' + id, body)
+    .then(function(response) {
+      return response.data;
+    })
+  }
+
+  methods.deleteUser = function(id) {
+    return $http.delete('/api/members/' + id)
     .then(function(response) {
       return response.data;
     })

@@ -3,10 +3,10 @@ app.config(function ($stateProvider) {
   $stateProvider.state('adminusers', {
     url: '/admin/users',
     templateUrl: 'js/admin/users/users.html',
-    controller: 'AdminController',
+    controller: 'AdminUserController',
     resolve: {
-      products: function(productFactory) {
-        return productFactory.getAll();
+      users: function(AdminFactory) {
+        return AdminFactory.getAllUsers();
       }
     }
   });
