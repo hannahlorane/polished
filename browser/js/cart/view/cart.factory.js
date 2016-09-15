@@ -38,13 +38,14 @@ app.factory('CartFactory', function ($http, $state) {
 
       return $http.put('/api/orders/' + cartId, {
         total: total,
-        status: 'paid',
+        status: 'Preparing Shipment',
         firstName: firstName,
         lastName: lastName,
         address: address,
         zip: zip,
         state: state,
-        email: email
+        email: email,
+        dateSubmitted: new Date()
       })
       .then(function(response) {
         return response.data;

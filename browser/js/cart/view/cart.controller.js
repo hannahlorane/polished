@@ -2,6 +2,8 @@ app.controller('CartController', function ($scope, theCart, CartFactory, $state)
   $scope.cart = theCart;
   $scope.completed = false;
   $scope.checkout = false;
+  $scope.date = new Date($scope.cart.dateSubmitted);
+  $scope.date = $scope.date.getMonth() + '/' + $scope.date.getDay() + '/' + $scope.date.getFullYear();
 
   $scope.getTotal = function () {
     $scope.cart.total = 0;
