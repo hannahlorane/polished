@@ -6,39 +6,35 @@ var Order = require('../../../db/models/order.js');
 var Product = require('../../../db/models/product.js');
 
 //GETS all orders
-router.get('/', function (req, res) {
+router.get('/', function (req, res, next) {
   Order.findAll()
     .then(function (orders) {
       res.json(orders);
     })
-    .catch(function () {
-      res.sendStatus(500);
-    });
+    .catch(next);
 });
 
-router.get('/byUser/:userId', function(req, res) {
-  console.log('hitting this route')
+router.get('/byUser/:userId', function(req, res, next) {
   Order.findAll({where: {userId: req.params.userId, status: "incomplete"}})
   .then(function(order) {
     res.send(order);
   })
+  .catch(next);
 })
 
 //GETS a single user's order history
 //UNTESTED
-router.get('/history/:userId', function (req, res) {
+router.get('/history/:userId', function (req, res, next) {
   Order.findAll({where: {userId: req.params.userId}})
     .then(function (orders) {
       if (orders) res.json(orders);
       else res.sendStatus(404);
     })
-    .catch(function () {
-      res.sendStatus(500);
-    });
+    .catch(next);
 });
 
 //GETS a single order by ID
-router.get('/:id', function (req, res) {
+router.get('/:id', function (req, res, next) {
   // Order.findById(req.params.id)
     Order.findOne({
       where: {
@@ -53,15 +49,11 @@ router.get('/:id', function (req, res) {
         res.sendStatus(404);
       }
     })
-    .catch(function (err) {
-      console.log(err);
-      res.sendStatus(500);
-      // res.sendStatus(500);
-    });
+    .catch(next);
 });
 
 //PUT updates a given order with the req data
-router.put('/:id', function (req, res) {
+router.put('/:id', function (req, res, next) {
   Order.findById(req.params.id)
     .then(function (ord) {
       return ord.update(req.body)
@@ -69,38 +61,32 @@ router.put('/:id', function (req, res) {
       .then(function (result) {
         res.send(result);
       })
-      .catch(function () {
-        res.sendStatus(404);
-      });
+      .catch(next);
 });
 
 //POSTs a new order to the db without a user
-router.post('/', function (req, res) {
+router.post('/', function (req, res, next) {
   Order.create(req.body)
     .then(function (result) {
       res.status(201).send(result);
     })
-    .catch(function () {
-      res.sendStatus(404);
-    });
+    .catch(next);
 });
 
 //POSTs a new order to the db with a user
 //UNTESTED
-router.post('/history/:userId', function (req, res) {
+router.post('/history/:userId', function (req, res, next) {
   var order = Order.build(req.body);
   order.set({userId: req.params.userId});
   order.save()
     .then(function (result) {
       res.send(result);
     })
-    .catch(function () {
-      res.sendStatus(500);
-    });
+    .catch(next);
 });
 
 //DELETEs one order by ID
-router.delete('/:id', function (req, res) {
+router.delete('/:id', function (req, res, next) {
   Order.findById(req.params.id)
     .then(function (order) {
       return order.destroy()
@@ -108,9 +94,7 @@ router.delete('/:id', function (req, res) {
     .then(function (result) {
       res.send(result);
     })
-    .catch(function () {
-      res.sendStatus(500);
-    });
+    .catch(next);
 });
 
 // Get all the products for an order
