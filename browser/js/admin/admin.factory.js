@@ -26,5 +26,12 @@ app.factory('AdminFactory', function ($http, $state) {
     })
   }
 
+  methods.toggleAdmin = function(id, body) {
+    return $http.put('/api/members/' + id, body)
+    .then(function(response) {
+      return response.data;
+    })
+  }
+
   return methods;
 })

@@ -24,7 +24,7 @@
         </td>
         <td>
           <p>
-            <input type="checkbox" id="{{user.id}}" ng-checked="{{user.isAdmin}}" />
+            <input ng-click="toggleAdmin(user.id)" type="checkbox" id="{{user.id}}" ng-checked="{{user.isAdmin}}" />
             <label for="{{user.id}}">Admin</label>
           </p>
         </td>
