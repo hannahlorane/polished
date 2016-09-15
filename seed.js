@@ -51,6 +51,27 @@ var seedUsers = function () {
 var seedProducts = function () {
     var products = [
         {
+          name: 'black',
+          rgbValue: [0, 0, 0],
+          description: 'it\'s black nailpolish',
+          price: 10,
+          collection: 'Vamp it up'
+        },
+        {
+          name: 'cherry blossom',
+          rgbValue: [255, 235, 235],
+          description: 'useful for testing color filtering',
+          price: 25,
+          collection: 'Vamp it up'
+        },
+        {
+          name: 'white',
+          rgbValue: [255, 255, 255],
+          description: 'Also useful for testing color filtering',
+          price: 25,
+          collection: 'Vamp it up'
+        },
+        {
             name: 'sunset orange',
             rgbValue: [253, 94, 83],
             description: 'orange',
