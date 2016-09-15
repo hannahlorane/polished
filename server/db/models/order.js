@@ -16,22 +16,29 @@ var Order = db.define('order', {
     type: Sequelize.STRING
   },
   firstName: {
-    type: Sequelize.STRING
+    type: Sequelize.STRING,
+    isAlpha: true
   },
   lastName: {
-    type: Sequelize.STRING
+    type: Sequelize.STRING,
+    isAlpha: true
   },
   address: {
-    type: Sequelize.STRING
+    type: Sequelize.STRING,
+    len: [1, 35]
   },
   zip: {
-    type: Sequelize.INTEGER
+    type: Sequelize.INTEGER,
+    len: [5]
   },
   state: {
-    type: Sequelize.STRING
+    type: Sequelize.STRING,
+    isAlpha: true,
+    len: [2]
   },
   email: {
-    type: Sequelize.STRING
+    type: Sequelize.STRING,
+    isEmail: true
   },
   dateSubmitted: {
     type: Sequelize.DATE
