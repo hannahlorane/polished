@@ -8,7 +8,7 @@ var Order = db.define('order', {
     defaultValue: 0
   },
   status: {
-    type: Sequelize.STRING,
+    type: Sequelize.ENUM('incomplete', 'processing', 'cancelled', 'completed'),
     defaultValue: 'incomplete',
     allowNull: false
   },
