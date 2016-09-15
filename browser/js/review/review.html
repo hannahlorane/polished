@@ -1,25 +1,27 @@
 <div>
 
   <h4>Add Review</h4>
-  <p>Stars</p>
-  <br>
+  <div class="card-panel">
+    <p>Stars</p>
+    <span>
+    <form>
+      <form action="#">
+        <p class="range-field">
+          <input type="range" id="test5" min="0" max="5"/>
+        </p>
+      </form>
 
-  <form>
-    <form action="#">
-      <p class="range-field">
-        <input type="range" id="test5" min="0" max="5"/>
-      </p>
+      <div class="input-field col s12">
+        <textarea ng-model="review.text"id="textarea1" class="materialize-textarea"></textarea>
+        <label for="textarea1" em>Comments</label>
+      </div>
+
+      <button class="btn waves-effect waves-light" type="submit" name="action" ng-click="addReview(product.id, review)">
+        Submit<i class="material-icons right">send</i>
+      </button>
     </form>
-
-    <div class="input-field col s12">
-      <textarea ng-model="review.text"id="textarea1" class="materialize-textarea"></textarea>
-      <label for="textarea1" em>Add Review</label>
-    </div>
-
-    <button class="btn waves-effect waves-light" type="submit" name="action" ng-click="addReview(product.id, review)">
-      Submit<i class="material-icons right">send</i>
-    </button>
-  </form>
+    </span>
+  </div>
 
   <h4>Reviews</h4>
 
