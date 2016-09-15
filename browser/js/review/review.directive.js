@@ -5,7 +5,8 @@ app.directive('review', function () {
     scope: {
       product: '='
     },
-    templateUrl: 'js/review/review.html'
+    templateUrl: 'js/review/review.html',
+    controller: 'ReviewController'
   };
 
 });

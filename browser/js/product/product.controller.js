@@ -14,7 +14,5 @@ app.controller('productController', function (CartFactory, productFactory, $scop
     }).then(console.log('Similar', $scope.similar));
 
   $scope.addToCart = function () {
-    console.log('added ' + product.name + ' to cart');
-      //= CartFactory.addToCart(product.id, SESSION ID);
   };
 });
