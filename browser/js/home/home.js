@@ -5,7 +5,6 @@ app.config(function ($stateProvider) {
     });
 });
 
-
 app.controller('HomeController', function($scope, productFactory) {
 
   $scope.products = [];
@@ -13,8 +12,8 @@ app.controller('HomeController', function($scope, productFactory) {
   productFactory.getAll()
   .then(function(products) {
     $scope.productOne = products[0];
-    $scope.productTwo = products[products.length-3];
-    $scope.productThree = products[products.length-1];
+    $scope.productTwo = products[products.length - 3];
+    $scope.productThree = products[products.length - 1];
   })
 
 });

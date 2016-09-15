@@ -57,7 +57,7 @@ describe('ROUTES', function () {
       userId: 1
     };
 
-    beforeEach('Create review', function (done) {
+    beforeEach('Create review', function () {
       return User.create(userInfo)
       .then(function(user) {
         user1 = user;
@@ -73,9 +73,7 @@ describe('ROUTES', function () {
       })
       .then(function (review) {
         review2 = review;
-        done();
       })
-      .catch(done);
     });
 
     beforeEach('Create guest agent', function () {

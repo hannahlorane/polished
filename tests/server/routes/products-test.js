@@ -40,7 +40,7 @@ describe('/api/products', function () {
       price: 20
     };
 
-    beforeEach('Create products', function (done) {
+    beforeEach('Create products', function () {
       return Product.create(productOneInfo)
       .then(function (product) {
         product1 = product;
@@ -48,9 +48,7 @@ describe('/api/products', function () {
       })
       .then(function (product) {
         product2 = product;
-        done();
       })
-      .catch(done);
     });
 
     beforeEach('Create guest agent', function () {

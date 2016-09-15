@@ -1,4 +1,4 @@
-app.factory('AdminFactory', function ($http, $state) {
+app.factory('AdminFactory', function ($http) {
   var methods = {};
 
   methods.addProduct = function(body) {

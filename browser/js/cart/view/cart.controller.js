@@ -1,4 +1,4 @@
-app.controller('CartController', function ($scope, theCart, CartFactory, $state) {
+app.controller('CartController', function ($scope, theCart, CartFactory) {
   $scope.cart = theCart;
   $scope.completed = false;
   $scope.checkout = false;
