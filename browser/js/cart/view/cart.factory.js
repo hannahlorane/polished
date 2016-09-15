@@ -29,7 +29,6 @@ app.factory('CartFactory', function ($http, $state) {
     },
 
     makePurchase: function(cartId, total, customer) {
-      console.log('factory customer', customer);
       var firstName = customer.firstName;
       var lastName = customer.lastName;
       var address = customer.address;
