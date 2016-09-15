@@ -1,9 +1,8 @@
 //assuming: /whatever/orders as the path
-var router = require('express').Router();
+var router = require('express').Router(); // eslint-disable-line
 var db = require('../../../db');
 var OrderProducts = db.model('OrderProducts');
 var Order = require('../../../db/models/order.js');
-var Product = require('../../../db/models/product.js');
 
 //GETS all orders
 router.get('/', function (req, res, next) {
@@ -15,7 +14,7 @@ router.get('/', function (req, res, next) {
 });
 
 router.get('/byUser/:userId', function(req, res, next) {
-  Order.findAll({where: {userId: req.params.userId, status: "incomplete"}})
+  Order.findAll({where: {userId: req.params.userId, status: 'incomplete'}})
   .then(function(order) {
     res.send(order);
   })
@@ -50,8 +49,11 @@ router.get('/:id', function (req, res, next) {
 router.put('/:id', function (req, res, next) {
   Order.findById(req.params.id)
     .then(function (ord) {
-      if (!ord) res.sendStatus(404);
-      return ord.update(req.body)
+      if (!ord) {
+        res.sendStatus(404);
+      } else {
+        return ord.update(req.body)
+      }
     })
       .then(function (result) {
         res.send(result);

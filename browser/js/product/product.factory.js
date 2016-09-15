@@ -29,7 +29,7 @@ app.factory('productFactory', function ($http) {
         .then(function (prods) {
           var products = prods.data
           var cats = [];
-          for (var p = 0; p < products.length; p++) {
+          for (var p = 0; p < products.length; p++) { // eslint-disable-line id-length
             if (cats.indexOf(products[p].collection) === -1) {
               cats.push(products[p].collection);
             }

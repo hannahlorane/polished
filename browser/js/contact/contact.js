@@ -26,5 +26,3 @@ app.controller('ContactController', function($scope, $state, EmailFactory) {
     })
   }
 });
-
-

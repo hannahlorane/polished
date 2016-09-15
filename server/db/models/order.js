@@ -4,11 +4,11 @@ var db = require('../_db');
 
 var Order = db.define('order', {
   total: {
-    type: Sequelize.DECIMAL(10, 2),
+    type: Sequelize.DECIMAL(10, 2), // eslint-disable-line new-cap
     defaultValue: 0
   },
   status: {
-    type: Sequelize.ENUM('incomplete', 'processing', 'cancelled', 'completed'),
+    type: Sequelize.ENUM('incomplete', 'processing', 'cancelled', 'completed'), // eslint-disable-line new-cap
     defaultValue: 'incomplete',
     allowNull: false
   },

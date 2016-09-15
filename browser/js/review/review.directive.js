@@ -1,13 +1,11 @@
-app.directive('review', function ($rootScope) {
+app.directive('review', function () {
 
   return {
     restrict: 'E',
     scope: {
       product: '='
     },
-    templateUrl: 'js/review/review.html',
-    link: function(scope) {
-    }
+    templateUrl: 'js/review/review.html'
   };
 
 });

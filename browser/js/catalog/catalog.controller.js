@@ -1,3 +1,5 @@
+
+
 app.controller('catalogController', function ($scope, products, allCollections) {
   $scope.products = products;
   $scope.allCollections = allCollections;
@@ -15,29 +17,25 @@ app.controller('catalogController', function ($scope, products, allCollections) 
     Dark: [[0, 0, 0], [50, 50, 50]]
   };
 
-  // $scope.toggleColorFilter = function (col) {
-  //   $scope.filteredColors.push($scope.allColors[col]);
-  //   console.log($scope.filteredColors);
-  // }
-
   $scope.toggleFilter = function (str, filterArray) {
     var index = filterArray.indexOf(str);
     if (index < 0) {
       filterArray.push(str);
+    } else {
+      filterArray.splice(index, 1);
     }
-    else filterArray.splice(index, 1);
   }
 })
 
 app.filter('colorFilter', function () {
-  return function (items, cols, allColors) {
+  return function (items, cols, allColors) { // eslint-disable-line complexity
     if (cols.length > 0) {
       var filtered = [];
       for (var i = 0; i < items.length; i++) {
         var color = items[i].rgbValue;
         for (var filt = 0; filt < cols.length; filt++) {
           var itemPassesFilt = true;
-          for (var r = 0; r < 3; r++) {
+          for (var r = 0; r < 3; r++) { // eslint-disable-line id-length
             if (color[r] < allColors[cols[filt]][0][r] || color[r] > allColors[cols[filt]][1][r]) {
               itemPassesFilt = false;
             }
@@ -50,8 +48,9 @@ app.filter('colorFilter', function () {
       }
       if (filtered) return filtered;
       else return items;
+    } else {
+      return items;
     }
-    else return items;
   }
 });
 
@@ -72,3 +71,5 @@ app.filter('collectionFilter', function () {
     }
   }
 });
+
+/* eslint-enable complexity id-length */
