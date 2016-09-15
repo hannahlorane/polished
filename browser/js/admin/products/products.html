@@ -17,7 +17,7 @@
     <tbody>
       <tr ng-repeat="product in products">
         <td>
-          <a><i class="material-icons">mode_edit</i></a>
+          <a ui-sref="admineditproducts({id: product.id})"><i class="material-icons">mode_edit</i></a>
         </td>
         <td>
           {{product.inventory}}

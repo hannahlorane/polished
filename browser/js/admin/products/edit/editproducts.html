@@ -1,5 +1,9 @@
 <adminnav></adminnav>
 <div class="container">
   <h3>Edit A Product</h3>
-  <productform></productform>
+  <form>
+    <productform product="product"></productform>
+    <a class="waves-effect waves-light btn" ng-click="editProduct(product.id, product)">submit</a>
+  </form>
 </div>
+
