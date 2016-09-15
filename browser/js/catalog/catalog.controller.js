@@ -1,11 +1,26 @@
 app.controller('catalogController', function ($scope, products, allCollections) {
   $scope.products = products;
-  console.log(allCollections);
   $scope.allCollections = allCollections;
   $scope.collections = [];
+  $scope.allColors = {
+    Red: [],
+    Orange: [],
+    Yellow: [],
+    Green: [],
+    Blue: [],
+    Purple: [],
+    Pink: [],
+    Light: [],
+    Dark: []
+  };
+  $scope.filteredColors = [];
 
-  $scope.filter = function (str) {
-    console.log(str);
+  $scope.toggleColorFilter = function (col) {
+    $scope.filteredColors.push($scope.allColors[col]);
+    console.log($scope.filteredColors);
+  }
+
+  $scope.toggleCollectionFilter = function (str) {
     var index = $scope.collections.indexOf(str);
     if (index < 0) {
       $scope.collections.push(str);
