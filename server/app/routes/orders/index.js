@@ -154,17 +154,14 @@ router.put('/:id/products/:productId', function (req, res, next) {
 
 // Delete a product from an order
 router.delete('/:id/products/:productId', function (req, res, next) {
-  OrderProducts.findOne({
+  OrderProducts.destroy({
     where: {
       orderId: req.params.id,
       productId: req.params.productId
     }
   })
-  .then(function (orderProduct) {
-    return orderProduct.destroy()
-  })
-  .then(function (result) {
-    res.send(result);
+  .then(function () {
+    res.sendStatus(204);
   })
   .catch(function () {
     res.sendStatus(500);
