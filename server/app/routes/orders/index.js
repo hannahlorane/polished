@@ -3,6 +3,7 @@ var router = require('express').Router(); // eslint-disable-line
 var db = require('../../../db');
 var OrderProducts = db.model('OrderProducts');
 var Order = require('../../../db/models/order.js');
+var Product = require('../../../db/models/product.js');
 
 //GETS all orders
 router.get('/', function (req, res, next) {
@@ -34,7 +35,12 @@ router.get('/history/:userId', function (req, res, next) {
 
 //GETS a single order by ID
 router.get('/:id', function (req, res, next) {
-  Order.findById(req.params.id)
+  Order.findOne({
+     where: {
+       id: req.params.id
+     },
+     include: [{model: Product, required: true}]
+   })
     .then(function (order) {
       if (order) {
         res.json(order);
