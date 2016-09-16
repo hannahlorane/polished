@@ -6,13 +6,13 @@ app.controller('catalogController', function ($scope, products, allCollections) 
   $scope.filteredCollections = [];
   $scope.filteredColors = [];
   $scope.allColors = {
-    Red: [[200, 0, 0], [255, 199, 199]],
+    Red: [[200, 50, 50], [255, 199, 199]],
     Yellow: [[-1, -1, -1], [-1, -1, -1]],
-    Orange: [[-1, -1, -1], [-1, -1, -1]],
+    Orange: [[150, -1, 0], [255, -1, 50]],
     Green: [[0, 200, 0], [199, 250, 199]],
     Blue: [[0, 0, 200], [199, 199, 255]],
     Purple: [[-1, -1, -1], [-1, -1, -1]],
-    Pink: [[-1, -1, -1], [-1, -1, -1]],
+    Pink: [[150, 0, -1], [255, 50, -1]],
     Light: [[200, 200, 200], [255, 255, 255]],
     Dark: [[0, 0, 0], [50, 50, 50]]
   };
