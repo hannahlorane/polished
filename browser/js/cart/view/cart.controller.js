@@ -5,6 +5,9 @@ app.controller('CartController', function ($scope, theCart, CartFactory) {
   $scope.date = new Date($scope.cart.dateSubmitted);
   $scope.date = $scope.date.getMonth() + '/' + $scope.date.getDay() + '/' + $scope.date.getFullYear();
 
+  console.log(localStorage);
+  // localStorage.clear();
+
   $scope.getTotal = function () {
     $scope.cart.total = 0;
     for (var i = 0; i < $scope.cart.products.length; i++) {
