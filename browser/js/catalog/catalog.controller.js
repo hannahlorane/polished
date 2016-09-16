@@ -27,7 +27,20 @@ app.controller('catalogController', function ($scope, productFactory, products, 
   }
 })
 
-
+app.filter('selectedCollections', function () {
+  return function (collections, filteredCollections) {
+    var showTheseCols = [];
+    console.log(collections);
+    if (!filteredCollections) return collections;
+    for (var c = 0; c < collections.length; c++) {
+      if (filteredCollections.indexOf(collections[c]) > -1) {
+        showTheseCols.push(collections[c]);
+      }
+    }
+    if (showTheseCols) return showTheseCols;
+    return collections;
+  }
+})
 
 
 app.filter('colorFilter', function () {

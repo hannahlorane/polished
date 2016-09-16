@@ -65,6 +65,13 @@ body {
 .card.small.horizontal {
   overflow-x: scroll;
   overflow-y: hidden;
+  margin-left: 3em;
+}
+.card-action {
+  opacity: 0;
+}
+::-webkit-scrollbar {
+  width: 0;
 }
 
 .swatch-container {
