@@ -1,12 +1,12 @@
 <div class="navbar-fixed">
 <nav>
   <ul id="dropdown1" class="dropdown-content">
-    <li><a ng-href="cart">Find An Order</a></li>
-    <li ng-show="user"><a ng-href="/profiles/{{user.id}}">Past Orders</a></li>
+    <li ng-show="user"><a ng-href="/profiles/{{user.id}}">Account Info</a></li>
     <li ng-hide="user"><a ng-href="login">Login</a></li>
     <li ng-hide="user"><a ng-href="signup">Signup</a></li>
     <li class="divider"></li>
     <li ng-show="user"><a ng-click="logout()">Logout</a></li>
+    <li><a ng-href="cart">Find An Order</a></li>
   </ul>
   <nav>
     <div class="nav-wrapper">
@@ -27,11 +27,11 @@
         <li><a ng-href="contact">Email</a></li>
         <li><a ng-href="admin/products" ng-show="user && user.isAdmin">Admin</a></li>
         <li class="divider"></li>
-        <li><a ng-href="cart">Find An Order</a></li>
-        <li ng-show="user"><a ng-href="/profiles/{{user.id}}">Past Orders</a></li>
+        <li ng-show="user"><a ng-href="/profiles/{{user.id}}">Account Info</a></li>
         <li><a ng-href="login" ng-hide="user">Login</a></li>
         <li ng-hide="user"><a ng-href="signup">Signup</a></li>
         <li><a ng-click="logout()" ng-show="user">Logout</a></li>
+        <li><a ng-href="cart">Find An Order</a></li>
       </ul>
     </div>
   </nav>
