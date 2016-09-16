@@ -52,7 +52,7 @@ router.get('/', function(req, res, next) {
 })
 
 router.post('/signup', function(req, res, next) {
-    User.findOrCreate(req.body)
+    User.create(req.body)
     .then(function(user) {
         if (!user) {
             res.send('A user with that email already exists');

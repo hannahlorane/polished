@@ -94,6 +94,13 @@
                 });
         };
 
+        this.signup = function (credentials) {
+            return $http.post('/api/members/signup', credentials)
+                .catch(function () {
+                    return $q.reject({ message: 'A user with that info already exists.'});
+                })
+        }
+
         this.logout = function () {
             return $http.get('/logout').then(function () {
                 Session.destroy();
