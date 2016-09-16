@@ -12,7 +12,7 @@ app.controller('ProfilePageController', function ($scope, orders, user, AuthServ
   }
 
   $scope.sendPasswordUpdate = function(id, password) {
-    return AuthService.updatePassword(id, password)
+    return AuthService.updatePassword(id, {password: password, expiredPassword: false})
     .then(function() {
       $state.go('home');
     })

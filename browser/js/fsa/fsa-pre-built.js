@@ -101,8 +101,8 @@
                 })
         }
 
-        this.updatePassword = function (id, password) {
-            return $http.put('/api/members/' + id, {password: password, expiredPassword: false})
+        this.updatePassword = function (id, body) {
+            return $http.put('/api/members/' + id, body)
                 .catch(function () {
                     return $q.reject({ message: 'Error updating password.'});
                 })
