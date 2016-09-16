@@ -58,17 +58,26 @@ body {
     flex-direction: column;
   }
 
+p, h1, h2, h3 {
+  font-family: 'David Libre', serif;
+}
+
 #main {
   flex: 1 0 auto;
 }
 
-.card.small.horizontal {
+.card.medium.horizontal.catcard {
   overflow-x: scroll;
   overflow-y: hidden;
   margin-left: 3em;
+  padding-top: 1em;
 }
-.card-action {
-  opacity: 0;
+.prod-name {
+  display: block;
+  width: 300px;
+  text-align: center;
+  position: relative;
+  bottom: 40px;
 }
 ::-webkit-scrollbar {
   width: 0;
