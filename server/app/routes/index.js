@@ -3,6 +3,11 @@ var router = require('express').Router(); // eslint-disable-line new-cap
 var orderRouter = require('./orders');
 module.exports = router;
 
+router.use('/', function(req, res, next) {
+  console.log(req.session);
+  next();
+})
+
 router.use('/members', require('./members'));
 
 router.use('/products', require('./products'));
