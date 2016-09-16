@@ -1,25 +1,26 @@
 <div class="container">
 
   <div class="row valign">
-    <div class="col s9">
+    <div class="col s12">
       <h1>{{product.name}}</h1>
-      <div class="row">
-        <div class="col">
           <div class="card horizontal">
             <div class="card-image">
-              <img src="{{product.photo}}">
+              <!-- <img src="{{product.photo}}"> -->
+              <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="300px" height="300px" viewBox="0 0 300 300" preserveAspectRatio="xMidYMid meet" ><rect id="svgEditorBackground" x="0" y="0" width="300" height="300" style="stroke: none; fill: none;"/><rect x="95.4269256591797" y="139.93258666992188" stroke="black" id="e1_rectangle" style="stroke-width: 2px; stroke-linecap: round; stroke-linejoin: round;" width="108" height="128" fill=rgba({{product.rgbValue[0]}},{{product.rgbValue[1]}},{{product.rgbValue[2]}},1) rx="1" ry="1"/><rect x="125.17973327636722" y="23.370788574218743" stroke="black" id="e83_rectangle" style="stroke-width: 1px; stroke-linecap: round; stroke-linejoin: round;" width="47" height="115" fill="black"/></svg>
               <span class="card-title"></span>
             </div>
             <div class="card-stacked">
             <div class="card-content">
+              <h5><strong>Line:</strong> {{product.collection}}</h5>
               <h5><strong>Description:</strong> {{product.description}}</h5>
               <h5><strong>Price:</strong> ${{product.price}}</h5>
-              <h5><strong>Similar Items:</strong></h5>
-              <p ng-repeat="item in similar">
+              <h5><strong>Other Colors:</strong></h5>
+<!--               <div ng-repeat="item in similar" class="swatch-container">
                 <a ui-sref="singleProduct({id: item.id})">
-                  {{item.name}}
+                  <div class="swatch-box" style="background-color: rgba({{item.rgbValue[0]}},{{item.rgbValue[1]}},{{item.rgbValue[2]}},1)"></div>
                 </a>
-              </p>
+              </div> -->
+              <swatch similar=similar></swatch>
             </div>
             <div class="card-action">
               <a class="waves-effect waves-light btn" ng-click="addToCart()"><i class="material-icons">add_shopping_cart</i>Add to cart</a>
@@ -27,7 +28,6 @@
           </div>
           </div>
           <review product="product"></review>
-        </div>
       </div>
     </div>
    </div>

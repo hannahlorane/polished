@@ -64,3 +64,14 @@ body {
 #main {
   flex: 1 0 auto;
 }
+
+.swatch-container {
+  display: inline-block;
+  margin: 2px 2px 2px 2px;
+}
+
+.swatch-box {
+  width: 50px;
+  height: 50px;
+  border: 1px black solid;
+}

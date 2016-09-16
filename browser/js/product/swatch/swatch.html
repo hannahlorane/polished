@@ -1,0 +1,5 @@
+<div ng-repeat="item in similar" class="swatch-container">
+  <a ui-sref="singleProduct({id: item.id})">
+    <div class="swatch-box" style="background-color: rgba({{item.rgbValue[0]}},{{item.rgbValue[1]}},{{item.rgbValue[2]}},1)"></div>
+  </a>
+</div>
