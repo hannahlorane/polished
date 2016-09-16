@@ -14,6 +14,7 @@
         </div>
 
         <h5>Update Password</h5>
+        <h6 ng-if="user.expiredPassword" class="red-text">Please Update Your Password</h6>
         <div class="form-group">
           <label for="password">Password</label>
           <input name="password" type="password" ng-model="password" class="form-control" id="updatePassword-password" placeholder="Password" required>
