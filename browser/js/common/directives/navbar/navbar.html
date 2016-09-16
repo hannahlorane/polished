@@ -3,6 +3,7 @@
   <ul id="dropdown1" class="dropdown-content">
     <li><a ng-href="cart">Find An Order</a></li>
     <li ng-hide="user"><a ng-href="login">Login</a></li>
+    <li ng-hide="user"><a ng-href="signup">Signup</a></li>
     <li class="divider"></li>
     <li ng-show="user"><a ng-click="logout()">Logout</a></li>
   </ul>
@@ -28,6 +29,7 @@
         <li class="divider"></li>
         <li><a ng-href="cart">Find An Order</a></li>
         <li><a ng-href="login" ng-hide="user">Login</a></li>
+        <li ng-hide="user"><a ng-href="signup">Signup</a></li>
         <li><a ng-click="logout()" ng-show="user">Logout</a></li>
       </ul>
     </div>
