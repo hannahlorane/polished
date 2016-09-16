@@ -24,7 +24,7 @@
     <div class="col s10">
       <div class="row collect" >
         <div ng-repeat="collect in allCollections | selectedCollections:filteredCollections" class="card medium horizontal catcard">
-          <div class="card-image" ng-repeat="prod in products | collectionFilter:filteredCollections:collect | colorFilter:allColors:delta">
+          <div class="card-image" ng-repeat="prod in products | collectionFilter:filteredCollections:collect | colorFilter:filteredColors:assignColor">
             <div class="row"><bottle class="bottle" product="prod"></div>
             <div class="row"><p class=prod-name>{{prod.name}}</p></div>
           </div>

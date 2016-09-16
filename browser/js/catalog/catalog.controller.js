@@ -19,6 +19,31 @@ app.controller('catalogController', function ($scope, productFactory, products, 
     Dark: [0, 0, 0]
   };
 
+  $scope.vectorDistance = function (v1, v2) {
+    var squareSum = 0;
+    for (var i = 0; i < v1.length; i++) {
+      squareSum += Math.pow(v2[i] - v1[i], 2);
+    }
+    return Math.sqrt(squareSum);
+  }
+
+  $scope.assignColor = function (item) {
+    // console.log(item);
+    var closest = [null, Number.POSITIVE_INFINITY];
+    for (var c in $scope.allColors) {
+      var d = $scope.vectorDistance(item.rgbValue, $scope.allColors[c]);
+      // console.log(d);
+      // console.log(c);
+      if (d < closest[1]) {
+        // console.log("intheif");
+        closest[1] = d;
+        closest[0] = c;
+      }
+    }
+    // console.log(c);
+    return closest[0];
+  }
+
   $scope.toggleFilter = function (str, filterArray) {
     var index = filterArray.indexOf(str);
     if (index < 0) {
@@ -29,6 +54,19 @@ app.controller('catalogController', function ($scope, productFactory, products, 
   }
 })
 
+app.filter('colorFilter', function () {
+  return function (items, cols, assignColor) {
+    if (cols.length == 0) return items;
+    var filteredItems = [];
+    for (var i = 0; i < items.length; i++) {
+      // console.log(items[i]);
+      if (cols.indexOf(assignColor(items[i])) > -1) {
+        filteredItems.push(items[i]);
+      }
+    }
+    return filteredItems;
+  }
+});
 app.filter('selectedCollections', function () {
   return function (collections, filteredCollections) {
     var showTheseCols = [];
@@ -42,31 +80,6 @@ app.filter('selectedCollections', function () {
     return collections;
   }
 })
-
-app.filter('colorFilter', function () {
-
-  var vectorDistance = function (v1, v2) {
-    var squareSum = 0;
-    for (var i = 0; i < v1.length; i++) {
-      squareSum += Math.pow(v2[i] - v1[i], 2);
-    }
-    return Math.sqrt(squareSum);
-  }
-
-  return function (items, cols, delta) {
-    if (cols.length == 0) return items;
-    var filteredItems = [];
-    for (var i = 0; i < items.length; i++) {
-      for (var c in cols) {
-        if (vectorDistance(items.rgbValue, cols[c]) < delta) {
-          filteredItems.push(items[i]);
-          break;
-        }
-      }
-    }
-    if (filteredItems.length == 0) return items;
-    else return filteredItems;
-  }
 
   // return function (items, cols, allColors) { // eslint-disable-line complexity
   //   if (cols.length > 0) {
@@ -92,7 +105,7 @@ app.filter('colorFilter', function () {
   //     return items;
   //   }
   // }
-});
+// });
 
 app.filter('collectionFilter', function () {
   return function (items, cols, extraCol) {
