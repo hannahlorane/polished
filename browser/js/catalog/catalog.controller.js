@@ -1,6 +1,6 @@
 
 
-app.controller('catalogController', function ($scope, products, allCollections) {
+app.controller('catalogController', function ($scope, productFactory, products, allCollections) {
   $scope.products = products;
   $scope.allCollections = allCollections;
   $scope.filteredCollections = [];
@@ -26,6 +26,9 @@ app.controller('catalogController', function ($scope, products, allCollections) 
     }
   }
 })
+
+
+
 
 app.filter('colorFilter', function () {
   return function (items, cols, allColors) { // eslint-disable-line complexity
@@ -55,7 +58,8 @@ app.filter('colorFilter', function () {
 });
 
 app.filter('collectionFilter', function () {
-  return function (items, cols) {
+  return function (items, cols, extraCol) {
+    if (extraCol) cols = [extraCol];
     if (cols.length > 0) {
       var filtered = [];
       for (var i = 0; i < items.length; i++) {
@@ -71,5 +75,23 @@ app.filter('collectionFilter', function () {
     }
   }
 });
+
+// app.filter('collectionFilter', function () {
+//   return function (items, cols) {
+//     if (cols.length > 0) {
+//       var filtered = [];
+//       for (var i = 0; i < items.length; i++) {
+//         if (cols.indexOf(items[i].collection) > -1) {
+//           filtered.push(items[i]);
+//         }
+//       }
+//       if (filtered) return filtered;
+//       else return items;
+//     }
+//     else {
+//       return items;
+//     }
+//   }
+// });
 
 /* eslint-enable complexity id-length */

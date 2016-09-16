@@ -22,6 +22,18 @@
       </div>
     </div>
     <div class="col s10">
+      <div class="row collect" >
+        <div ng-repeat="collect in allCollections "class="card small horizontal">
+          <div class="card-image" ng-repeat="prod in products | collectionFilter:filteredCollections:collect">
+            <bottle product="prod">
+          </div>
+          <div class="card-action">
+            <a href="#">{{collect}}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="col s10">
       <table>
         <thead>
           <tr>
@@ -32,7 +44,7 @@
             <th></th>
           </tr>
         </thead>
-        <tbody>
+        <!-- <tbody>
           <tr ng-repeat="item in products | colorFilter:filteredColors:allColors | collectionFilter:filteredCollections">
             <td>
               <a ui-sref="singleProduct({id: item.id})">
@@ -44,8 +56,8 @@
             <td>{{item.collection}}</td>
             <td>Add To Cart Button</td>
           </tr>
-        </tbody>
+        </tbody> -->
       </table>
-    </div>
+    </div> -->
   </div>
 </div>

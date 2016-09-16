@@ -51,9 +51,6 @@ table {
 .productImage {
   height: 17em;
 }
-.showMeThisDiv {
-  background-color: yellow;
-}
 
 body {
     display: flex;
@@ -63,6 +60,11 @@ body {
 
 #main {
   flex: 1 0 auto;
+}
+
+.card.small.horizontal {
+  overflow-x: scroll;
+  overflow-y: hidden;
 }
 
 .swatch-container {
