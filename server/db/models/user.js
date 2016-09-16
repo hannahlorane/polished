@@ -29,7 +29,11 @@ module.exports = db.define('user', {
     isAdmin: {
         type: Sequelize.BOOLEAN,
         defaultValue: false
-    }
+    },
+    expiredPassword: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: false
+    },
 }, {
     instanceMethods: {
         sanitize: function () {

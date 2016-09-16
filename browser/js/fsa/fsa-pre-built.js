@@ -101,6 +101,13 @@
                 })
         }
 
+        this.updatePassword = function (id, password) {
+            return $http.put('/api/members/' + id, {password: password})
+                .catch(function () {
+                    return $q.reject({ message: 'Error updating password.'});
+                })
+        }
+
         this.logout = function () {
             return $http.get('/logout').then(function () {
                 Session.destroy();
