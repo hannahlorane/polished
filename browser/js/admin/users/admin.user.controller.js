@@ -1,4 +1,4 @@
-app.controller('AdminUserController', function ($scope, $state, users, AdminFactory) {
+app.controller('AdminUserController', function ($scope, $state, users, AdminFactory, AuthService) {
   $scope.users = users;
 
   $scope.toggleAdmin = function(id) {
@@ -18,5 +18,9 @@ app.controller('AdminUserController', function ($scope, $state, users, AdminFact
     })
 
     return AdminFactory.deleteUser(id)
+  }
+
+  $scope.requirePasswordUpdate = function(id) {
+    return AuthService.updatePassword(id, {expiredPassword: true})
   }
 });
