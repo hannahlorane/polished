@@ -15,8 +15,8 @@ app.controller('productController', function (CartFactory, productFactory, $scop
     }).then(console.log('Similar', $scope.similar));
 
   $scope.addToCart = function () {
-    if (!localStorage[product.id]) {
-      localStorage.setItem(product.id, 1);
+    if (!localStorage[$scope.product.id]) {
+      localStorage.setItem($scope.product.id, [1, $scope.product.price, $scope.product.name]);
     }
   };
 });
