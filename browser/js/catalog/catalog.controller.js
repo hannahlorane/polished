@@ -18,6 +18,8 @@ app.controller('catalogController', function ($scope, productFactory, products, 
     Light: [255, 255, 255],
     Dark: [0, 0, 0]
   };
+  $scope.collectionView = true;
+  console.log($scope.collectionView);
 
   $scope.vectorDistance = function (v1, v2) {
     var squareSum = 0;
@@ -28,23 +30,19 @@ app.controller('catalogController', function ($scope, productFactory, products, 
   }
 
   $scope.assignColor = function (item) {
-    // console.log(item);
     var closest = [null, Number.POSITIVE_INFINITY];
     for (var c in $scope.allColors) {
       var d = $scope.vectorDistance(item.rgbValue, $scope.allColors[c]);
-      // console.log(d);
-      // console.log(c);
       if (d < closest[1]) {
-        // console.log("intheif");
         closest[1] = d;
         closest[0] = c;
       }
     }
-    // console.log(c);
     return closest[0];
   }
 
-  $scope.toggleFilter = function (str, filterArray) {
+  $scope.toggleFilter = function (str, filterArray, colBool) {
+    $scope.collectionView = colBool;
     var index = filterArray.indexOf(str);
     if (index < 0) {
       filterArray.push(str);
