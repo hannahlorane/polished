@@ -1,0 +1,21 @@
+<div class="container">
+  <h3>Past Orders</h3>
+  <table>
+    <thead>
+      <tr>
+        <td>Order #</td>
+        <td>Order Status</td>
+        <td>Date Placed</td>
+        <td>Total Paid</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="order in orders">
+        <td><a ui-sref="singleCart({cartId: order.id})">{{order.id}}</a></td>
+        <td>{{order.status}}</td>
+        <td>{{getDate(order.dateSubmitted)}}</td>
+        <td>${{order.total}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

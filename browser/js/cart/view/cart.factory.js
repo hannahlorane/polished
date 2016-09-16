@@ -28,6 +28,13 @@ app.factory('CartFactory', function ($http) {
       })
     },
 
+    getUserOrders: function(userId) {
+      return $http.get('/api/orders/history/' + userId)
+      .then(function(response) {
+        return response.data;
+      })
+    },
+
     makePurchase: function(cartId, total, customer) {
       var firstName = customer.firstName;
       var lastName = customer.lastName;
