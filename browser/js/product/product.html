@@ -1,25 +1,26 @@
 <div class="container">
 
   <div class="row valign">
-    <div class="col s9">
+    <div class="col s12">
       <h1>{{product.name}}</h1>
-      <div class="row">
-        <div class="col">
           <div class="card horizontal">
             <div class="card-image">
-              <img src="{{product.photo}}">
+              <bottle product=product></bottle>
               <span class="card-title"></span>
             </div>
             <div class="card-stacked">
             <div class="card-content">
-              <h5><strong>Description:</strong> {{product.description}}</h5>
-              <h5><strong>Price:</strong> ${{product.price}}</h5>
-              <h5><strong>Similar Items:</strong></h5>
-              <p ng-repeat="item in similar">
-                <a ui-sref="singleProduct({id: item.id})">
-                  {{item.name}}
-                </a>
-              </p>
+              <div class="row">
+              <div class="col s8">
+              <h4>{{product.collection}}</h4>
+              </div>
+              <div class="col s4">
+                <h5>${{product.price}}</h5>
+              </div>
+              </div>
+              <h6>{{product.description.toUpperCase()}}</h6>
+              <h6>Other Colors</h6>
+              <swatch similar=similar></swatch>
             </div>
             <div class="card-action">
               <a class="waves-effect waves-light btn" ng-click="addToCart()"><i class="material-icons">add_shopping_cart</i>Add to cart</a>
@@ -27,7 +28,6 @@
           </div>
           </div>
           <review product="product"></review>
-        </div>
       </div>
     </div>
    </div>
