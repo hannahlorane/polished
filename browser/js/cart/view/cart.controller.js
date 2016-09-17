@@ -1,4 +1,4 @@
-app.controller('CartController', function ($scope, theCart) {
+app.controller('CartController', function ($rootScope, $scope, theCart) {
   $scope.cart = theCart;
   $scope.completed = false;
   $scope.checkout = false;
@@ -37,6 +37,7 @@ app.controller('CartController', function ($scope, theCart) {
     })
 
     delete localStorage[prodId];
+    $rootScope.$broadcast('itemsChanged');
     return $scope.getTotal();
   }
 

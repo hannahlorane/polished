@@ -1,4 +1,4 @@
-app.controller('productController', function (CartFactory, productFactory, $scope, product) {
+app.controller('productController', function ($rootScope, CartFactory, productFactory, $scope, product) {
   $scope.product = product;
   console.log(product);
   $scope.testModel = './test.json';
@@ -18,5 +18,7 @@ app.controller('productController', function (CartFactory, productFactory, $scop
     if (!localStorage[$scope.product.id]) {
       localStorage.setItem($scope.product.id, [1, $scope.product.price, $scope.product.name]);
     }
+
+    $rootScope.$broadcast('itemsChanged');
   };
 });
