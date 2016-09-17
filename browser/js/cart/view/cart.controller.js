@@ -4,9 +4,11 @@ app.controller('CartController', function ($scope, theCart, CartFactory) {
   $scope.checkout = false;
 
   $scope.getTotal = function () {
-    $scope.cart.total = 0;
-    for (var i = 0; i < $scope.cart.products.length; i++) {
-      $scope.cart.total = +$scope.cart.total + $scope.cart.products[i].price * $scope.cart.products[i].OrderProducts.quantity;
+    if ($scope.cart.products && $scope.cart) {
+      $scope.cart.total = 0;
+      for (var i = 0; i < $scope.cart.products.length; i++) {
+        $scope.cart.total = +$scope.cart.total + $scope.cart.products[i].price * $scope.cart.products[i].OrderProducts.quantity;
+      }
     }
   }
 
@@ -27,7 +29,6 @@ app.controller('CartController', function ($scope, theCart, CartFactory) {
 
   console.log('localstorage', localStorage);
   console.log('cart', $scope.cart);
-  // localStorage.clear();
 
   if ($scope.cart.status && $scope.cart.status !== 'incomplete') {
     $scope.completed = true;

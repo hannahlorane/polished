@@ -1,5 +1,10 @@
-<div class="card-panel white">
+<div class="card-panel" ng-hide="user.id">
+  <p>Want to link this order to an account? <a ng-href="login" class="waves-effect waves-light btn">sign in</a> or <a ng-href="signup" class="waves-effect waves-light btn">sign up</a></p>
+</div>
+
+<div class="card-panel">
   <h3>Checkout</h3>
+
   <div class="container">
     <form name="checkoutForm" novalidate>
       <div class="row">

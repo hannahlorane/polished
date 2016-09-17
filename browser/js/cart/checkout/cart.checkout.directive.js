@@ -1,4 +1,4 @@
-app.directive('checkout', function ($rootScope, $state, CartFactory, EmailFactory) {
+app.directive('checkout', function ($rootScope, $state, CartFactory, EmailFactory, AuthService) {
 
   return {
     restrict: 'E',
@@ -20,6 +20,16 @@ app.directive('checkout', function ($rootScope, $state, CartFactory, EmailFactor
           $state.go('confirmation');
         });
       }
+
+      scope.user = null;
+
+      var setUser = function () {
+        AuthService.getLoggedInUser().then(function (user) {
+          scope.user = user;
+        });
+      };
+
+      setUser();
     }
   };
 
