@@ -35,7 +35,7 @@ app.factory('CartFactory', function ($http) {
       })
     },
 
-    makePurchase: function(cartId, total, customer) {
+    makePurchase: function(userId, total, customer) {
       var firstName = customer.firstName;
       var lastName = customer.lastName;
       var address = customer.address;
@@ -43,7 +43,8 @@ app.factory('CartFactory', function ($http) {
       var state = customer.state;
       var email = customer.email;
 
-      return $http.put('/api/orders/' + cartId, {
+      return $http.post('/api/orders/', {
+        userId: userId,
         total: total,
         status: 'processing',
         firstName: firstName,
