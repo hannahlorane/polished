@@ -32,6 +32,15 @@
             <a href="#">{{collect}}</a>
           </div>
         </div>
+        <div ng-hide="collectionView" ng-repeat="color in allColors | selectedColors:filteredColors" class="card medium horizontal catcard">
+          <div class="card-image" ng-repeat="prod in products | collectionFilter:filteredCollections:collect | colorFilter:[color]:assignColor">
+            <div class="row"><bottle class="bottle" product="prod"></div>
+            <div class="row"><p class=prod-name>{{prod.name}}</p></div>
+          </div>
+          <div class="card-action">
+            <a href="#">{{color}}</a>
+          </div>
+        </div>
       </div>
     </div>
       </table>

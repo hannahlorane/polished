@@ -19,7 +19,6 @@ app.controller('catalogController', function ($scope, productFactory, products, 
     Dark: [0, 0, 0]
   };
   $scope.collectionView = true;
-  console.log($scope.collectionView);
 
   $scope.vectorDistance = function (v1, v2) {
     var squareSum = 0;
@@ -52,9 +51,29 @@ app.controller('catalogController', function ($scope, productFactory, products, 
   }
 })
 
+app.filter('selectedColors', function () {
+  return function (colors, filteredColors) {
+    var showTheseCols = [];
+    // console.log(colors);
+    if (filteredColors.length == 0) {
+      return colors;
+    }
+    for (var c in colors) {
+      console.log(c);
+      if (filteredColors.indexOf(c) > -1) {
+        showTheseCols.push(c);
+        console.log(showTheseCols);
+      }
+    }
+    if (showTheseCols) return showTheseCols;
+    return colors;
+  }
+})
+
 app.filter('colorFilter', function () {
   return function (items, cols, assignColor) {
     if (cols.length == 0) return items;
+    console.log('COLS', cols);
     var filteredItems = [];
     for (var i = 0; i < items.length; i++) {
       // console.log(items[i]);
