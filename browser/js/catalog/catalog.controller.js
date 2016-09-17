@@ -18,6 +18,7 @@ app.controller('catalogController', function ($scope, productFactory, products, 
     Light: [255, 255, 255],
     Dark: [0, 0, 0]
   };
+  $scope.collectionView = true;
 
   $scope.vectorDistance = function (v1, v2) {
     var squareSum = 0;
@@ -28,23 +29,19 @@ app.controller('catalogController', function ($scope, productFactory, products, 
   }
 
   $scope.assignColor = function (item) {
-    // console.log(item);
     var closest = [null, Number.POSITIVE_INFINITY];
     for (var c in $scope.allColors) {
       var d = $scope.vectorDistance(item.rgbValue, $scope.allColors[c]);
-      // console.log(d);
-      // console.log(c);
       if (d < closest[1]) {
-        // console.log("intheif");
         closest[1] = d;
         closest[0] = c;
       }
     }
-    // console.log(c);
     return closest[0];
   }
 
-  $scope.toggleFilter = function (str, filterArray) {
+  $scope.toggleFilter = function (str, filterArray, colBool) {
+    $scope.collectionView = colBool;
     var index = filterArray.indexOf(str);
     if (index < 0) {
       filterArray.push(str);
@@ -54,9 +51,29 @@ app.controller('catalogController', function ($scope, productFactory, products, 
   }
 })
 
+app.filter('selectedColors', function () {
+  return function (colors, filteredColors) {
+    var showTheseCols = [];
+    // console.log(colors);
+    if (filteredColors.length == 0) {
+      return colors;
+    }
+    for (var c in colors) {
+      console.log(c);
+      if (filteredColors.indexOf(c) > -1) {
+        showTheseCols.push(c);
+        console.log(showTheseCols);
+      }
+    }
+    if (showTheseCols) return showTheseCols;
+    return colors;
+  }
+})
+
 app.filter('colorFilter', function () {
   return function (items, cols, assignColor) {
     if (cols.length == 0) return items;
+    console.log('COLS', cols);
     var filteredItems = [];
     for (var i = 0; i < items.length; i++) {
       // console.log(items[i]);

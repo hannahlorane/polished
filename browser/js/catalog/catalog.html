@@ -7,23 +7,23 @@
   <div class="row">
     <div class="col s2">
       <div class="row">
-        <p>Filter by Collection: </p>
+        <p> Filter by Collection: </p>
         <form action="#" ng-repeat="collection in allCollections">
-          <input type="checkbox" ng-click="toggleFilter(collection, filteredCollections)" id={{collection}}>
+          <input type="checkbox" ng-click="toggleFilter(collection, filteredCollections, true)" id={{collection}}>
           <label for={{collection}}>{{collection}}</label>
         </form>
       </div>
       <div class="row">
         <p>Filter by Color: </p>
         <form action="#" ng-repeat="(color, val) in allColors">
-          <input type="checkbox" ng-click="toggleFilter(color, filteredColors)" id={{color}}>
+          <input type="checkbox" ng-click="toggleFilter(color, filteredColors, false)" id={{color}}>
           <label for={{color}}>{{color}}</label>
         </form>
       </div>
     </div>
     <div class="col s10">
       <div class="row collect" >
-        <div ng-repeat="collect in allCollections | selectedCollections:filteredCollections" class="card medium horizontal catcard">
+        <div ng-show="collectionView" ng-repeat="collect in allCollections | selectedCollections:filteredCollections" class="card medium horizontal catcard">
           <div class="card-image" ng-repeat="prod in products | collectionFilter:filteredCollections:collect | colorFilter:filteredColors:assignColor">
             <div class="row"><bottle class="bottle" product="prod"></div>
             <div class="row"><p class=prod-name>{{prod.name}}</p></div>
@@ -32,32 +32,17 @@
             <a href="#">{{collect}}</a>
           </div>
         </div>
+        <div ng-hide="collectionView" ng-repeat="color in allColors | selectedColors:filteredColors" class="card medium horizontal catcard">
+          <div class="card-image" ng-repeat="prod in products | collectionFilter:filteredCollections:collect | colorFilter:[color]:assignColor">
+            <div class="row"><bottle class="bottle" product="prod"></div>
+            <div class="row"><p class=prod-name>{{prod.name}}</p></div>
+          </div>
+          <div class="card-action">
+            <a href="#">{{color}}</a>
+          </div>
+        </div>
       </div>
     </div>
-    <!-- <div class="col s10">
-      <table>
-        <thead>
-          <tr>
-            <th data-field="name">Item Name</th>
-            <th data-field="price">Price</th>
-            <th data-field="description">Description</th>
-            <th data-field="collection">Collection</th>
-            <th></th>
-          </tr>
-        </thead>
-        <!-- <tbody>
-          <tr ng-repeat="item in products | colorFilter:filteredColors:allColors | collectionFilter:filteredCollections">
-            <td>
-              <a ui-sref="singleProduct({id: item.id})">
-                {{item.name}}
-              </a>
-            </td>
-            <td>{{item.price}}</td>
-            <td>{{item.description}}</td>
-            <td>{{item.collection}}</td>
-            <td>Add To Cart Button</td>
-          </tr>
-        </tbody> -->
       </table>
     </div>
   </div>
