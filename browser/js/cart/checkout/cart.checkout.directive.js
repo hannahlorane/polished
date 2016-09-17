@@ -18,18 +18,19 @@ app.directive('checkout', function ($rootScope, $state, CartFactory, EmailFactor
       setUser();
 
       scope.buy = function(customer) {
-        return CartFactory.makePurchase(scope.user, scope.cart.total, customer)
-        .then(function() {
-          var userId;
+        var userId;
 
-          if (scope.user) {
-            userId = scope.user.id;
-          } else {
-            userId = null;
-          }
+        if (scope.user) {
+          userId = scope.user.id;
+        } else {
+          userId = null;
+        }
+
+        return CartFactory.makePurchase(userId, scope.cart, customer)
+        .then(function(response) {
 
           return EmailFactory.order({
-            id: userId,
+            id: response.id,
             email: scope.customer.email,
             name: scope.customer.firstName + ' ' + scope.customer.lastName
           })
