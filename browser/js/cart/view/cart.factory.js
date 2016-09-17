@@ -14,13 +14,6 @@ app.factory('CartFactory', function ($http) {
       })
     },
 
-    deleteOrderProduct: function(cartId, productId) {
-      return $http.delete('/api/orders/' + cartId + '/products/' + productId)
-      .then(function(response) {
-        return response.data;
-      })
-    },
-
     updateOrder: function(cartId, productId, qty) {
       return $http.put('/api/orders/' + cartId + '/products/' + productId, {quantity: qty})
       .then(function(response) {
@@ -35,7 +28,7 @@ app.factory('CartFactory', function ($http) {
       })
     },
 
-    makePurchase: function(cartId, total, customer) {
+    makePurchase: function(userId, customer) {
       var firstName = customer.firstName;
       var lastName = customer.lastName;
       var address = customer.address;
@@ -43,8 +36,9 @@ app.factory('CartFactory', function ($http) {
       var state = customer.state;
       var email = customer.email;
 
-      return $http.put('/api/orders/' + cartId, {
-        total: total,
+      return $http.post('/api/orders/', {
+        userId: userId,
+        total: cart.total,
         status: 'processing',
         firstName: firstName,
         lastName: lastName,
@@ -54,7 +48,23 @@ app.factory('CartFactory', function ($http) {
         email: email,
         dateSubmitted: new Date()
       })
+      .then(function(orderResponse) {
+        var products = cart.products.map(function(product) {
+          return {
+            productId: product.id,
+            quantity: product.OrderProducts.quantity
+          }
+        })
+
+        products.map(function (orderProductsObj) {
+          return $http.post('/api/orders/' + orderResponse.data.id + '/products', orderProductsObj)
+        })
+
+        return orderResponse;
+
+      })
       .then(function(response) {
+        localStorage.clear();
         return response.data;
       })
     }

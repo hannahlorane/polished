@@ -14,7 +14,7 @@
       <a href="#" data-activates="mobile-demo" class="button-collapse hide-on-med-and-up"><i class="material-icons">menu</i></a>
       <ul class="right hide-on-small-and-down">
         <li><a ng-href="catalog"><i class="material-icons">search</i></a></li>
-        <li><a ui-sref="singleCart({})"><i class="material-icons">shopping_cart</i></a></li>
+        <li class="shopping-cart"><a ui-sref="singleCart({})"><i class="material-icons">shopping_cart</i> <span ng-if="itemsInCart" class="new badge">{{itemsInCart}}</span></a></li>
         <li><a ng-href="contact"><i class="material-icons">email</i></a></li>
         <li><a ng-href="admin/products" ng-show="user && user.isAdmin"><i class="material-icons">build</i></a></li>
         <!-- Dropdown Trigger -->
@@ -23,7 +23,7 @@
 
       <ul class="side-nav" id="mobile-demo">
         <li><a ng-href="catalog">Search</a></li>
-        <li><a ng-href="cart">Shopping Cart</a></li>
+        <li><a ng-href="cart">Shopping Cart <span class="new badge">4</span></a></li>
         <li><a ng-href="contact">Email</a></li>
         <li><a ng-href="admin/products" ng-show="user && user.isAdmin">Admin</a></li>
         <li class="divider"></li>

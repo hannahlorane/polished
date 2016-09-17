@@ -238,54 +238,6 @@ var seedReviews = function () {
     return Promise.all(creatingReviews);
 }
 
-var seedOrders = function () {
-    var orders = [
-        {
-            userId: 1
-        },
-        {
-            userId: 2
-        }
-    ]
-
-    var creatingOrders = orders.map(function (orderObj) {
-        return Order.create(orderObj);
-    })
-
-    return Promise.all(creatingOrders);
-}
-
-var seedOrderProducts = function () {
-    var orderProducts = [
-        {
-            quantity: 5,
-            orderId: 1,
-            productId: 2
-        },
-        {
-            quantity: 2,
-            orderId: 1,
-            productId: 4
-        },
-        {
-            quantity: 10,
-            orderId: 2,
-            productId: 1
-        },
-        {
-            quantity: 3,
-            orderId: 2,
-            productId: 3
-        }
-    ]
-
-    var creatingOrderProducts = orderProducts.map(function (orderProductsObj) {
-        return OrderProducts.create(orderProductsObj);
-    })
-
-    return Promise.all(creatingOrderProducts);
-}
-
 db.sync({force: true})
     .then(function () {
         return seedUsers();
@@ -295,12 +247,6 @@ db.sync({force: true})
     })
     .then(function () {
         return seedReviews();
-    })
-    .then(function () {
-        return seedOrders();
-    })
-    .then(function () {
-        return seedOrderProducts();
     })
     .then(function () {
         console.log(chalk.green('Seed successful!'));

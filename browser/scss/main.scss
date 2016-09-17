@@ -93,3 +93,14 @@ p, h1, h2, h3 {
   height: 50px;
   border: 1px black solid;
 }
+
+.shopping-cart {
+  position: relative;
+}
+
+.shopping-cart .badge {
+  position: absolute;
+  line-height: initial;
+  bottom: 5px;
+  left: 3px;
+}

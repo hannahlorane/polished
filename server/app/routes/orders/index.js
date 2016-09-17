@@ -67,7 +67,7 @@ router.put('/:id', function (req, res, next) {
       .catch(next);
 });
 
-//POSTs a new order to the db without a user
+//POSTs a new order to the db
 router.post('/', function (req, res, next) {
   Order.create(req.body)
     .then(function (result) {
@@ -76,8 +76,7 @@ router.post('/', function (req, res, next) {
     .catch(next);
 });
 
-//POSTs a new order to the db with a user
-//UNTESTED
+// Gets a user's order history
 router.post('/history/:userId', function (req, res, next) {
   var order = Order.build(req.body);
   order.set({userId: req.params.userId});

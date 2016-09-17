@@ -1,4 +1,4 @@
-app.directive('navbar', function ($rootScope, AuthService, AUTH_EVENTS, $state) {
+app.directive('navbar', function ($rootScope, AuthService, AUTH_EVENTS, $state, CartFactory) {
 
     return {
         restrict: 'E',
@@ -7,6 +7,15 @@ app.directive('navbar', function ($rootScope, AuthService, AUTH_EVENTS, $state) 
         link: function (scope) {
 
             scope.user = null;
+            scope.itemsInCart = null;
+
+            function getItemsInCart() {
+                return localStorage.length;
+            }
+
+            $rootScope.$on('itemsChanged', function() {
+                scope.itemsInCart = getItemsInCart();
+            });
 
             scope.isLoggedIn = function () {
                 return AuthService.isAuthenticated();
