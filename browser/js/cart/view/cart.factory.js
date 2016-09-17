@@ -14,13 +14,6 @@ app.factory('CartFactory', function ($http) {
       })
     },
 
-    deleteOrderProduct: function(cartId, productId) {
-      return $http.delete('/api/orders/' + cartId + '/products/' + productId)
-      .then(function(response) {
-        return response.data;
-      })
-    },
-
     updateOrder: function(cartId, productId, qty) {
       return $http.put('/api/orders/' + cartId + '/products/' + productId, {quantity: qty})
       .then(function(response) {
@@ -35,7 +28,7 @@ app.factory('CartFactory', function ($http) {
       })
     },
 
-    makePurchase: function(userId, cart, customer) {
+    makePurchase: function(userId, customer) {
       var firstName = customer.firstName;
       var lastName = customer.lastName;
       var address = customer.address;

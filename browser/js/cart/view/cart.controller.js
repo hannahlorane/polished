@@ -1,4 +1,4 @@
-app.controller('CartController', function ($scope, theCart, CartFactory) {
+app.controller('CartController', function ($scope, theCart) {
   $scope.cart = theCart;
   $scope.completed = false;
   $scope.checkout = false;
@@ -17,18 +17,13 @@ app.controller('CartController', function ($scope, theCart, CartFactory) {
     $scope.date = $scope.date.getMonth() + '/' + $scope.date.getDay() + '/' + $scope.date.getFullYear();
   } else if (localStorage.length > 0){
     $scope.cart = {products: []};
-    for (var key in localStorage) {
+    for (var key in localStorage) { //eslint-disable-line
       var prodInfo = localStorage[key].match(/(\d+),(\d+.\d+),(.+)/);
       var productId = key;
-      console.log('prodinfo', prodInfo);
       $scope.cart.products.push({id: productId, name: prodInfo[3], OrderProducts: {quantity: prodInfo[1]}, price: prodInfo[2]})
       $scope.getTotal();
     }
   }
-
-
-  console.log('localstorage', localStorage);
-  console.log('cart', $scope.cart);
 
   if ($scope.cart.status && $scope.cart.status !== 'incomplete') {
     $scope.completed = true;
@@ -40,7 +35,9 @@ app.controller('CartController', function ($scope, theCart, CartFactory) {
     $scope.cart.products = $scope.cart.products.filter(function(product) {
       return product.id !== prodId;
     })
-    return CartFactory.deleteOrderProduct(id, prodId);
+
+    delete localStorage[prodId];
+    return $scope.getTotal();
   }
 
   $scope.incrementQty = function(id, prodId) {
@@ -49,18 +46,10 @@ app.controller('CartController', function ($scope, theCart, CartFactory) {
     })
 
     var quantity = ++product[0].OrderProducts.quantity;
+    var prodInfoMatch = localStorage[key].match(/(\d+),(\d+.\d+),(.+)/);
 
-    if (!id) {
-      var prodInfoMatch = localStorage[key].match(/(\d+),(\d+.\d+),(.+)/);
-      var qty = +prodInfoMatch[1] + 1;
-      console.log('qty', qty);
-      localStorage[prodId] = [qty, prodInfoMatch[2], prodInfoMatch[3]];
-    } else {
-      return CartFactory.updateOrder(id, prodId, quantity)
-      .then(function() {
-        return $scope.getTotal();
-      });
-    }
+    localStorage[prodId] = [quantity, prodInfoMatch[2], prodInfoMatch[3]];
+    $scope.getTotal();
   }
 
   $scope.decrementQty = function(id, prodId) {
@@ -68,18 +57,12 @@ app.controller('CartController', function ($scope, theCart, CartFactory) {
       return item.id === prodId;
     })
 
-    var quantity = --product[0].OrderProducts.quantity;
-
-    if (!id) {
+    if (product[0].OrderProducts.quantity > 1) {
+      var quantity = --product[0].OrderProducts.quantity;
       var prodInfoMatch = localStorage[key].match(/(\d+),(\d+.\d+),(.+)/);
-      var qty = +prodInfoMatch[1] - 1;
-      console.log('qty', qty);
-      localStorage[prodId] = [qty, prodInfoMatch[2], prodInfoMatch[3]];
-    } else {
-      return CartFactory.updateOrder(id, prodId, quantity)
-      .then(function() {
-        return $scope.getTotal();
-      });
+
+      localStorage[prodId] = [quantity, prodInfoMatch[2], prodInfoMatch[3]];
+      $scope.getTotal();
     }
   }
 
