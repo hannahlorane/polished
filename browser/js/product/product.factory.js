@@ -24,6 +24,12 @@ app.factory('productFactory', function ($http) {
           return reviews.data;
         });
     },
+    postReview: function(id, body) {
+      return $http.post('/api/products/' + id + '/reviews/', body)
+      .then(function (review) {
+        return review;
+      })
+    },
     getAllCollections: function () {
       return $http.get('/api/products')
         .then(function (prods) {

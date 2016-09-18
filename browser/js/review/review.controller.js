@@ -1,13 +1,13 @@
-app.controller('ReviewController', function ( $scope, $stateParams, ReviewFactory) {
+app.controller('ReviewController', function ( $scope, $stateParams, ReviewFactory, productFactory, $state) {
 
-  console.log('this is productid' + $scope.product.id)
+
   $scope.addReview = function(id, body) {
-    console.log('in add Review')
-    return ReviewFactory.addReview(id, body)
+    return productFactory.postReview(id, body)
     .then(function() {
-      $state.go('/');
+      $state.go('singleProduct');
     });
   }
+
 });
 
 
