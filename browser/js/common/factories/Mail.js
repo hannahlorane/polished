@@ -15,5 +15,19 @@ app.factory('EmailFactory', function ($http) {
     })
   }
 
+  email.complete = function(body) {
+    return $http.post('/api/emails/complete', body)
+    .then(function(response) {
+      return response;
+    })
+  }
+
+  email.cancel = function(body) {
+    return $http.post('/api/emails/cancel', body)
+    .then(function(response) {
+      return response;
+    })
+  }
+
   return email;
 })
