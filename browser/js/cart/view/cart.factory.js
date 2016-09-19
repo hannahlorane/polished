@@ -28,7 +28,7 @@ app.factory('CartFactory', function ($http) {
       })
     },
 
-    makePurchase: function(userId, customer) {
+    makePurchase: function(userId, shoppingCart, customer) {
       var firstName = customer.firstName;
       var lastName = customer.lastName;
       var address = customer.address;
@@ -38,7 +38,7 @@ app.factory('CartFactory', function ($http) {
 
       return $http.post('/api/orders/', {
         userId: userId,
-        total: cart.total,
+        total: shoppingCart.total,
         status: 'processing',
         firstName: firstName,
         lastName: lastName,
@@ -49,7 +49,7 @@ app.factory('CartFactory', function ($http) {
         dateSubmitted: new Date()
       })
       .then(function(orderResponse) {
-        var products = cart.products.map(function(product) {
+        var products = shoppingCart.products.map(function(product) {
           return {
             productId: product.id,
             quantity: product.OrderProducts.quantity

@@ -8,7 +8,7 @@ var Order = db.define('order', {
     defaultValue: 0
   },
   status: {
-    type: Sequelize.ENUM('incomplete', 'processing', 'cancelled', 'completed'), // eslint-disable-line new-cap
+    type: Sequelize.ENUM('incomplete', 'processing', 'cancelled', 'shipped', 'delivered'), // eslint-disable-line new-cap
     defaultValue: 'incomplete',
     allowNull: false
   },

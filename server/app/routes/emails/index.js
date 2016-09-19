@@ -56,7 +56,7 @@ router.post('/order', function(req, res, next) {
   res.sendStatus(200);
 })
 
-router.post('/complete', function(req, res, next) {
+router.post('/ship', function(req, res, next) {
     var transporter = nodemailer.createTransport({
       service: 'Gmail',
       auth: {
@@ -95,8 +95,35 @@ router.post('/cancel', function(req, res, next) {
     var mailOptions = {
       to: req.body.email, // list of receivers
       subject: 'Your Polished Order Has Been Cancelled', // Subject line
-      text: `Hello. Order number ${req.body.id} has been shipped.\n`, // plaintext body
+      text: `Hello. Order number ${req.body.id} has been cancelled.\n`, // plaintext body
       html: `<p>Hello.</p><p>Order number ${req.body.id} has been cancelled!</p>`
+    };
+
+    transporter.sendMail(mailOptions, function(error, info){
+        if (error){
+            return console.log(error);
+        }
+        console.log('Order cancelled: ' + info.response);
+    });
+
+    transporter.close();
+    res.sendStatus(200);
+})
+
+router.post('/deliver', function(req, res, next) {
+    var transporter = nodemailer.createTransport({
+      service: 'Gmail',
+      auth: {
+        user: secret.user,
+        pass: secret.password
+      }
+    });
+
+    var mailOptions = {
+      to: req.body.email, // list of receivers
+      subject: 'Your Polished Order Has Been Cancelled', // Subject line
+      text: `Hello. Order number ${req.body.id} has been delivered!\n`, // plaintext body
+      html: `<p>Hello.</p><p>Order number ${req.body.id} has been delivered!</p>`
     };
 
     transporter.sendMail(mailOptions, function(error, info){
