@@ -4,7 +4,7 @@ app.factory('LocalStorage', function () {
   var localCart = null;
 
   function addItemsToCart() {
-    if (localStorage.length > 0 && !localCart) {
+    if (localStorage.length > 0) {
       localCart = {products: []};
 
       for (var key in localStorage) { //eslint-disable-line

@@ -1,5 +1,4 @@
 app.controller('CartController', function ($rootScope, $scope, theCart, LocalStorage) {
-  $scope.cart = theCart;
   $scope.completed = false;
   $scope.checkout = false;
 
@@ -12,14 +11,17 @@ app.controller('CartController', function ($rootScope, $scope, theCart, LocalSto
     }
   }
 
-  $scope.getLocalCart = function() {
-    $scope.cart = LocalStorage.getLocalCart();
+  $scope.getCart = function() {
+    if (theCart) {
+      $scope.cart = theCart;
+    } else {
+      $scope.cart = LocalStorage.getLocalCart();
+    }
     $scope.getTotal();
   }
 
-  if (!$scope.cart) {
-    $scope.getLocalCart();
-  }
+  $scope.getCart();
+
   if ($scope.cart) {
     $scope.date = new Date($scope.cart.dateSubmitted);
     $scope.date = $scope.date.getMonth() + '/' + $scope.date.getDay() + '/' + $scope.date.getFullYear();
@@ -29,23 +31,22 @@ app.controller('CartController', function ($rootScope, $scope, theCart, LocalSto
     }
   }
 
-
   $scope.removeItem = function(cartId, prodId) {
     LocalStorage.removeItem(cartId, prodId);
-    $scope.getLocalCart();
+    $scope.getCart();
     $rootScope.$broadcast('itemsChanged');
     return $scope.getTotal();
   }
 
   $scope.incrementQty = function(cartId, prodId) {
     LocalStorage.incrementItemQuantity(cartId, prodId);
-    $scope.getLocalCart();
+    $scope.getCart();
     $scope.getTotal();
   }
 
   $scope.decrementQty = function(cartId, prodId) {
     LocalStorage.decrementItemQuantity(cartId, prodId);
-    $scope.getLocalCart();
+    $scope.getCart();
     $scope.getTotal();
   }
 
