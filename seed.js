@@ -101,7 +101,7 @@ var seedProducts = function () {
           price: 34
         },
         {
-          name: 'banaba',
+          name: 'banana',
           rgbValue: [207, 227, 87],
           description: 'should filter yellow',
           price: 10,
@@ -236,6 +236,12 @@ var seedReviews = function () {
             stars: 5,
             userId: 1,
             productId: 4
+        },
+        {
+          text: "I give three stars",
+          stars: 3,
+          userId: 1,
+          productId: 7
         }
     ];
 
