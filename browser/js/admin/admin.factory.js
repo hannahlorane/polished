@@ -54,5 +54,12 @@ app.factory('AdminFactory', function ($http) {
     })
   }
 
+  methods.getUserById = function(id) {
+    return $http.get('/api/members' + id)
+    .then(function(response) {
+      return response.data;
+    })
+  }
+
   return methods;
 })

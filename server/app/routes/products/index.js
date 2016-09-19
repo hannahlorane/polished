@@ -64,8 +64,7 @@ router.get('/:id/reviews', function(req, res, next) {
 });
 
 router.post('/:id/reviews', function(req, res, next) {
-  req.body.userId = req.params.id;
-
+  console.log('post route reviews', req.body);
   Review.create(req.body)
   .then(function(review) {
     res.status(201).send(review);
