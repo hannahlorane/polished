@@ -17,9 +17,20 @@ app.controller('LoginCtrl', function ($scope, AuthService, $state) {
 
         $scope.error = null;
 
-        AuthService.login(loginInfo).then(function (res) {
-            if (res.expiredPassword) {
-                $state.go('profilepage', {userId: res.id});
+        AuthService.login(loginInfo).then(function (user) {
+            if (user.savedCart) {
+                var savedCart = JSON.parse(user.savedCart);
+                for (var key in savedCart) {
+                    console.log('key', key);
+                    console.log('value', savedCart[key]);
+                    if (key.toString().length > 0) {
+                        localStorage[key] = savedCart[key];
+                    }
+                }
+            }
+
+            if (user.expiredPassword) {
+                $state.go('profilepage', {userId: user.id});
             } else {
                 $state.go('home');
             }
