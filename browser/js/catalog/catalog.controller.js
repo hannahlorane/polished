@@ -1,6 +1,6 @@
 
 
-app.controller('catalogController', function ($scope, productFactory, products, allCollections) {
+app.controller('catalogController', function ($scope, $state, productFactory, products, allCollections) {
   $scope.products = products;
   $scope.allCollections = allCollections;
   $scope.filteredCollections = [];
@@ -19,6 +19,10 @@ app.controller('catalogController', function ($scope, productFactory, products, 
     Dark: [0, 0, 0]
   };
   $scope.collectionView = true;
+
+  $scope.goToCol = function (id) {
+    $state.go('singleProduct', {"id": String(id)});
+  }
 
   $scope.vectorDistance = function (v1, v2) {
     var squareSum = 0;
@@ -69,10 +73,8 @@ app.filter('selectedColors', function () {
       return colors;
     }
     for (var c in colors) {
-      console.log(c);
       if (filteredColors.indexOf(c) > -1) {
         showTheseCols.push(c);
-        console.log(showTheseCols);
       }
     }
     if (showTheseCols) return showTheseCols;
@@ -83,7 +85,6 @@ app.filter('selectedColors', function () {
 app.filter('colorFilter', function () {
   return function (items, cols, assignColor) {
     if (cols.length == 0) return items;
-    console.log('COLS', cols);
     var filteredItems = [];
     for (var i = 0; i < items.length; i++) {
       // console.log(items[i]);
@@ -108,32 +109,6 @@ app.filter('selectedCollections', function () {
   }
 })
 
-  // return function (items, cols, allColors) { // eslint-disable-line complexity
-  //   if (cols.length > 0) {
-  //     var filtered = [];
-  //     for (var i = 0; i < items.length; i++) {
-  //       var color = items[i].rgbValue;
-  //       for (var filt = 0; filt < cols.length; filt++) {
-  //         var itemPassesFilt = true;
-  //         for (var r = 0; r < 3; r++) { // eslint-disable-line id-length
-  //           if (color[r] < allColors[cols[filt]][0][r] || color[r] > allColors[cols[filt]][1][r]) {
-  //             itemPassesFilt = false;
-  //           }
-  //         }
-  //         if (itemPassesFilt) {
-  //           filtered.push(items[i]);
-  //           break;
-  //         }
-  //       }
-  //     }
-  //     if (filtered) return filtered;
-  //     else return items;
-  //   } else {
-  //     return items;
-  //   }
-  // }
-// });
-
 app.filter('collectionFilter', function () {
   return function (items, cols, extraCol) {
     if (extraCol) cols = [extraCol];
@@ -152,23 +127,5 @@ app.filter('collectionFilter', function () {
     }
   }
 });
-
-// app.filter('collectionFilter', function () {
-//   return function (items, cols) {
-//     if (cols.length > 0) {
-//       var filtered = [];
-//       for (var i = 0; i < items.length; i++) {
-//         if (cols.indexOf(items[i].collection) > -1) {
-//           filtered.push(items[i]);
-//         }
-//       }
-//       if (filtered) return filtered;
-//       else return items;
-//     }
-//     else {
-//       return items;
-//     }
-//   }
-// });
 
 /* eslint-enable complexity id-length */
