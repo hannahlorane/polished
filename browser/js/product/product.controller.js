@@ -1,7 +1,7 @@
 app.controller('productController', function ($rootScope, CartFactory, productFactory, $scope, product) {
   $scope.product = product;
   $scope.available = $scope.product.inventory > 0;
-  console.log(product);
+  console.log(product.inventory);
   $scope.testModel = './test.json';
 
   productFactory.getReviews(product.id)
