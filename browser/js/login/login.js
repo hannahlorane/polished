@@ -21,8 +21,6 @@ app.controller('LoginCtrl', function ($scope, AuthService, $state) {
             if (user.savedCart) {
                 var savedCart = JSON.parse(user.savedCart);
                 for (var key in savedCart) {
-                    console.log('key', key);
-                    console.log('value', savedCart[key]);
                     if (key.toString().length > 0) {
                         localStorage[key] = savedCart[key];
                     }
