@@ -24,7 +24,7 @@
     <collection></collection>
     <div class="col s10">
       <div class="row collect" >
-        <div ng-show="collectionView" ng-repeat="collect in allCollections | selectedCollections:filteredCollections" class="card medium horizontal catcard">
+<!--         <div ng-show="collectionView" ng-repeat="collect in allCollections | selectedCollections:filteredCollections" class="card medium horizontal catcard">
           <div class="card-image" ng-repeat="prod in products | inStock | collectionFilter:filteredCollections:collect | colorFilter:filteredColors:assignColor">
             <div class="row"><bottle class="bottle" ng-click="goToCol(prod.id)" product="prod"></div>
             <div class="row"><p class=prod-name>{{prod.name}}</p></div>
@@ -32,7 +32,18 @@
           <div class="card-action">
             <a href="#">{{collect}}</a>
           </div>
+        </div> -->
+
+        <div ng-show="collectionView" ng-repeat="collect in allCollections | selectedCollections:filteredCollections">
+          <div class="row">
+            <h5>{{collect}}</h5>
+            <div ng-repeat="prod in products | inStock | collectionFilter:filteredCollections:collect | colorFilter:filteredColors:assignColor">
+              <catalogitem product="prod"></catalogitem>
+            </div>
+          </div>
         </div>
+
+
         <div ng-hide="collectionView" ng-repeat="color in colorNames | selectedColors:filteredColors" class="card medium horizontal catcard">
           <div class="card-image" ng-repeat="prod in products | inStock | collectionFilter:filteredCollections:collect | colorFilter:[color]:assignColor">
             <div class="row"><bottle class="bottle" ng-click="goToCol(prod.id)" product="prod"></div>
