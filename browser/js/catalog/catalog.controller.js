@@ -8,13 +8,13 @@ app.controller('catalogController', function ($scope, $state, productFactory, pr
   $scope.delta = 50;
   $scope.allColors = {
     Red: [255, 0, 0],
-    Orange: [255, 165, 0],
+    Orange: [255, 110, 75],
     Yellow: [255, 255, 0],
     Green: [0, 255, 0],
     Turquoise: [0, 245, 255],
     Blue: [0, 0, 255],
-    Purple: [128, 0, 128],
-    Pink: [255, 192, 203],
+    Purple: [211, 85, 165],
+    Pink: [255, 75, 110],
     Light: [255, 255, 255],
     Dark: [0, 0, 0]
   };
@@ -86,8 +86,6 @@ app.filter('selectedColors', function () {
 app.filter('colorFilter', function () {
   return function (items, cols, assignColor) {
     if (cols.length == 0) return items;
-    console.log(items);
-    console.log(cols);
     var filteredItems = [];
     for (var i = 0; i < items.length; i++) {
       if (cols.indexOf(assignColor(items[i])) > -1) {
@@ -97,6 +95,7 @@ app.filter('colorFilter', function () {
     return filteredItems;
   }
 });
+
 app.filter('selectedCollections', function () {
   return function (collections, filteredCollections) {
     var showTheseCols = [];

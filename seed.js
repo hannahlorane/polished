@@ -72,6 +72,20 @@ var seedProducts = function () {
           collection: 'Oranges and Reds'
         },
         {
+          name: 'pink',
+          rgbValue: [255, 192, 203],
+          description: 'midpoint for pink cluster',
+          price: 2,
+          collection: 'Purples and Pinks'
+        },
+        {
+          name: 'purple',
+          rgbValue: [128, 0, 128],
+          description: 'midpoint for purple cluster',
+          price: 2,
+          collection: 'Purples and Pinks'
+        },
+        {
           name: 'orchid',
           rgbValue: [186, 85, 211],
           description: 'Should be filtered purple',
@@ -155,6 +169,13 @@ var seedProducts = function () {
             description: 'purple',
             price: 6,
             collection: 'Purples and Pinks'
+        },
+        {
+          name: 'yellow',
+          rgbValue: [255, 255, 0],
+          description: 'midpoint for yellow cluster',
+          price: 11,
+          collection: 'Seasonal Seaside Shine'
         },
         {
             name: 'seagull grey',
