@@ -34,5 +34,3 @@ app.controller('ReviewController', function ( $scope, $stateParams, productFacto
     return 'abcde'.slice(0, n);
   }
 });
-
-});
