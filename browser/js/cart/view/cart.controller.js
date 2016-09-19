@@ -1,4 +1,4 @@
-app.controller('CartController', function ($rootScope, $scope, theCart, LocalStorage) {
+app.controller('CartController', function ($rootScope, $scope, theCart, LocalStorage, AuthService) {
   $scope.completed = false;
   $scope.checkout = false;
 
@@ -15,9 +15,12 @@ app.controller('CartController', function ($rootScope, $scope, theCart, LocalSto
     if (theCart) {
       $scope.cart = theCart;
     } else {
-      $scope.cart = LocalStorage.getLocalCart();
+      AuthService.getLoggedInUser()
+      .then(function(user) {
+        $scope.cart = LocalStorage.getLocalCart(user);
+        $scope.getTotal();
+      })
     }
-    $scope.getTotal();
   }
 
   $scope.getCart();
@@ -53,4 +56,5 @@ app.controller('CartController', function ($rootScope, $scope, theCart, LocalSto
   $scope.toggleCheckout = function() {
     $scope.checkout = !$scope.checkout;
   }
+
 });

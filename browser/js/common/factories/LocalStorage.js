@@ -1,4 +1,4 @@
-app.factory('LocalStorage', function () {
+app.factory('LocalStorage', function (CartFactory) {
   var methods = {};
 
   var localCart = null;
@@ -25,8 +25,12 @@ app.factory('LocalStorage', function () {
     return JSON.parse(localStorage[prodId]);
   }
 
-  methods.getLocalCart = function() {
+  methods.getLocalCart = function(user) {
     addItemsToCart();
+
+    if (user) {
+      CartFactory.saveCartForUser(user.id, {savedCart: JSON.stringify(localStorage)})
+    }
 
     return localCart;
   }
