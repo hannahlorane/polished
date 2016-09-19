@@ -1,4 +1,4 @@
-app.factory('CartFactory', function ($http) {
+app.factory('CartFactory', function ($rootScope, $http) {
   var cart = {
     getOrderById: function(cartId) {
       return $http.get('/api/orders/' + cartId)
@@ -14,8 +14,8 @@ app.factory('CartFactory', function ($http) {
       })
     },
 
-    updateOrder: function(cartId, productId, qty) {
-      return $http.put('/api/orders/' + cartId + '/products/' + productId, {quantity: qty})
+    saveCartForUser: function(userId, cartObj) {
+      return $http.put('/api/members/' + userId, cartObj)
       .then(function(response) {
         return response.data;
       })
@@ -65,6 +65,7 @@ app.factory('CartFactory', function ($http) {
       })
       .then(function(response) {
         localStorage.clear();
+        $rootScope.$broadcast('itemsChanged');
         return response.data;
       })
     }
