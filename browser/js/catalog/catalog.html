@@ -21,6 +21,7 @@
         </form>
       </div>
     </div>
+    <collection></collection>
     <div class="col s10">
       <div class="row collect" >
         <div ng-show="collectionView" ng-repeat="collect in allCollections | selectedCollections:filteredCollections" class="card medium horizontal catcard">
@@ -32,7 +33,7 @@
             <a href="#">{{collect}}</a>
           </div>
         </div>
-        <div ng-hide="collectionView" ng-repeat="color in allColors | selectedColors:filteredColors" class="card medium horizontal catcard">
+        <div ng-hide="collectionView" ng-repeat="color in colorNames | selectedColors:filteredColors" class="card medium horizontal catcard">
           <div class="card-image" ng-repeat="prod in products | inStock | collectionFilter:filteredCollections:collect | colorFilter:[color]:assignColor">
             <div class="row"><bottle class="bottle" ng-click="goToCol(prod.id)" product="prod"></div>
             <div class="row"><p class=prod-name>{{prod.name}}</p></div>

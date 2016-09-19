@@ -19,6 +19,7 @@ app.controller('catalogController', function ($scope, $state, productFactory, pr
     Dark: [0, 0, 0]
   };
   $scope.collectionView = true;
+  $scope.colorNames = Object.keys($scope.allColors);
 
   $scope.goToCol = function (id) {
     $state.go('singleProduct', {"id": String(id)});
@@ -73,8 +74,8 @@ app.filter('selectedColors', function () {
       return colors;
     }
     for (var c in colors) {
-      if (filteredColors.indexOf(c) > -1) {
-        showTheseCols.push(c);
+      if (filteredColors.indexOf(colors[c]) > -1) {
+        showTheseCols.push(colors[c]);
       }
     }
     if (showTheseCols) return showTheseCols;
@@ -85,9 +86,10 @@ app.filter('selectedColors', function () {
 app.filter('colorFilter', function () {
   return function (items, cols, assignColor) {
     if (cols.length == 0) return items;
+    console.log(items);
+    console.log(cols);
     var filteredItems = [];
     for (var i = 0; i < items.length; i++) {
-      // console.log(items[i]);
       if (cols.indexOf(assignColor(items[i])) > -1) {
         filteredItems.push(items[i]);
       }
