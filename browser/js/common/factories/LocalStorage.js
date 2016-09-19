@@ -8,11 +8,21 @@ app.factory('LocalStorage', function () {
       localCart = {products: []};
 
       for (var key in localStorage) { //eslint-disable-line
-        var prodInfo = localStorage[key].match(/(\d+),(\d+.\d+),(.+)/);
         var productId = key;
-        localCart.products.push({id: productId, name: prodInfo[3], OrderProducts: {quantity: prodInfo[1]}, price: prodInfo[2]})
+        var product = getProductsObject(productId);
+
+        localCart.products.push({
+          id: productId,
+          name: product.name,
+          OrderProducts: {quantity: product.quantity},
+          price: product.price
+        })
       }
     }
+  }
+
+  function getProductsObject(prodId) {
+    return JSON.parse(localStorage[prodId]);
   }
 
   methods.getLocalCart = function() {
@@ -35,9 +45,13 @@ app.factory('LocalStorage', function () {
     })
 
     var quantity = ++product[0].OrderProducts.quantity;
-    var prodInfoMatch = localStorage[prodId].match(/(\d+),(\d+.\d+),(.+)/);
+    var productObj = getProductsObject(prodId);
 
-    localStorage[prodId] = [quantity, prodInfoMatch[2], prodInfoMatch[3]];
+    localStorage[prodId] = JSON.stringify({
+      quantity: quantity,
+      price: productObj.price,
+      name: productObj.name
+    })
   }
 
   methods.decrementItemQuantity = function(cartId, prodId) {
@@ -47,9 +61,13 @@ app.factory('LocalStorage', function () {
 
     if (product[0].OrderProducts.quantity > 1) {
       var quantity = --product[0].OrderProducts.quantity;
-      var prodInfoMatch = localStorage[prodId].match(/(\d+),(\d+.\d+),(.+)/);
+      var productObj = getProductsObject(prodId);
 
-      localStorage[prodId] = [quantity, prodInfoMatch[2], prodInfoMatch[3]];
+      localStorage[prodId] = JSON.stringify({
+        quantity: quantity,
+        price: productObj.price,
+        name: productObj.name
+      })
 
     }
   }
