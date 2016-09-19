@@ -1,3 +1,5 @@
+var secret = require('../../secret.json');
+
 module.exports = {
   DATABASE_URI: 'postgres://localhost:5432/fsg',
   SESSION_SECRET: 'Optimus Prime is my real dad',
@@ -12,9 +14,9 @@ module.exports = {
     callbackURL: 'INSERT_FACEBOOK_CALLBACK_HERE'
   },
   GOOGLE: {
-    clientID: 'INSERT_GOOGLE_CLIENTID_HERE',
-    clientSecret: 'INSERT_GOOGLE_CLIENT_SECRET_HERE',
-    callbackURL: 'INSERT_GOOGLE_CALLBACK_HERE'
+    clientID: secret.clientID,
+    clientSecret: secret.clientSecret,
+    callbackURL: secret.callbackURL
   },
   LOGGING: true,
   NATIVE: true
