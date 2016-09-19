@@ -93,6 +93,14 @@ var seedProducts = function () {
           collection: 'Vamp it up'
         },
         {
+          name: 'chartreuse',
+          rgbValue: [118, 238, 0],
+          description: 'chartreuse -- yum',
+          inventory: 0,
+          collection: 'Blues and Greens',
+          price: 34
+        },
+        {
           name: 'banaba',
           rgbValue: [207, 227, 87],
           description: 'should filter yellow',

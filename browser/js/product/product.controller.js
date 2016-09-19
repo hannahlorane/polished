@@ -1,5 +1,6 @@
 app.controller('productController', function ($rootScope, CartFactory, productFactory, $scope, product) {
   $scope.product = product;
+  $scope.available = $scope.product.inventory > 0;
   console.log(product);
   $scope.testModel = './test.json';
 
@@ -10,7 +11,6 @@ app.controller('productController', function ($rootScope, CartFactory, productFa
 
   productFactory.getByCategory(product.collection)
     .then(function (similar) {
-      console.log('in the dot then');
         $scope.similar = similar;
     }).then(console.log('Similar', $scope.similar));
 
