@@ -29,7 +29,9 @@
 
   <div ng-repeat="review in product.reviews">
     <div class="card-panel white">
-      <p>{{review.stars}} <i class="material-icons">star</i></p>
+      <p>
+        <i ng-repeat="l in starString(review.stars)" class="material-icons star">star</i>
+      </p>
       <br>
       <p>{{review.text}}</p>
     </div>

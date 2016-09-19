@@ -30,11 +30,9 @@ app.controller('ReviewController', function ( $scope, $stateParams, productFacto
     });
 
   }
-
+  $scope.starString = function (n) {
+    return 'abcde'.slice(0, n);
+  }
 });
 
-
-
-
-
-
+});
