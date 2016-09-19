@@ -8,8 +8,8 @@ app.controller('ReviewController', function ( $scope, $stateParams, ReviewFactor
       $state.go('/');
     });
   }
+
+  $scope.starString = function (n) {
+    return 'abcde'.slice(0, n);
+  }
 });
-
-
-
-
