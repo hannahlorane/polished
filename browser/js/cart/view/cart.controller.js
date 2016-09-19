@@ -1,7 +1,10 @@
-app.controller('CartController', function ($rootScope, $scope, theCart) {
+app.controller('CartController', function ($rootScope, $scope, theCart, LocalStorage) {
   $scope.cart = theCart;
   $scope.completed = false;
   $scope.checkout = false;
+
+  $scope.localCart = LocalStorage.getStorage();
+  console.log('localCart', $scope.localCart);
 
   $scope.getTotal = function () {
     if ($scope.cart.products && $scope.cart) {
