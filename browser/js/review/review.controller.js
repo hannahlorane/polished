@@ -6,17 +6,34 @@ app.controller('ReviewController', function ( $scope, $stateParams, productFacto
     return AuthService.isAuthenticated();
   };
 
-  //posts a review
-  //association with products not currently working
-  //also should reload page with new review or send a confirmation
-  $scope.addReview = function(id, body) {
-    return productFactory.postReview(id, body)
-    .then(function() {
-      $state.go('singleProduct');
+  //finds user associated with review
+  var findUser = function () {
+    AuthService.getLoggedInUser()
+    .then(function (user) {
+      console.log(user);
+      $scope.user = user;
     });
+  };
+
+  findUser();
+
+  //posts a review
+  $scope.addReview = function(id, body) {
+    body.productId = $scope.product.id;
+    if ($scope.user) {
+      body.userId = $scope.user.id;
+    }
+
+    return productFactory.postReview(id, body)
+    .then(function(review) {
+      $state.reload();
+    });
+
   }
 
 });
+
+
 
 
 
