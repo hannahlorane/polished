@@ -1,7 +1,7 @@
 app.controller('productController', function ($rootScope, CartFactory, productFactory, $scope, product) {
   $scope.product = product;
   $scope.available = $scope.product.inventory > 0;
-  console.log(product);
+  console.log(product.inventory);
   $scope.testModel = './test.json';
 
   productFactory.getReviews(product.id)
@@ -15,7 +15,7 @@ app.controller('productController', function ($rootScope, CartFactory, productFa
     }).then(console.log('Similar', $scope.similar));
 
   $scope.addToCart = function () {
-    if (!localStorage[$scope.product.id]) {
+    if ($scope.product.inventory > 0 && !localStorage[$scope.product.id]) {
       localStorage.setItem($scope.product.id, [1, $scope.product.price, $scope.product.name]);
     }
 
