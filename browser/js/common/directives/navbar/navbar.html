@@ -10,9 +10,11 @@
   </ul>
   <nav>
     <div class="nav-wrapper">
-      <a href="home/home.html" class="brand-logo">Polished</a>
+      <a href="home/home.html" class="brand-logo left hide-on-small-and-down">Polished</a>
+      <a href="home/home.html" class="brand-logo hide-on-med-and-up">Polished</a>
       <a href="#" data-activates="mobile-demo" class="button-collapse hide-on-med-and-up"><i class="material-icons">menu</i></a>
       <ul class="right hide-on-small-and-down">
+        <li ng-if="user">Welcome, {{user.email}}</li>
         <li><a ng-href="catalog"><i class="material-icons">search</i></a></li>
         <li class="shopping-cart"><a ui-sref="singleCart({})"><i class="material-icons">shopping_cart</i> <span ng-if="itemsInCart" class="new badge">{{itemsInCart}}</span></a></li>
         <li><a ng-href="contact"><i class="material-icons">email</i></a></li>
@@ -22,8 +24,9 @@
       </ul>
 
       <ul class="side-nav" id="mobile-demo">
+        <li class="black-text" ng-if="user">Welcome, {{user.email}}</li>
         <li><a ng-href="catalog">Search</a></li>
-        <li><a ng-href="cart">Shopping Cart <span class="new badge">4</span></a></li>
+        <li><a ui-sref="singleCart({})">Shopping Cart <span class="new badge">4</span></a></li>
         <li><a ng-href="contact">Email</a></li>
         <li><a ng-href="admin/products" ng-show="user && user.isAdmin">Admin</a></li>
         <li class="divider"></li>
