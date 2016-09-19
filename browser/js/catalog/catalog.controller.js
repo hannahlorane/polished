@@ -51,6 +51,16 @@ app.controller('catalogController', function ($scope, productFactory, products, 
   }
 })
 
+app.filter('inStock', function () {
+  return function (items) {
+    var filtered = [];
+    items.forEach(function (item) {
+      if (item.inventory > 0) filtered.push(item);
+    });
+    return filtered;
+  }
+})
+
 app.filter('selectedColors', function () {
   return function (colors, filteredColors) {
     var showTheseCols = [];
