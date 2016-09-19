@@ -1,0 +1,67 @@
+<div class="card-panel" ng-hide="user.id">
+  <p>Want to link this order to an account? <a ng-href="login" class="waves-effect waves-light btn">sign in</a> or <a ng-href="signup" class="waves-effect waves-light btn">sign up</a></p>
+</div>
+
+<div class="card-panel">
+  <h3>Checkout</h3>
+
+  <div class="container">
+    <form name="checkoutForm" novalidate>
+      <div class="row">
+        <form class="col s12">
+          <div class="form-group">
+
+            <div class="row">
+              <div class="input-field col s6">
+                <input name="firstName" id="first-name" type="text" ng-model="customer.firstName" required>
+                <label for="first-name">First Name</label>
+              </div>
+              <div class="input-field col s6">
+                <input name="lastName" id="last-name" type="text" ng-model="customer.lastName" required>
+                <label for="last-name">Last Name</label>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="input-field col s12">
+                <input name="address" id="address" type="text" ng-model="customer.address" required>
+                <label for="address">Street Address</label>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="input-field col s6">
+                <input name="state" id="state" type="text" ng-model="customer.state" ng-minlength="2" ng-maxlength="2" required>
+                <label for="state">State</label>
+              </div>
+              <div class="input-field col s6">
+                <input name="zip" id="zip" type="text" ng-model="customer.zip" ng-pattern="/\d{5}/" required>
+                <label for="zip">Zip Code</label>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="input-field col s12">
+                <input name="email" id="email" type="email" ng-model="customer.email" required>
+                <label for="email">Email</label>
+              </div>
+            </div>
+
+            <div ng-messages="checkoutForm.zip.$error" ng-if="checkoutForm.zip.$dirty">
+              <div ng-message="pattern" ng-hide="checkoutForm.zip.$valid">Zip Code must be 5 digits.</div>
+            </div>
+
+            <div ng-messages="checkoutForm.state.$error" ng-if="checkoutForm.state.$dirty">
+              <div ng-message="minlength" ng-hide="checkoutForm.state.$valid">Please use 2-letter state abbreviation.</div>
+            </div>
+
+            <br />
+
+            <a class="waves-effect waves-light btn" ng-click="buy(customer)" ng-disabled="checkoutForm.$invalid">BUY</a>
+          </div>
+        </form>
+      </div>
+    </form>
+  </div>
+</div>
+

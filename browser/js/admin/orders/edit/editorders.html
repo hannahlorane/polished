@@ -1,0 +1,31 @@
+<adminnav></adminnav>
+<div class="container">
+  <h3>Edit An Order</h3>
+  <form>
+    <div class="row">
+      <div class="input-field col s12">
+        <input id="order-id" type="text" ng-model="order.id" disabled>
+        <label class="active" for="order-id">Order ID</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <input id="order-status" type="text" ng-model="order.status">
+        <label class="active" for="order-status">Order Status</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <input id="order-total" type="text" ng-model="order.total" disabled>
+        <label class="active" for="order-total">Order Total</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <input id="user-id" type="text" ng-model="order.userId" disabled>
+        <label class="active" for="user-id">User ID</label>
+      </div>
+    </div>
+    <a class="waves-effect waves-light btn" ng-click="editOrder(order.id, order)">submit</a>
+  </form>
+</div>
