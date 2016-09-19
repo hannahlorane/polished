@@ -9,7 +9,7 @@ app.config(function ($stateProvider) {
         if ($stateParams.cartId) {
           return CartFactory.getOrderById($stateParams.cartId);
         } else {
-          return -1;
+          return null;
         }
       }
     }

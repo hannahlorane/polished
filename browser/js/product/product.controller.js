@@ -15,8 +15,13 @@ app.controller('productController', function ($rootScope, CartFactory, productFa
     }).then(console.log('Similar', $scope.similar));
 
   $scope.addToCart = function () {
-    if ($scope.product.inventory > 0 && !localStorage[$scope.product.id]) {
-      localStorage.setItem($scope.product.id, [1, $scope.product.price, $scope.product.name]);
+    if (!localStorage[$scope.product.id]) {
+      localStorage.setItem($scope.product.id, JSON.stringify({
+          quantity: 1,
+          price: $scope.product.price,
+          name: $scope.product.name
+        })
+      );
     }
 
     $rootScope.$broadcast('itemsChanged');

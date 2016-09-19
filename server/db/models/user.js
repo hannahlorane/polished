@@ -34,6 +34,9 @@ module.exports = db.define('user', {
         type: Sequelize.BOOLEAN,
         defaultValue: false
     },
+    savedCart: {
+        type: Sequelize.JSON
+    }
 }, {
     instanceMethods: {
         sanitize: function () {

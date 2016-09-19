@@ -21,7 +21,7 @@ var startServer = function () {
 
 };
 
-db.sync({force: true})
+db.sync()
 .then(createApplication)
 .then(startServer)
 .catch(function (err) {
