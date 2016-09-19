@@ -1,5 +1,7 @@
 app.controller('ReviewController', function ( $scope, $stateParams, productFactory, $state, AuthService) {
 
+  $scope.review = {"stars": 3};
+
   //checks if user is logged in
   //if true, show "add review" card
   $scope.isLoggedIn = function () {
