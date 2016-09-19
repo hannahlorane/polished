@@ -35,7 +35,7 @@ app.factory('LocalStorage', function (CartFactory) {
     return localCart;
   }
 
-  methods.removeItem = function(cartId, prodId) {
+  methods.removeItem = function(prodId) {
     delete localStorage[prodId];
 
     localCart.products = localCart.products.filter(function(product) {
@@ -43,7 +43,7 @@ app.factory('LocalStorage', function (CartFactory) {
     })
   }
 
-  methods.incrementItemQuantity = function(cartId, prodId) {
+  methods.incrementItemQuantity = function(prodId) {
     var product = localCart.products.filter(function(item) {
       return item.id === prodId;
     })
@@ -58,7 +58,7 @@ app.factory('LocalStorage', function (CartFactory) {
     })
   }
 
-  methods.decrementItemQuantity = function(cartId, prodId) {
+  methods.decrementItemQuantity = function(prodId) {
     var product = localCart.products.filter(function(item) {
       return item.id === prodId;
     })

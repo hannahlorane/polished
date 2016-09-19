@@ -1,4 +1,4 @@
-app.controller('productController', function ($rootScope, CartFactory, productFactory, $scope, product) {
+app.controller('productController', function ($rootScope, CartFactory, LocalStorage, productFactory, $scope, product) {
   $scope.product = product;
   $scope.available = $scope.product.inventory > 0;
   console.log(product);
@@ -15,15 +15,12 @@ app.controller('productController', function ($rootScope, CartFactory, productFa
     }).then(console.log('Similar', $scope.similar));
 
   $scope.addToCart = function () {
-    if (!localStorage[$scope.product.id]) {
-      localStorage.setItem($scope.product.id, JSON.stringify({
-          quantity: 1,
-          price: $scope.product.price,
-          name: $scope.product.name
-        })
-      );
-    }
+    var cart = localStorage.getLocalCart();
+    console.log(cart);
 
+    if ($scope.product.inventory > getCartQuantity()) {
+      localStorage.incrementItemQuantity($scope.product.id);
+    }
     $rootScope.$broadcast('itemsChanged');
   };
 });
