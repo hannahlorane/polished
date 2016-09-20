@@ -5,17 +5,14 @@
     </div>
   </div>
   <div class="row">
+    <div class="col s12">
+      <form class="search">
+        <i class="material-icons search-icon left">search</i><input placeholder="Search" class="col s11" ng-model="searched" type="text">
+      </form>
+    </div>
+  </div>
+  <div class="row">
     <div class="col s12 m2 filters">
-      <div class="row">
-        <div class="col s1 m12">
-          <form class="search">
-            <p>
-              Search:
-            </p>
-            <input ng-model="searched" type="text">
-          </form>
-        </div>
-      </div>
       <div class="row">
         <p class="color-filter-title">Colors</p>
         <form action="#" ng-repeat="(color, val) in allColors">
