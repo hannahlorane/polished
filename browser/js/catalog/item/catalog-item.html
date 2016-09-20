@@ -5,7 +5,8 @@
         <smallbottle product="product" height="200"></smallbottle>
       </div>
       <div class="card-action black-text">
-        <h6>{{product.name}} <span class="catalog-price">${{product.price}}</span></h6>
+        <h6 class="right">${{product.price}}</h6>
+        <h6 class="truncate">{{product.name}}</h6>
         <h6>{{product.collection.toUpperCase()}}</h6>
       </div>
     </div>

@@ -15,6 +15,21 @@ var OrderProducts = db.define('OrderProducts', {
     type: Sequelize.INTEGER,
     defaultValue: 0
   }
+},
+{
+  hooks: {
+    beforeCreate: function(orderProduct) {
+      console.log('ORDER PRODUCT!!!!', orderProduct.productId);
+      Product.findById(orderProduct.productId)
+      .then(function(product) {
+        var newQuantity = product.inventory - orderProduct.quantity;
+        product.update({inventory: newQuantity});
+      })
+      .catch(function(err) {
+        console.log(err);
+      })
+    }
+  }
 });
 
 User.hasMany(Order);

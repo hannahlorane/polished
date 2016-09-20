@@ -1,85 +1,38 @@
 <section id="home">
-
-
- <div class="slider">
-  <ul class="slides">
-    <li>
-      <img src="http://subtlepatterns2015.subtlepatterns.netdna-cdn.com/patterns/stardust.png"> <!-- random image -->
-      <div class="caption left-align">
-        <h3>Welcome to Polished!</h3>
-        <h4>See some of our featured products below</h4>
-      </div>
-    </li>
-    <li>
-      <img src="http://subtlepatterns2015.subtlepatterns.netdna-cdn.com/patterns/stardust.png"> <!-- random image -->
-      <div class="caption left-align">
-        <h3>Purveyors of the highest quality polishes</h3>
-        <h4>See our full catalogue <a ng-href="catalog" style="color: #ffffff; text-decoration: underline;">here</a></h4>
-        <h5 class="light grey-text text-lighten-3"></h5>
-      </div>
-    </li>
+  <div class="slider" slider>
+    <ul class="slides">
+      <li>
+        <img src="http://subtlepatterns2015.subtlepatterns.netdna-cdn.com/patterns/stardust.png">
+        <div class="caption center-align">
+          <h3>Welcome to polished!</h3>
+          <h5 class="light grey-text text-lighten-3">See some of our featured polishes below.</h5>
+        </div>
+      </li>
+      <li>
+        <img src="http://subtlepatterns2015.subtlepatterns.netdna-cdn.com/patterns/stardust.png">
+        <div class="caption left-align">
+          <h3>Purveyors of the highest quality polishes</h3>
+          <h4>See our full catalogue <a ng-href="catalog" style="color: #ffffff; text-decoration: underline;">here</a></h4>
+        </div>
+      </li>
     </ul>
   </div>
 
-
+  <div class="ribbon">
+    <div class="ribbon-stitches-top"></div>
+    <strong class="ribbon-content"><h1>Featured Items</h1></strong>
+    <div class="ribbon-stitches-bottom"></div>
+  </div>
   <div class="section white">
-  <div class="row container">
+    <div class="row container">
       <div class="featured" ng-controller="HomeController">
         <div class="row">
-
-        <!-- card one -->
-        <div class="col s12 m4 l4">
-          <div class="card hoverable">
-            <div class="card-image">
-              <img src="{{productTwo.photo}}">
-            </div>
-            <div class="card-content">
-              <h4>{{productOne.name}}</h4>
-              <h5>{{productOne.description}}</h5>
-            </div>
-            <div class="card-action">
-              <a ui-sref="singleProduct({id: productOne.id})">View product</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- card two -->
-        <div class="col s12 m4 l4">
-          <div class="card hoverable">
-            <div class="card-image">
-              <img src="{{productTwo.photo}}">
-            </div>
-            <div class="card-content">
-              <h4>{{productTwo.name}}</h4>
-              <h5>{{productTwo.description}}</h5>
-            </div>
-            <div class="card-action">
-              <a ui-sref="singleProduct({id: productTwo.id})">View product</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- card three -->
-        <div class="col s12 m4 l4">
-          <div class="card hoverable">
-            <div class="card-image">
-              <img src="{{productTwo.photo}}">
-            </div>
-            <div class="card-content">
-              <h4>{{productThree.name}}</h4>
-              <h5>{{productThree.description}}</h5>
-            </div>
-            <div class="card-action">
-              <a ui-sref="singleProduct({id: productThree.id})">View product</a>
-            </div>
-          </div>
-        </div>
-
-
+          <catalogItem product=productOne></catalogItem>
+          <catalogItem product=productTwo></catalogItem>
+          <catalogItem product=productThree></catalogItem>
         </div>
       </div>
     </div>
   </div>
-</div>
 
 </section>

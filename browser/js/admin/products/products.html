@@ -1,11 +1,29 @@
 <adminnav></adminnav>
 <div class="container">
+  <div ng-if="inventoryAlert">
+    <h4 class="red-text">Warning!!</h4>
+    <div class="container">
+      <div ng-if="oversoldProducts.length > 0">
+        <h5>There are oversold products</h5>
+        <ul class="collection" ng-repeat="product in oversoldProducts">
+          <li class="collection-item"><a ui-sref="admineditproducts({id: product.id})">Item #{{product.id}}</a> is oversold by {{0 - product.inventory}}</li>
+        </ul>
+      </div>
+      <div ng-if="productsUnavailable.length > 0">
+        <h5>These products need to be restocked</h5>
+        <ul class="collection" ng-repeat="product in productsUnavailable">
+          <li class="collection-item"><a ui-sref="admineditproducts({id: product.id})">Item #{{product.id}}</a> needs to be restocked.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
   <h4>Editing Products</h4>
   <a class="waves-effect waves-light btn" ng-href="/admin/products/add"><i class="material-icons left">add</i>Add a Product</a>
   <table>
     <thead>
       <tr>
         <td></td>
+        <td>Part #</td>
         <td>Inventory</td>
         <td>Name</td>
         <td>Collection</td>
@@ -17,6 +35,9 @@
       <tr ng-repeat="product in products">
         <td>
           <a ui-sref="admineditproducts({id: product.id})"><i class="material-icons">mode_edit</i></a>
+        </td>
+        <td>
+          {{product.id}}
         </td>
         <td>
           {{product.inventory}}

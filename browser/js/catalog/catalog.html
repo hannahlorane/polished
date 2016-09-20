@@ -1,7 +1,14 @@
 <div class="container">
   <div class="row">
     <div class="col s12">
-      <h2>browse our wares:</h2>
+      <h2>Catalog</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col s12">
+      <form class="search">
+        <i class="material-icons search-icon left hide-on-small-only">search</i><input placeholder="Search" class="col s11" ng-model="searched" type="text">
+      </form>
     </div>
   </div>
   <div class="row">
@@ -11,7 +18,7 @@
         <form action="#" ng-repeat="(color, val) in allColors">
           <div class="col m4 s1">
             <a href='#' ng-click="toggleFilter(color, filteredColors, false)">
-              <div ng-click="selected = !selected" ng-class="selected ? 'color-filter-block-selected' : 'color-filter-block'" class="color-filter-block" id={{color}} style="background-color: {{color}}">
+              <div ng-click="selected = !selected" ng-class="selected ? 'color-filter-block-selected' : 'color-filter-block'" class="color-filter-block" id={{color}} style="background-color: rgba({{allColors[color][0]}}, {{allColors[color][1]}}, {{allColors[color][2]}}, 1)">
               </div>
             </a>
           </div>
@@ -33,12 +40,12 @@
               <h5>{{collect}}</h5>
             </div>
           </div>
-          <div ng-repeat="prod in products | inStock | collectionFilter:filteredCollections:collect | colorFilter:filteredColors:assignColor">
+          <div ng-repeat="prod in products | inStock | collectionFilter:filteredCollections:collect | colorFilter:filteredColors:assignColor | searchFilter:searched">
             <catalogitem product="prod"></catalogitem>
           </div>
         </div>
         <div ng-hide="collectionView" ng-repeat="color in colorNames | selectedColors:filteredColors">
-          <div ng-repeat="prod in products | inStock | collectionFilter:filteredCollections:collect | colorFilter:[color]:assignColor">
+          <div ng-repeat="prod in products | inStock | collectionFilter:filteredCollections:collect | colorFilter:[color]:assignColor | searchFilter:searched||searchDefault">
             <catalogitem product="prod"></catalogitem>
           </div>
         </div>

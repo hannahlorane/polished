@@ -1,4 +1,4 @@
-app.factory('CartFactory', function ($rootScope, $http) {
+app.factory('CartFactory', function ($rootScope, $http, $q) {
   var cart = {
     getOrderById: function(cartId) {
       return $http.get('/api/orders/' + cartId)
@@ -29,25 +29,13 @@ app.factory('CartFactory', function ($rootScope, $http) {
     },
 
     makePurchase: function(userId, shoppingCart, customer) {
-      var firstName = customer.firstName;
-      var lastName = customer.lastName;
-      var address = customer.address;
-      var zip = customer.zip;
-      var state = customer.state;
-      var email = customer.email;
+      var body = angular.copy(customer);
+      body.total = shoppingCart.total;
+      body.userId =  userId;
+      body.dateSubmitted = new Date();
+      body.status = 'processing';
 
-      return $http.post('/api/orders/', {
-        userId: userId,
-        total: shoppingCart.total,
-        status: 'processing',
-        firstName: firstName,
-        lastName: lastName,
-        address: address,
-        zip: zip,
-        state: state,
-        email: email,
-        dateSubmitted: new Date()
-      })
+      return $http.post('/api/orders/', body)
       .then(function(orderResponse) {
         var products = shoppingCart.products.map(function(product) {
           return {
@@ -56,15 +44,18 @@ app.factory('CartFactory', function ($rootScope, $http) {
           }
         })
 
-        products.map(function (orderProductsObj) {
+        var productPromise = products.map(function (orderProductsObj) {
           return $http.post('/api/orders/' + orderResponse.data.id + '/products', orderProductsObj)
         })
 
-        return orderResponse;
+        return $q.all([productPromise])
+        .then(function() {
+          return orderResponse;
+        })
 
       })
       .then(function(response) {
-        localStorage.clear();
+        $rootScope.$broadcast('clearCart');
         $rootScope.$broadcast('itemsChanged');
         return response.data;
       })

@@ -28,7 +28,6 @@ app.directive('checkout', function ($rootScope, $state, CartFactory, EmailFactor
 
         return CartFactory.makePurchase(userId, scope.cart, customer)
         .then(function(response) {
-
           return EmailFactory.order({
             id: response.id,
             email: scope.customer.email,
