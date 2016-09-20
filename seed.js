@@ -51,160 +51,265 @@ var seedUsers = function () {
 
 var seedProducts = function () {
     var products = [
+
         {
-          name: 'black',
-          rgbValue: [0, 0, 0],
-          description: 'it\'s black nailpolish',
-          price: 10,
-          collection: 'Vamp it up'
+          name: 'After Midnight',
+          rgbValue: [25, 25, 112],
+          description: 'full coverage midnight indigo creme',
+          price: 20,
+          collection: 'Lippwoman'
         },
         {
-          name: 'deep pink',
-          rgbValue: [255, 20, 147],
-          description: 'should be filtered pink',
-          price: 10,
-          collection: 'Purples and Pinks'
+          name: 'Beauty School Dropout',
+          rgbValue: [238, 99, 99],
+          description: 'bubblegum pink creme',
+          price: 20,
+          collection: 'Lippwoman'
         },
         {
-          name: 'crimson',
-          rgbValue: [220, 20, 60],
-          description: 'should be filtered red',
-          price: 10,
-          collection: 'Oranges and Reds'
+          name: 'My Boyfriends Back',
+          rgbValue: [102, 139, 139],
+          description: 'deep cerulean creme',
+          price: 20,
+          collection: 'Lippwoman'
         },
         {
-          name: 'pink',
-          rgbValue: [255, 192, 203],
-          description: 'midpoint for pink cluster',
-          price: 2,
-          collection: 'Purples and Pinks'
+          name: 'Splish Splash',
+          rgbValue: [102, 205, 170],
+          description: 'aqua green creme',
+          price: 20,
+          collection: 'Lippwoman'
         },
         {
-          name: 'purple',
-          rgbValue: [128, 0, 128],
-          description: 'midpoint for purple cluster',
-          price: 2,
-          collection: 'Purples and Pinks'
+          name: 'Afternoon Delight',
+          rgbValue: [147, 112, 219],
+          description: 'dusty lavender creme',
+          price: 20,
+          collection: 'Lippwoman'
         },
         {
-          name: 'orchid',
-          rgbValue: [186, 85, 211],
-          description: 'Should be filtered purple',
-          price: 10,
-          collection: 'Purples and Pinks'
+          name: 'Peaches & Cream',
+          rgbValue: [255, 140, 105],
+          description: 'peach creme',
+          price: 20,
+          collection: 'Lippwoman'
         },
         {
-          name: 'royal blue',
-          rgbValue: [65, 105, 225],
-          description: 'should be filtered blue',
-          price: 10,
-          collection: 'Blues and Greens'
+          name: 'Smoke Gets In Your Eyes',
+          rgbValue: [30, 64, 139],
+          description: 'full coverage smokey blue creme',
+          price: 20,
+          collection: 'Lippwoman'
         },
         {
-          name: 'cherry blossom',
-          rgbValue: [255, 235, 235],
-          description: 'useful for testing color filtering',
-          price: 25,
-          collection: 'Vamp it up'
-        },
-        {
-          name: 'chartreuse',
-          rgbValue: [118, 238, 0],
-          description: 'chartreuse -- yum',
-          inventory: 0,
-          collection: 'Blues and Greens',
-          price: 34
-        },
-        {
-          name: 'banana',
-          rgbValue: [207, 227, 87],
-          description: 'should filter yellow',
-          price: 10,
-          collection: 'Yellows and Creams'
-        },
-        {
-          name: 'emerald',
-          rgbValue: [0, 208, 87],
-          description: 'should filter Green',
-          price: 10,
-          collection: 'Blues and Greens'
-        },
-        {
-          name: 'coral',
-          rgbValue: [225, 127, 80],
-          description: 'should filter orange',
-          price: 100,
-          collection: 'Oranges and Reds'
-        },
-        {
-          name: 'white',
+          name: 'Blanc',
           rgbValue: [255, 255, 255],
-          description: 'Also useful for testing color filtering',
-          price: 25,
-          collection: 'Vamp it up'
+          description: 'a snowy white, perfect for French manicures',
+          price: 9,
+          collection: 'bessie'
         },
         {
-            name: 'sunset orange',
-            rgbValue: [253, 94, 83],
-            description: 'orange',
-            price: 5,
-            collection: 'Oranges and Reds'
+          name: 'Golden Nuggets',
+          rgbValue: [255, 215, 0],
+          description: 'a glittery bold gold',
+          price: 9,
+          collection: 'bessie'
         },
         {
-            name: 'dandelion',
-            rgbValue: [253, 219, 109],
-            description: 'yellow',
-            price: 4,
-            collection: 'Yellows and Creams'
+          name: 'Watermelon',
+          rgbValue: [255, 62, 150],
+          description: 'a creamy and refreshing juicy red',
+          price: 9,
+          collection: 'bessie'
         },
         {
-            name: 'caribbean green',
-            rgbValue: [28, 211, 162],
-            description: 'green',
-            price: 5,
-            collection: 'Seasonal Seaside Shine'
+          name: 'The Fuschia Of Art',
+          rgbValue: [205, 0, 205],
+          description: 'rich, vivid magenta',
+          price: 9,
+          collection: 'bessie'
         },
         {
-            name: 'wisteria',
-            rgbValue: [205, 164, 222],
-            description: 'purple',
-            price: 6,
-            collection: 'Purples and Pinks'
+          name: 'Sheer Bliss',
+          rgbValue: [255, 182, 193],
+          description: 'A sheer and silky pink',
+          price: 9,
+          collection: 'bessie'
         },
         {
-          name: 'yellow',
+          name: 'St. Lucia Lilac',
+          rgbValue: [216, 191, 216],
+          description: 'a creamy pale lilac',
+          price: 9,
+          collection: 'bessie'
+        },
+        {
+          name: 'Jelly Apple',
+          rgbValue: [176, 23, 31],
+          description: 'a sweet and delicious candied red',
+          price: 9,
+          collection: 'bessie'
+        },
+        {
+          name: 'Playing Koi',
+          rgbValue: [205, 79, 57],
+          description: 'flirtatious orange rust',
+          price: 9,
+          collection: 'bessie'
+        },
+        {
+          name: 'Stencil Me In',
+          rgbValue: [127, 255, 0],
+          description: 'edgy citrus lime',
+          price: 9,
+          collection: 'bessie'
+        },
+        {
+          name: 'Mezmerised',
+          rgbValue: [65, 105, 225],
+          description: 'a royal va-va blue',
+          price: 9,
+          collection: 'bessie'
+        },
+        {
+          name: 'Luxedo',
+          rgbValue: [0, 0, 0],
+          description: 'suit up and boldly go where no man has gone before',
+          price: 9,
+          collection: 'bessie'
+        },
+        {
+          name: '5 Apples Tall',
+          rgbValue: [255, 0, 0],
+          description: 'this apple red really measures up',
+          price: 9,
+          collection: 'UPI'
+        },
+        {
+          name: 'A Great Opera-Tunity',
+          rgbValue: [255, 99, 71],
+          description: '"aria" ya ready to wear this gorgeous melon?',
+          price: 9,
+          collection: 'UPI'
+        },
+        {
+          name: 'Act Your Beige',
+          rgbValue: [242, 221, 220],
+          description: 'age is just a number, but this light beige is #1',
+          price: 9,
+          collection: 'UPI'
+        },
+        {
+          name: 'AmazON...AmazOFF',
+          rgbValue: [29, 72, 78],
+          description: 'I"m making the switch to this deep jungle green',
+          price: 9,
+          collection: 'UPI'
+        },
+        {
+          name: 'Blue My Mind',
+          rgbValue: [37, 37, 91],
+          description: 'sizzling sapphire',
+          price: 9,
+          collection: 'UPI'
+        },
+        {
+          name: 'Can"t Find My Czechbook',
+          rgbValue: [118, 165, 181],
+          description: 'I hope you take credit, because I must have this aqua!',
+          price: 9,
+          collection: 'UPI'
+        },
+        {
+          name: 'California Raspberry',
+          rgbValue: [192, 34, 68],
+          description: 'It"s like a totally cool shade of pink-red',
+          price: 9,
+          collection: 'UPI'
+        },
+        {
+          name: 'Chromatic Orange',
+          rgbValue: [243, 91, 35],
+          description: 'This freshly squeezed orange is awash with color',
+          price: 9,
+          collection: 'UPI'
+        },
+        {
+          name: 'Gelato on My Mind',
+          rgbValue: [216, 238, 242],
+          description: 'Deliciously sweet and icy-cool pastel blue',
+          price: 9,
+          collection: 'UPI'
+        },
+        {
+          name: 'Hawaiian Orchid',
+          rgbValue: [228, 173, 192],
+          description: 'Tropical pink with hints of light purple',
+          price: 9,
+          collection: 'UPI'
+        },
+        {
+          name: 'Koala Bear-y',
+          rgbValue: [203, 37, 111],
+          description: 'Berry irresistible, berry beautiful',
+          price: 9,
+          collection: 'UPI'
+        },
+        {
+          name: 'You Don"t Know Jacques',
+          rgbValue: [92, 68, 68],
+          description: 'If you don"t know how trendy this taupe is',
+          price: 9,
+          collection: 'UPI'
+        },
+        {
+          name: 'Addison',
           rgbValue: [255, 255, 0],
-          description: 'midpoint for yellow cluster',
-          price: 11,
-          collection: 'Seasonal Seaside Shine'
+          description: 'Tart lemon crème',
+          price: 9,
+          collection: 'Mint'
         },
         {
-            name: 'seagull grey',
-            rgbValue: [28, 211, 162],
-            description: 'greyish!',
-            price: 5,
-            collection: 'Seasonal Seaside Shine'
+          name: 'Adrian',
+          rgbValue: [238, 238, 0],
+          description: 'Daffodil crème',
+          price: 9,
+          collection: 'Mint'
         },
         {
-            name: 'palm-frond',
-            rgbValue: [28, 211, 162],
-            description: 'green',
-            price: 5,
-            collection: 'Seasonal Seaside Shine'
+          name: 'Catrina',
+          rgbValue: [238, 201, 0],
+          description: 'Marigold yellow crème',
+          price: 9,
+          collection: 'Mint'
         },
         {
-            name: 'sand',
-            rgbValue: [28, 211, 162],
-            description: 'sort of like being covered in gritty grossness',
-            price: 5,
-            collection: 'Seasonal Seaside Shine'
+          name: 'Brandis',
+          rgbValue: [102, 205, 170],
+          description: 'Tart turquoise crème',
+          price: 9,
+          collection: 'Mint'
         },
         {
-            name: 'sky blue',
-            rgbValue: [281, 211, 300],
-            description: 'high quality product',
-            price: 5,
-            collection: 'Seasonal Seaside Shine'
+          name: 'Anya',
+          rgbValue: [0, 100, 0],
+          description: 'Climbing ivy crème',
+          price: 9,
+          collection: 'Mint'
+        },
+        {
+          name: 'Amy',
+          rgbValue: [60, 179, 113],
+          description: 'Smoky Turqoise crème',
+          price: 9,
+          collection: 'Mint'
+        },
+        {
+          name: 'Acacia',
+          rgbValue: [3, 168, 158],
+          description: 'Blue fjord crème',
+          price: 9,
+          collection: 'Mint'
         }
     ];
 
