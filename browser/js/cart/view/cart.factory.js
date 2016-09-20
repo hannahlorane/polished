@@ -1,4 +1,4 @@
-app.factory('CartFactory', function ($rootScope, $http) {
+app.factory('CartFactory', function ($rootScope, $http, $q) {
   var cart = {
     getOrderById: function(cartId) {
       return $http.get('/api/orders/' + cartId)
@@ -44,15 +44,18 @@ app.factory('CartFactory', function ($rootScope, $http) {
           }
         })
 
-        products.map(function (orderProductsObj) {
+        var productPromise = products.map(function (orderProductsObj) {
           return $http.post('/api/orders/' + orderResponse.data.id + '/products', orderProductsObj)
         })
 
-        return orderResponse;
+        return $q.all([productPromise])
+        .then(function() {
+          return orderResponse;
+        })
 
       })
       .then(function(response) {
-        localStorage.clear();
+        $rootScope.$broadcast('clearCart');
         $rootScope.$broadcast('itemsChanged');
         return response.data;
       })

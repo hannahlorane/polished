@@ -27,9 +27,9 @@ app.directive('checkout', function ($rootScope, $state, CartFactory, EmailFactor
         }
 
         return CartFactory.makePurchase(userId, scope.cart, customer)
-        .then(function(order) {
+        .then(function(response) {
           return EmailFactory.order({
-            id: order.id,
+            id: response.id,
             email: scope.customer.email,
             name: scope.customer.firstName + ' ' + scope.customer.lastName
           })
