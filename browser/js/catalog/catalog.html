@@ -25,10 +25,8 @@
         </form>
       </div>
     </div>
-    <collection></collection>
     <div class="col s9 offset-s1">
       <div class="row collect" >
-
         <div ng-show="collectionView" ng-repeat="collect in allCollections | selectedCollections:filteredCollections">
           <div class="row">
             <div class="col s12">
@@ -39,18 +37,11 @@
             <catalogitem product="prod"></catalogitem>
           </div>
         </div>
-
         <div ng-hide="collectionView" ng-repeat="color in colorNames | selectedColors:filteredColors">
-          <!-- <div class="row"> -->
-            <!-- <div class="col s12"> -->
-              <!-- <h5>{{color}}</h5> -->
-            <!-- </div> -->
-            <div ng-repeat="prod in products | inStock | collectionFilter:filteredCollections:collect | colorFilter:[color]:assignColor">
-              <catalogitem product="prod"></catalogitem>
-            </div>
-          <!-- </div> -->
+          <div ng-repeat="prod in products | inStock | collectionFilter:filteredCollections:collect | colorFilter:[color]:assignColor">
+            <catalogitem product="prod"></catalogitem>
+          </div>
         </div>
-
       </div>
     </div>
   </div>
