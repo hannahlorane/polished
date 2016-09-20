@@ -43,12 +43,12 @@
               <h5>{{collect}}</h5>
             </div>
           </div>
-          <div ng-repeat="prod in products | inStock | collectionFilter:filteredCollections:collect | colorFilter:filteredColors:assignColor">
+          <div ng-repeat="prod in products | inStock | collectionFilter:filteredCollections:collect | colorFilter:filteredColors:assignColor | searchFilter:searched">
             <catalogitem product="prod"></catalogitem>
           </div>
         </div>
         <div ng-hide="collectionView" ng-repeat="color in colorNames | selectedColors:filteredColors">
-          <div ng-repeat="prod in products | inStock | collectionFilter:filteredCollections:collect | colorFilter:[color]:assignColor">
+          <div ng-repeat="prod in products | inStock | collectionFilter:filteredCollections:collect | colorFilter:[color]:assignColor | searchFilter:searched">
             <catalogitem product="prod"></catalogitem>
           </div>
         </div>
