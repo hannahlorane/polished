@@ -1,4 +1,5 @@
 app.controller('checkoutController', function($scope, CheckoutFactory) {
+
   $scope.stripeCallback = function(code, result, attributes){
     if(result.error) {
       alert('Your payment failed, please try again.');
