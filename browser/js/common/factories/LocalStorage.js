@@ -1,4 +1,4 @@
-app.factory('LocalStorage', function (CartFactory) {
+app.factory('LocalStorage', function (CartFactory, $rootScope) {
   var methods = {};
 
   var localCart = null;
@@ -75,6 +75,11 @@ app.factory('LocalStorage', function (CartFactory) {
 
     }
   };
+
+  $rootScope.$on('clearCart', function() {
+    localStorage.clear();
+    localCart = null;
+  })
 
   return methods;
 });
