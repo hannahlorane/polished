@@ -95,7 +95,7 @@ p, h1, h2, h3, h4, h5 {
 .swatch-box {
   width: 50px;
   height: 50px;
-  border: 1px black solid;
+  border: 1px #ccc solid;
 }
 
 .shopping-cart {
@@ -126,6 +126,7 @@ p, h1, h2, h3, h4, h5 {
   margin-bottom: 5px;
   height: 40px;
   width: 40px;
+  border: 1px #ccc solid;
 }
 
 .color-filter-block-selected {
@@ -138,7 +139,13 @@ p, h1, h2, h3, h4, h5 {
 bottle svg {
   margin-left: auto;
   margin-right: auto;
+  margin-top: 25px;
   display: block;
+}
+
+.card-image {
+  width: 300px;
+  height: 300px;
 }
 
 smallbottle svg {
@@ -228,4 +235,7 @@ smallbottle svg {
    box-shadow: 0px 0px 2px rgba(255, 255, 255, 0.3);
    }
 
+.search-icon {
+  line-height: 45px;
+}
 
