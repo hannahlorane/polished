@@ -19,9 +19,9 @@
           </thead>
           <tbody>
             <tr ng-repeat="product in cart.products">
-              <td><a href="#" ng-hide="completed" ng-click="removeItem(cart.id, product.id)"><i class="material-icons">close</i></a></td>
+              <td><a href="#" ng-hide="completed" ng-click="removeItem(product.id)"><i class="material-icons">close</i></a></td>
               <td><a ng-href="/product/{{product.id}}">{{product.name}}</a></td>
-              <td><a href="#" ng-hide="completed" ng-click="incrementQty(cart.id, product.id)"><i class="material-icons">add</i></a> {{product.OrderProducts.quantity}} <a href="#" ng-hide="completed" ng-click="decrementQty(cart.id, product.id)"><i class="material-icons">remove</i></a></td>
+              <td><a href="#" ng-hide="completed" ng-click="incrementQty(product.id)"><i class="material-icons">add</i></a> {{product.OrderProducts.quantity}} <a href="#" ng-hide="completed" ng-click="decrementQty(product.id)"><i class="material-icons">remove</i></a></td>
               <td>${{product.price}}</td>
               <td>${{product.price * product.OrderProducts.quantity}}
             </tr>

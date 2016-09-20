@@ -18,7 +18,7 @@ app.controller('catalogController', function ($scope, $state, productFactory, pr
     Light: [255, 255, 255],
     Dark: [0, 0, 0]
   };
-  $scope.collectionView = true;
+  $scope.collectionView = false;
   $scope.colorNames = Object.keys($scope.allColors);
 
   $scope.goToCol = function (id) {
@@ -53,6 +53,10 @@ app.controller('catalogController', function ($scope, $state, productFactory, pr
     } else {
       filterArray.splice(index, 1);
     }
+
+    if ($scope.filteredCollections.length === 0) {
+      $scope.collectionView = false;
+    }
   }
 })
 
@@ -69,7 +73,6 @@ app.filter('inStock', function () {
 app.filter('selectedColors', function () {
   return function (colors, filteredColors) {
     var showTheseCols = [];
-    // console.log(colors);
     if (filteredColors.length == 0) {
       return colors;
     }
@@ -99,7 +102,9 @@ app.filter('colorFilter', function () {
 app.filter('selectedCollections', function () {
   return function (collections, filteredCollections) {
     var showTheseCols = [];
-    if (filteredCollections.length == 0) return collections;
+    if (filteredCollections.length === 0) {
+      return collections;
+    }
     for (var c = 0; c < collections.length; c++) {
       if (filteredCollections.indexOf(collections[c]) > -1) {
         showTheseCols.push(collections[c]);

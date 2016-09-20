@@ -108,3 +108,33 @@ p, h1, h2, h3, h4, h5 {
   bottom: 5px;
   left: 3px;
 }
+
+.catalog-price {
+  float: right;
+}
+
+.brand-filter-title {
+  padding-left: 35px;
+}
+
+.color-filter-title {
+  padding-left: 12px;
+  padding-bottom: 5px;
+}
+
+.color-filter-block {
+  margin-bottom: 5px;
+  height: 40px;
+  width: 40px;
+}
+
+.color-filter-block-selected {
+  margin-bottom: 5px;
+  height: 40px;
+  width: 40px;
+  border: 2px #000 solid;
+}
+
+.large-bottle svg{
+  margin: 30px;
+}

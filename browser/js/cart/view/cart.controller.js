@@ -34,21 +34,21 @@ app.controller('CartController', function ($rootScope, $scope, theCart, LocalSto
     }
   }
 
-  $scope.removeItem = function(cartId, prodId) {
-    LocalStorage.removeItem(cartId, prodId);
+  $scope.removeItem = function(prodId) {
+    LocalStorage.removeItem(prodId);
     $scope.getCart();
     $rootScope.$broadcast('itemsChanged');
     return $scope.getTotal();
   }
 
-  $scope.incrementQty = function(cartId, prodId) {
-    LocalStorage.incrementItemQuantity(cartId, prodId);
+  $scope.incrementQty = function(prodId) {
+    LocalStorage.incrementItemQuantity(prodId);
     $scope.getCart();
     $scope.getTotal();
   }
 
-  $scope.decrementQty = function(cartId, prodId) {
-    LocalStorage.decrementItemQuantity(cartId, prodId);
+  $scope.decrementQty = function(prodId) {
+    LocalStorage.decrementItemQuantity(prodId);
     $scope.getCart();
     $scope.getTotal();
   }

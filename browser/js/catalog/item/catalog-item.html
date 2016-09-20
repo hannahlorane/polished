@@ -1,0 +1,13 @@
+<a ui-sref="singleProduct({id: product.id})">
+  <div class="col s12 m4">
+    <div class="card small hoverable">
+      <div class="card-content">
+        <smallbottle product="product" height="200"></smallbottle>
+      </div>
+      <div class="card-action black-text">
+        <h6>{{product.name}} <span class="catalog-price">${{product.price}}</span></h6>
+        <h6>{{product.collection.toUpperCase()}}</h6>
+      </div>
+    </div>
+  </div>
+</a>
