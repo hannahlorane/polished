@@ -1,8 +1,9 @@
 'use strict';
 
-window.app = angular.module('polish', ['fsaPreBuilt', 'ui.router', 'ngAnimate', 'ui.validate', 'ui.materialize']);
+window.app = angular.module('polish', ['fsaPreBuilt', 'ui.router', 'ngAnimate', 'ui.validate', 'ui.materialize', 'angularPayments']);
 
 app.config(function ($urlRouterProvider, $locationProvider) {
+    window.Stripe.setPublishableKey('pk_test_IgphJdo6lAjMvl98xqqCG2au');
     // This turns off hashbang urls (/#about) and changes it to something normal (/about)
     $locationProvider.html5Mode(true);
     // If we go to a URL that ui-router doesn't have registered, go to the "/" url.

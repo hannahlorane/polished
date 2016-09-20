@@ -11,6 +11,7 @@ app.controller('CartController', function ($rootScope, $scope, theCart, LocalSto
     }
   }
 
+
   $scope.getCart = function() {
     if (theCart) {
       $scope.cart = theCart;
@@ -45,15 +46,19 @@ app.controller('CartController', function ($rootScope, $scope, theCart, LocalSto
     LocalStorage.incrementItemQuantity(prodId);
     $scope.getCart();
     $scope.getTotal();
+    //LocalStorage.setTotalPrice($scope.cart.total);
   }
 
   $scope.decrementQty = function(prodId) {
     LocalStorage.decrementItemQuantity(prodId);
     $scope.getCart();
     $scope.getTotal();
+    //LocalStorage.setTotalPrice($scope.cart.total);
   }
 
   $scope.toggleCheckout = function() {
+    console.log('toggling....');
+    $scope.getTotal();
     $scope.checkout = !$scope.checkout;
   }
 

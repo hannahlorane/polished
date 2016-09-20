@@ -14,6 +14,8 @@ router.use('/products', require('./products'));
 
 router.use('/emails', require('./emails'));
 
+router.use('/payments', require('./payments'));
+
 // Make sure this is after all of
 // the registered routes!
 

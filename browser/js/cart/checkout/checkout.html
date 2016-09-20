@@ -6,8 +6,41 @@
   <h3>Checkout</h3>
 
   <div class="container">
+    <div class="row" ng-controller="checkoutController">
+      <h4>Payment</h4>
+
+      <form stripe-form="stripeCallback">
+
+        <div class="span3">
+          <label for="">{{total}}Card number</label>
+          <input type="text" class="input-block-level" ng-model="number" payments-validate="card" payments-format="card" payments-type-model="type"/>
+        </div>
+
+        <div class="span1">
+          <label for="">Expiry</label>
+          <input type="text" class="input-block-level" ng-model="expiry" payments-validate="expiry" payments-format="expiry" />
+        </div>
+
+        <div class="span3">
+          <label for="">Name on card </label>
+          <input type="text" class="input-block-level">
+        </div>
+
+        <div class="span1">
+          <label for="">CVC</label>
+          <input type="text" class="input-block-level" ng-model="cvc" payments-validate="cvc" payments-format="cvc" payments-type-model="type"/>
+        </div>
+
+        <div class="span4">
+          <button type="submit" class="waves-effect waves-light btn" ng-disabled="stripeForm.$invalid">Submit</button>
+        </div>
+      </form>
+    </div>
+    <br />
+
+
     <form name="checkoutForm" novalidate>
-      <div class="row">
+      <h4>Shipping</h4>
         <form class="col s12">
           <div class="form-group">
 
@@ -55,12 +88,9 @@
               <div ng-message="minlength" ng-hide="checkoutForm.state.$valid">Please use 2-letter state abbreviation.</div>
             </div>
 
-            <br />
-
             <a class="waves-effect waves-light btn" ng-click="buy(customer)" ng-disabled="checkoutForm.$invalid">BUY</a>
           </div>
         </form>
-      </div>
     </form>
   </div>
 </div>
