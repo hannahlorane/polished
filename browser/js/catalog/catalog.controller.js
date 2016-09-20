@@ -15,9 +15,10 @@ app.controller('catalogController', function ($scope, $state, productFactory, pr
     Blue: [0, 0, 255],
     Purple: [211, 85, 165],
     Pink: [255, 75, 110],
-    Light: [255, 255, 255],
+    Light: [275, 275, 275],
     Dark: [0, 0, 0]
   };
+  $scope.searchDefault = '.*';
   $scope.collectionView = false;
   $scope.colorNames = Object.keys($scope.allColors);
 
@@ -83,6 +84,20 @@ app.filter('selectedColors', function () {
     }
     if (showTheseCols) return showTheseCols;
     return colors;
+  }
+})
+
+app.filter('searchFilter', function () {
+  return function (items, searchString) {
+    console.log(items);
+    console.log(searchString);
+    var filteredItems = [];
+    for (var i = 0; i < items.length; i++) {
+      if (new RegExp(searchString).test(items[i].name)) {
+        filteredItems.push(items[i])
+      }
+    }
+    return filteredItems;
   }
 })
 
