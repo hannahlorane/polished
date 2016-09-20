@@ -11,7 +11,7 @@ app.controller('productController', function ($rootScope, CartFactory, LocalStor
   productFactory.getByCategory(product.collection)
     .then(function (similar) {
         $scope.similar = similar;
-    }).then(console.log('Similar', $scope.similar));
+    });
 
   $scope.addToCart = function () {
     if (!localStorage[$scope.product.id]) {
@@ -21,10 +21,6 @@ app.controller('productController', function ($rootScope, CartFactory, LocalStor
           name: $scope.product.name
         })
       );
-
-      // if ($scope.product.inventory > getCartQuantity()) {
-      //   localStorage.incrementItemQuantity($scope.product.id);
-      // }
 
       $rootScope.$broadcast('itemsChanged');
     }

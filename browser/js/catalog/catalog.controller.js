@@ -89,8 +89,6 @@ app.filter('selectedColors', function () {
 
 app.filter('searchFilter', function () {
   return function (items, searchString) {
-    console.log(items);
-    console.log(searchString);
     var filteredItems = [];
     for (var i = 0; i < items.length; i++) {
       if (new RegExp(searchString).test(items[i].name)) {

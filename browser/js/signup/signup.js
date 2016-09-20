@@ -29,7 +29,7 @@ app.controller('SignupCtrl', function ($scope, AuthService, $state) {
 
 app.directive('passwordVerify', function(){
     return {
-        require:'ngModel',
+        require: 'ngModel',
         link: function(scope, element, attrs, ctrl){
             ctrl.$parsers.unshift(function(viewValue){
                 var origin = scope.$eval(attrs['passwordVerify']);
