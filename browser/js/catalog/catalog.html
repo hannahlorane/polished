@@ -48,7 +48,7 @@
           </div>
         </div>
         <div ng-hide="collectionView" ng-repeat="color in colorNames | selectedColors:filteredColors">
-          <div ng-repeat="prod in products | inStock | collectionFilter:filteredCollections:collect | colorFilter:[color]:assignColor | searchFilter:searched">
+          <div ng-repeat="prod in products | inStock | collectionFilter:filteredCollections:collect | colorFilter:[color]:assignColor | searchFilter:searched||searchDefault">
             <catalogitem product="prod"></catalogitem>
           </div>
         </div>
