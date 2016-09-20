@@ -1,25 +1,24 @@
-<div class="row">
-
-  <form class="col s12">
-    <div class="row" ng-controller="ContactController" ng-submit="submitForm()">
-    <h4 em>Contact our support team</h4>
-
-      <div class="input-field col s6">
-        <input ng-model="email.name" id="name" type="text" class="validate">
-        <label for="name">Name</label>
+<div class="container">
+  <div class="row">
+    <form class="col s12">
+      <div class="row" ng-controller="ContactController" ng-submit="submitForm()">
+        <h4 em>Contact our support team</h4>
+        <div class="input-field col s6">
+          <input ng-model="email.name" id="name" type="text" class="validate">
+          <label for="name">Name</label>
+        </div>
+        <div class="input-field col s6">
+          <input ng-model="email.emailAddress" id="email" type="email" class="validate">
+          <label for="email" data-error="wrong" data-success="right">Email</label>
+        </div>
+        <div class="input-field col s12">
+          <textarea ng-model="email.text"id="textarea1" class="materialize-textarea"></textarea>
+          <label for="textarea1">Message</label>
+        </div>
+        <button class="btn waves-effect waves-light" type="submit" name="action" ng-click="sendEmail()">
+          Submit<i class="material-icons right">send</i>
+        </button>
       </div>
-      <div class="input-field col s6">
-        <input ng-model="email.emailAddress" id="email" type="email" class="validate">
-        <label for="email" data-error="wrong" data-success="right">Email</label>
-      </div>
-
-    <div class="input-field col s12">
-      <textarea ng-model="email.text"id="textarea1" class="materialize-textarea"></textarea>
-      <label for="textarea1">Message</label>
-    </div>
-
-    <button class="btn waves-effect waves-light" type="submit" name="action" ng-click="sendEmail()">
-      Submit<i class="material-icons right">send</i>
-    </button>
-
+    </form>
+  </div>
 </div>
