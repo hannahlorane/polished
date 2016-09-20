@@ -6,7 +6,7 @@ $(document).ready(function() {
   });
   $('.dropdown-button').dropdown();
   $('select').material_select();
-  $('.slider').slider({full_width: true});
+  // $('.slider').slider({full_width: true});
   $('.collapsible').collapsible();
 })
  /* eslint-enable */
