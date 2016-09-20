@@ -23,7 +23,6 @@ app.controller('productController', function ($rootScope, CartFactory, productFa
         })
       );
     }
-
     $rootScope.$broadcast('itemsChanged');
   };
 });

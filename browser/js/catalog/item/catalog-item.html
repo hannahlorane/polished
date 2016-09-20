@@ -2,8 +2,11 @@
   <div class="col s12 m4">
     <div class="card small hoverable">
       <div class="card-content">
-        <span class="card-title">{{product.name}}</span>
         <smallbottle product="product" height="200"></smallbottle>
+      </div>
+      <div class="card-action black-text">
+        <h6>{{product.name}} <span class="catalog-price">${{product.price}}</span></h6>
+        <h6>{{product.collection.toUpperCase()}}</h6>
       </div>
     </div>
   </div>
