@@ -26,8 +26,9 @@ app.controller('LoginCtrl', function ($scope, AuthService, $state) {
                     }
                 }
             }
-
-            if (user.expiredPassword) {
+            if (user.isAdmin) {
+                $state.go('adminproducts');
+            } else if (user.expiredPassword) {
                 $state.go('profilepage', {userId: user.id});
             } else {
                 $state.go('home');
