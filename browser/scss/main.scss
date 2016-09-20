@@ -135,6 +135,15 @@ p, h1, h2, h3, h4, h5 {
   border: 2px #000 solid;
 }
 
-.large-bottle svg{
-  margin: 30px;
+bottle svg {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
 }
+
+smallbottle svg {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
