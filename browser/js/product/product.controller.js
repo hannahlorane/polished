@@ -1,7 +1,6 @@
-app.controller('productController', function ($rootScope, CartFactory, productFactory, $scope, product) {
+app.controller('productController', function ($rootScope, CartFactory, LocalStorage, productFactory, $scope, product) {
   $scope.product = product;
   $scope.available = $scope.product.inventory > 0;
-  console.log(product.inventory);
   $scope.testModel = './test.json';
 
   productFactory.getReviews(product.id)
@@ -22,7 +21,14 @@ app.controller('productController', function ($rootScope, CartFactory, productFa
           name: $scope.product.name
         })
       );
+
+      // if ($scope.product.inventory > getCartQuantity()) {
+      //   localStorage.incrementItemQuantity($scope.product.id);
+      // }
+
+      $rootScope.$broadcast('itemsChanged');
     }
-    $rootScope.$broadcast('itemsChanged');
   };
+
+
 });
