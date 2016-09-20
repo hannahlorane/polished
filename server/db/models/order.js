@@ -28,7 +28,7 @@ var Order = db.define('order', {
     len: [1, 35]
   },
   zip: {
-    type: Sequelize.INTEGER,
+    type: Sequelize.STRING,
     len: [5]
   },
   state: {
