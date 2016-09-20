@@ -1,6 +1,6 @@
 app.controller('ReviewController', function ( $scope, $stateParams, productFactory, $state, AuthService) {
 
-  $scope.review = {'stars': 3};
+  $scope.review = {stars: 3};
 
   //checks if user is logged in
   //if true, show "add review" card
@@ -31,7 +31,7 @@ app.controller('ReviewController', function ( $scope, $stateParams, productFacto
     });
 
   }
-  $scope.starString = function (n) {
-    return 'abcde'.slice(0, n);
+  $scope.starString = function (num) {
+    return 'abcde'.slice(0, num);
   }
 });

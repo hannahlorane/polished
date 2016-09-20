@@ -1,4 +1,4 @@
-app.controller('OrderEditController', function ($scope, $state, AdminFactory, order, EmailFactory, CartFactory) {
+app.controller('OrderEditController', function ($scope, $state, AdminFactory, order, EmailFactory) {
   $scope.order = order;
 
   $scope.editOrder = function(id, body) {

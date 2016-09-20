@@ -9,20 +9,18 @@ app.controller('checkoutController', function($scope, CheckoutFactory, LocalStor
       return cart.products[0].total;
     } else {
       var pricething = cart.products.reduce(function(current, next) {
-          return current.total+next.total;
+          return current.total + next.total;
       });
       return pricething;
     }
   }
 
-  $scope.stripeCallback = function(code, result, attributes){
-    if(result.error) {
-      alert('Your payment failed, please try again.');
+  $scope.stripeCallback = function(code, result, attributes){ // eslint-disable-line
+    if (result.error) {
+      alert('Your payment failed, please try again.'); // eslint-disable-line
     } else {
-      alert('Payment success! Please proceed to checkout');
+      alert('Payment success! Please proceed to checkout'); // eslint-disable-line
       CheckoutFactory.sendStripeToken({token: result.id, amount: $scope.getTotalPrice()})
-      .then(function(res) {
-      })
     }
   };
 
