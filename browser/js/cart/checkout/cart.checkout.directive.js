@@ -39,7 +39,6 @@ app.directive('checkout', function ($rootScope, $state, CartFactory, EmailFactor
           $state.go('confirmation');
         });
       }
-
     }
   };
 

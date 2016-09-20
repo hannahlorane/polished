@@ -1,7 +1,7 @@
 app.factory('LocalStorage', function (CartFactory) {
   var methods = {};
 
-  var localCart = null;
+  var localCart = {};
 
   function addItemsToCart() {
     if (localStorage.length > 0) {
@@ -15,7 +15,8 @@ app.factory('LocalStorage', function (CartFactory) {
           id: productId,
           name: product.name,
           OrderProducts: {quantity: product.quantity},
-          price: product.price
+          price: product.price,
+          total: (+product.quantity * +product.price)
         });
       }
     }
