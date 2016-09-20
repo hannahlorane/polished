@@ -29,25 +29,13 @@ app.factory('CartFactory', function ($rootScope, $http) {
     },
 
     makePurchase: function(userId, shoppingCart, customer) {
-      var firstName = customer.firstName;
-      var lastName = customer.lastName;
-      var address = customer.address;
-      var zip = customer.zip;
-      var state = customer.state;
-      var email = customer.email;
+      var body = angular.copy(customer);
+      body.total = shoppingCart.total;
+      body.userId =  userId;
+      body.dateSubmitted = new Date();
+      body.status = 'processing';
 
-      return $http.post('/api/orders/', {
-        userId: userId,
-        total: shoppingCart.total,
-        status: 'processing',
-        firstName: firstName,
-        lastName: lastName,
-        address: address,
-        zip: zip,
-        state: state,
-        email: email,
-        dateSubmitted: new Date()
-      })
+      return $http.post('/api/orders/', body)
       .then(function(orderResponse) {
         var products = shoppingCart.products.map(function(product) {
           return {
