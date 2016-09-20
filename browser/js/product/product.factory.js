@@ -25,9 +25,7 @@ app.factory('productFactory', function ($http) {
         });
     },
     postReview: function(id, body) {
-      return $http.post('/api/products/' + id + '/reviews/', body)
-      .then(function (review) {
-      })
+      return $http.post('/api/products/' + id + '/reviews/', body);
     },
     getAllCollections: function () {
       return $http.get('/api/products')

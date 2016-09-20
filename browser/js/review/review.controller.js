@@ -1,6 +1,6 @@
 app.controller('ReviewController', function ( $scope, $stateParams, productFactory, $state, AuthService) {
 
-  $scope.review = {"stars": 3};
+  $scope.review = {'stars': 3};
 
   //checks if user is logged in
   //if true, show "add review" card
@@ -12,7 +12,6 @@ app.controller('ReviewController', function ( $scope, $stateParams, productFacto
   var findUser = function () {
     AuthService.getLoggedInUser()
     .then(function (user) {
-      console.log(user);
       $scope.user = user;
     });
   };
@@ -27,7 +26,7 @@ app.controller('ReviewController', function ( $scope, $stateParams, productFacto
     }
 
     return productFactory.postReview(id, body)
-    .then(function(review) {
+    .then(function() {
       $state.reload();
     });
 

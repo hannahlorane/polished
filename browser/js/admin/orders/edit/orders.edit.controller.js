@@ -4,8 +4,6 @@ app.controller('OrderEditController', function ($scope, $state, AdminFactory, or
   $scope.editOrder = function(id, body) {
     return AdminFactory.editOrder(id, body)
     .then(function() {
-      console.log($scope.order);
-
       if (body.status === 'shipped') {
         return EmailFactory.ship({id: id, email: $scope.order.email});
       } else if (body.status === 'delivered') {
