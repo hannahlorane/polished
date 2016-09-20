@@ -1,5 +1,6 @@
 'use strict';
-window.app = angular.module('polish', ['fsaPreBuilt', 'ui.router', 'ngAnimate', 'ui.validate']);
+
+window.app = angular.module('polish', ['fsaPreBuilt', 'ui.router', 'ngAnimate', 'ui.validate', 'ui.materialize']);
 
 app.config(function ($urlRouterProvider, $locationProvider) {
     // This turns off hashbang urls (/#about) and changes it to something normal (/about)
