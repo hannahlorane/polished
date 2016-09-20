@@ -16,5 +16,8 @@ app.controller('ProfilePageController', function ($scope, orders, user, AuthServ
     .then(function() {
       $state.go('home');
     })
+    .then(function(err) {
+      throw new Error(err);
+    })
   }
 });
