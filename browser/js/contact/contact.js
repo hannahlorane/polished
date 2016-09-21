@@ -24,5 +24,8 @@ app.controller('ContactController', function($scope, $state, EmailFactory) {
     .then(function() {
       $state.go('contactConfirmation')
     })
+    .then(function(err) {
+      throw new Error(err);
+    })
   }
 });

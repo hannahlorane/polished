@@ -61,17 +61,6 @@ describe('/api/orders', function () {
         });
     });
 
-    it('GET one', function (done) {
-      guestAgent
-      .get('/api/orders/1')
-      .expect(200)
-      .end(function (err, res) {
-        if (err) return done(err);
-        expect(res.body.total).to.eql(order1.total);
-        done();
-      })
-    })
-
     it('POST one', function (done) {
       guestAgent
       .post('/api/orders')

@@ -15,5 +15,8 @@ app.controller('HomeController', function($scope, productFactory) {
     $scope.productTwo = products[products.length - 3];
     $scope.productThree = products[products.length - 1];
   })
+  .catch(function(err) {
+    throw new Error(err);
+  })
 
 });

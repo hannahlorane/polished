@@ -1,31 +1,26 @@
 app.factory('CartFactory', function ($rootScope, $http, $q) {
+  function getData(response) {
+    return response.data;
+  }
   var cart = {
     getOrderById: function(cartId) {
       return $http.get('/api/orders/' + cartId)
-      .then(function(response) {
-        return response.data;
-      })
+      .then(getData);
     },
 
     getOrderByUserId: function(userId) {
       return $http.get('/api/order/byUser/' + userId)
-      .then(function(response) {
-        return response.data;
-      })
+      .then(getData);
     },
 
     saveCartForUser: function(userId, cartObj) {
       return $http.put('/api/members/' + userId, cartObj)
-      .then(function(response) {
-        return response.data;
-      })
+      .then(getData);
     },
 
     getUserOrders: function(userId) {
       return $http.get('/api/orders/history/' + userId)
-      .then(function(response) {
-        return response.data;
-      })
+      .then(getData);
     },
 
     makePurchase: function(userId, shoppingCart, customer) {

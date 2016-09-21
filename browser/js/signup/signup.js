@@ -32,7 +32,7 @@ app.directive('passwordVerify', function(){
         require: 'ngModel',
         link: function(scope, element, attrs, ctrl){
             ctrl.$parsers.unshift(function(viewValue){
-                var origin = scope.$eval(attrs['passwordVerify']);
+                var origin = scope.$eval(attrs['passwordVerify']); //eslint-disable-line
                 if (origin !== viewValue){
                     ctrl.$setValidity('passwordVerify', false);
                     return undefined;

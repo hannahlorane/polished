@@ -1,5 +1,3 @@
-
-
 app.controller('catalogController', function ($scope, $state, productFactory, products, allCollections) {
   $scope.products = products;
   $scope.allCollections = allCollections;
@@ -23,7 +21,7 @@ app.controller('catalogController', function ($scope, $state, productFactory, pr
   $scope.colorNames = Object.keys($scope.allColors);
 
   $scope.goToCol = function (id) {
-    $state.go('singleProduct', {"id": String(id)});
+    $state.go('singleProduct', {id: String(id)});
   }
 
   $scope.vectorDistance = function (v1, v2) {
@@ -36,11 +34,11 @@ app.controller('catalogController', function ($scope, $state, productFactory, pr
 
   $scope.assignColor = function (item) {
     var closest = [null, Number.POSITIVE_INFINITY];
-    for (var c in $scope.allColors) {
-      var d = $scope.vectorDistance(item.rgbValue, $scope.allColors[c]);
-      if (d < closest[1]) {
-        closest[1] = d;
-        closest[0] = c;
+    for (var color in $scope.allColors) { // eslint-disable-line
+      var dist = $scope.vectorDistance(item.rgbValue, $scope.allColors[color]);
+      if (dist < closest[1]) {
+        closest[1] = dist;
+        closest[0] = color;
       }
     }
     return closest[0];
@@ -74,12 +72,12 @@ app.filter('inStock', function () {
 app.filter('selectedColors', function () {
   return function (colors, filteredColors) {
     var showTheseCols = [];
-    if (filteredColors.length == 0) {
+    if (filteredColors.length === 0) {
       return colors;
     }
-    for (var c in colors) {
-      if (filteredColors.indexOf(colors[c]) > -1) {
-        showTheseCols.push(colors[c]);
+    for (var color in colors) {
+      if (filteredColors.indexOf(colors[color]) > -1) {
+        showTheseCols.push(colors[color]);
       }
     }
     if (showTheseCols) return showTheseCols;
@@ -101,7 +99,7 @@ app.filter('searchFilter', function () {
 
 app.filter('colorFilter', function () {
   return function (items, cols, assignColor) {
-    if (cols.length == 0) return items;
+    if (cols.length === 0) return items;
     var filteredItems = [];
     for (var i = 0; i < items.length; i++) {
       if (cols.indexOf(assignColor(items[i])) > -1) {
@@ -118,9 +116,9 @@ app.filter('selectedCollections', function () {
     if (filteredCollections.length === 0) {
       return collections;
     }
-    for (var c = 0; c < collections.length; c++) {
-      if (filteredCollections.indexOf(collections[c]) > -1) {
-        showTheseCols.push(collections[c]);
+    for (var col = 0; col < collections.length; col++) {
+      if (filteredCollections.indexOf(collections[col]) > -1) {
+        showTheseCols.push(collections[col]);
       }
     }
     if (showTheseCols) return showTheseCols;
