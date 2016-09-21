@@ -17,7 +17,7 @@
           <i class="material-icons" ng-click="deleteUser(user.id)">close</i>
         </td>
         <td>
-          {{user.id}}
+          <a ng-href="/profiles/{{user.id}}">{{user.id}}</a>
         </td>
         <td>
           {{user.email}}
