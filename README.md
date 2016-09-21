@@ -29,7 +29,3 @@ Rebuild and watch for changes:
 ```
 gulp
 ```
-
-### Hidden Variables
-
-Fill out the `secret_example.json` file with valid information and rename to secret.json
