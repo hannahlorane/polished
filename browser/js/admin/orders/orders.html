@@ -25,7 +25,7 @@
         <td><a ng-href="cart/{{order.id}}">{{order.id}}</td>
         <td>{{order.status}}</td>
         <td>{{order.total}}</td>
-        <td>{{order.userId}}</td>
+        <td><a ng-href="/profiles/{{order.userId}}">{{order.userId}}</a></td>
       </tr>
     </tbody>
   </table>
