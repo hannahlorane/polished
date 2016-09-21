@@ -3,14 +3,14 @@
   <div class="add-review" ng-if="isLoggedIn()">
     <h4>Add Review</h4>
     <div class="card-panel">
-      <p>Stars</p>
       <span>
       <form>
-        <form action="#">
-          <p class="range-field">
-            <input type="range" ng-model="review.stars" id="test5" min="1" max="5"/>
-          </p>
-        </form>
+        <ul class="rating">
+            <li ng-repeat="n in [].constructor(maxRating) track by $index">
+                <span ng-click="rateBy($index+1)" ng-show="ratedBy > $index" class="filled">&#9733;</span>
+                <span ng-click="rateBy($index+1)" ng-show="ratedBy <= $index">&#9733;</span>
+            </li>
+        </ul>
 
         <div class="input-field col s12">
           <textarea ng-model="review.text" id="textarea1" class="materialize-textarea"></textarea>

@@ -1,7 +1,10 @@
 app.controller('ReviewController', function ( $scope, $stateParams, productFactory, $state, AuthService) {
 
-  $scope.review = {stars: 3};
-
+  $scope.maxRating = 5;
+  $scope.ratedBy = 0;
+  $scope.rateBy = function (star) {
+      $scope.ratedBy = star;
+  }
   //checks if user is logged in
   //if true, show "add review" card
   $scope.isLoggedIn = function () {
@@ -21,6 +24,7 @@ app.controller('ReviewController', function ( $scope, $stateParams, productFacto
   //posts a review
   $scope.addReview = function(id, body) {
     body.productId = $scope.product.id;
+    body.stars = $scope.ratedBy;
     if ($scope.user) {
       body.userId = $scope.user.id;
     }
