@@ -1,3 +1,5 @@
+//ES5 for Codeship
+
 var sinon = require('sinon');
 var expect = require('chai').expect;
 
@@ -77,6 +79,5 @@ describe('Product model', function () {
           expect(product.description).to.equal(nailPolishDescription);
         })
       })
-
   });
 });

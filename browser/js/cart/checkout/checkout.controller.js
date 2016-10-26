@@ -3,7 +3,6 @@ app.controller('checkoutController', function($scope, CheckoutFactory, LocalStor
   $scope.getTotalPrice = function() {
 
     var cart = LocalStorage.getLocalCart();
-    console.log('my object ', cart)
 
     if (cart.products.length === 1) {
       return cart.products[0].total;
